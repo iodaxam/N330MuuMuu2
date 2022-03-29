@@ -14,17 +14,13 @@ public class PlayerController : MonoBehaviour
         {
             var mousePos = Input.mousePosition;
             mousePos.z = 10;
-            Debug.Log("Mouse down");
             startPosition = Camera.main.ScreenToWorldPoint(mousePos);
-            Debug.Log("Start Position: " + startPosition);
         }
         if (Input.GetMouseButtonUp(0))    // swipe ends
         {
             var mousePos = Input.mousePosition;
             mousePos.z = 10;
-            Debug.Log("Mouse Up");
             endPosition = Camera.main.ScreenToWorldPoint(mousePos);
-            Debug.Log("End Position: " + endPosition);
         }
  
         if (startPosition != endPosition && startPosition != Vector3.zero && endPosition != Vector3.zero)
@@ -43,5 +39,10 @@ public class PlayerController : MonoBehaviour
             }
             startPosition = endPosition = Vector3.zero;
         }
+    }
+
+    private void Turn()
+    {
+        
     }
 }

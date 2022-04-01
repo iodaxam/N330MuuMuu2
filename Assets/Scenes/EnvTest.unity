@@ -6237,7 +6237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480712, guid: 12a71185513d5a548a19c15f526c6938, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 480712, guid: 12a71185513d5a548a19c15f526c6938, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6356,7 +6356,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 455788, guid: e8f7a726f3bf5914887ea1bc9bcb701e, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 455788, guid: e8f7a726f3bf5914887ea1bc9bcb701e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6413,7 +6413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 455486, guid: 178878bcf5455764d89195155eee7e66, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 455486, guid: 178878bcf5455764d89195155eee7e66, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6470,7 +6470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 483096, guid: a57d219dfbf573148919563ede30982f, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 483096, guid: a57d219dfbf573148919563ede30982f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6685,7 +6685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 441788, guid: 0961be66582a8714db9e751ce4630aed, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 441788, guid: 0961be66582a8714db9e751ce4630aed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6742,7 +6742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 484418, guid: e7ce8fa5a49d9f9429ad31f4144cb19e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 484418, guid: e7ce8fa5a49d9f9429ad31f4144cb19e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6861,7 +6861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 405778, guid: 2ca27c5c2edad5e42a11807acb7a0844, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 405778, guid: 2ca27c5c2edad5e42a11807acb7a0844, type: 3}
       propertyPath: m_LocalPosition.x

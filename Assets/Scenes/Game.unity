@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -566,6 +566,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 20.199, y: 0, z: 0}
+--- !u!1 &1315226655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1217401525971368481, guid: 148872d63dd758542a60cff9a6269eb9, type: 3}
+  m_PrefabInstance: {fileID: 2112848070}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1722922295
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,9 +602,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabsToSelect:
   - {fileID: 1217401525971368481, guid: 23e965b9ed82e5f4e99c220457f8748b, type: 3}
-  - {fileID: 1217401525971368481, guid: da83c00dab23b9943bf2ef9889b2dc9c, type: 3}
   - {fileID: 1217401525971368481, guid: 148872d63dd758542a60cff9a6269eb9, type: 3}
-  GeneratedTerrain: []
+  GeneratedTerrain:
+  - {fileID: 1315226655}
 --- !u!4 &1722922297
 Transform:
   m_ObjectHideFlags: 0

@@ -7,6 +7,9 @@ public class TerrainScript : MonoBehaviour
 	private BoxCollider ColliderComponent;
 	private GameObject GameManager;
 
+	public Transform StartTransform;
+	public Transform EndTransform;
+
 	void Start()
 	{
 		ColliderComponent = GetComponent<BoxCollider>();
@@ -17,7 +20,7 @@ public class TerrainScript : MonoBehaviour
 	{
 		if(other.tag == "Player")
 		{
-			//GameManager.SendMessage("GenerateNextSection");
+			GameManager.SendMessage("GenerateNextSection");
 		}
 	}
 }

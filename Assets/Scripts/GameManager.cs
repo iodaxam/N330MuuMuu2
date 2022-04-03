@@ -15,11 +15,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     public void GenerateNextSection()
     {
-
+        GameObject NextSection = PrefabsToSelect[Random.Range(0, PrefabsToSelect.Count)];
+        
     }
 }

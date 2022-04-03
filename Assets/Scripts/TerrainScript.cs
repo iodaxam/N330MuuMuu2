@@ -10,6 +10,7 @@ public class TerrainScript : MonoBehaviour
 	public Transform StartTransform;
 	public Transform EndTransform;
 
+
 	void Start()
 	{
 		ColliderComponent = GetComponent<BoxCollider>();
@@ -21,6 +22,7 @@ public class TerrainScript : MonoBehaviour
 		if(other.tag == "Player")
 		{
 			GameManager.SendMessage("GenerateNextSection");
+			
 		}
 	}
 }

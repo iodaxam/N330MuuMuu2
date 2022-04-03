@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Vector3 localTransform = gameObject.transform.localPosition;
-        // transform.Translate(transform.forward * speed * Time.deltaTime);
-        rigidbody.AddRelativeForce( 0, 0, 10);
+        //transform.Translate(transform.forward * speed * Time.deltaTime);
+        rigidbody.AddRelativeForce( 0, 0, 1);
         if (Input.touchCount == 1) // user is touching the screen with a single touch
         {
             Touch touch = Input.GetTouch(0); // get the touch

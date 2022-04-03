@@ -28,12 +28,13 @@ public class GameManager : MonoBehaviour
     public void GenerateNextSection()
     {
         Debug.Log("Generate");
-        GameObject NextSection = PrefabsToSelect[Random.Range(0, PrefabsToSelect.Count)];
+        GameObject NextSection = PrefabsToSelect[Random.Range(0, PrefabsToSelect.Count - 1)];
+        Debug.Log(PrefabsToSelect.Count);
 
         TerrainScript NextTscript = NextSection.GetComponent<TerrainScript>();
         TerrainScript CurrentTscript = GeneratedTerrain[0].GetComponent<TerrainScript>();
         
-        Instantiate(NextSection, CurrentTscript.EndTransform.position, Quaternion.identity);
+        Instantiate(NextSection, new Vector3(0, 20, 0), Quaternion.identity); //CurrentTscript.EndTransform.position
         
     }
 }

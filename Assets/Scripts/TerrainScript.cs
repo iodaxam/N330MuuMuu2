@@ -21,7 +21,7 @@ public class TerrainScript : MonoBehaviour
 	{
 		if(other.tag == "Player")
 		{
-			GameManager.SendMessage("GenerateNextSection");
+			GameManager.SendMessage("GenerateNextSection", StartTransform.position);
 			
 		}
 	}

@@ -29,12 +29,11 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Generate");
         GameObject NextSection = PrefabsToSelect[Random.Range(0, PrefabsToSelect.Count - 1)];
-        Debug.Log(PrefabsToSelect.Count);
-
-        TerrainScript NextTscript = NextSection.GetComponent<TerrainScript>();
-        TerrainScript CurrentTscript = GeneratedTerrain[0].GetComponent<TerrainScript>();
+        Transform EndTransform = GeneratedTerrain[0].transform.Find("Connectors").gameObject.transform.Find("End").transform;
+        Debug.Log(EndTransform);
         
-        Instantiate(NextSection, new Vector3(0, 20, 0), Quaternion.identity); //CurrentTscript.EndTransform.position
+        Destroy(GeneratedTerrain[0]);
+        GeneratedTerrain[0] = Instantiate(NextSection, EndTransform.position, Quaternion.identity); //CurrentTscript.EndTransform.position
         
     }
 }

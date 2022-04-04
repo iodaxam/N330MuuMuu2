@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 589083048}
   m_LocalRotation: {x: 0.6905446, y: -0, z: -0, w: 0.7232898}
-  m_LocalPosition: {x: 0, y: 1374, z: 109}
+  m_LocalPosition: {x: 0, y: 548, z: 109}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -395,6 +395,7 @@ MonoBehaviour:
   - {fileID: 1217401525971368481, guid: 148872d63dd758542a60cff9a6269eb9, type: 3}
   GeneratedTerrain:
   - {fileID: 1023729460}
+  CurrentDirection: 0
 --- !u!4 &1378711744
 Transform:
   m_ObjectHideFlags: 0

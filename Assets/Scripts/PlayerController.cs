@@ -24,26 +24,29 @@ public class PlayerController : MonoBehaviour
         //Vector3 localTransform = gameObject.transform.localPosition;
         //transform.Translate(transform.forward * speed * Time.deltaTime);
         rigidbody.AddRelativeForce( 0, 0, 1);
-        if (Input.touchCount == 1) // user is touching the screen with a single touch
+        Debug.Log(rigidbody.velocity);
+        if (Input.touchCount != 1) return;
+        Touch touch = Input.GetTouch(0); // get the touch
+        switch (touch.phase)
         {
-            Touch touch = Input.GetTouch(0); // get the touch
-            if (touch.phase == TouchPhase.Began) //check for the first touch
-            {
+            //check for the first touch
+            case TouchPhase.Began:
                 startPosition = touch.position;
                 endPosition = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Moved) // update the last position based on where they moved
-            {
+                break;
+            // update the last position based on where they moved
+            case TouchPhase.Moved:
                 endPosition = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Ended) //check if the finger is removed from the screen
+                break;
+            //check if the finger is removed from the screen
+            case TouchPhase.Ended:
             {
-                endPosition = touch.position;  //last touch position. Ommitted if you use list
+                endPosition = touch.position;  //last touch position.
  
                 //Check if drag distance is greater than 20% of the screen height
                 if (Mathf.Abs(endPosition.x - startPosition.x) > dragDistance || Mathf.Abs(endPosition.y - startPosition.y) > dragDistance)
                 {//It's a drag
-                 //check if the drag is vertical or horizontal
+                    //check if the drag is vertical or horizontal
                     if (Mathf.Abs(endPosition.x - startPosition.x) > Mathf.Abs(endPosition.y - startPosition.y))
                     {   //If the horizontal movement is greater than the vertical movement...
                         
@@ -51,21 +54,17 @@ public class PlayerController : MonoBehaviour
                         rigidbody.velocity = Vector3.zero;
                     }
                     else
-                    {   //the vertical movement is greater than the horizontal movement
-                        if (endPosition.y > startPosition.y)  //If the movement was up
-                        {   //Up swipe
-                            Debug.Log("Up Swipe");
-                        }
-                        else
-                        {   //Down swipe
-                            Debug.Log("Down Swipe");
-                        }
+                    {
+                        //the vertical movement is greater than the horizontal movement
+                        Debug.Log(endPosition.y > startPosition.y ? "Up Swipe" : "Down Swipe");
                     }
                 }
                 else
                 {   //It's a tap as the drag distance is less than 20% of the screen height
                     Debug.Log("Tap");
                 }
+
+                break;
             }
         }
     }

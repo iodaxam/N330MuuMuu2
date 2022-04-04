@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         //Vector3 localTransform = gameObject.transform.localPosition;
         //transform.Translate(transform.forward * speed * Time.deltaTime);
         rigidbody.AddRelativeForce( 0, 0, 1);
-        Debug.Log(rigidbody.velocity);
+        //Debug.Log(rigidbody.velocity);
         if (Input.touchCount != 1) return;
         Touch touch = Input.GetTouch(0); // get the touch
         switch (touch.phase)

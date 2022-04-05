@@ -68,4 +68,10 @@ public class PlayerController : MonoBehaviour
         }
         
     }
+
+    void Lose()
+    {
+        rigidbody.velocity = Vector3.zero;
+        gameObject.transform.position = new Vector3(0, 0, 65.3f);
+    }
 }

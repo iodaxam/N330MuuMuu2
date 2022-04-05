@@ -14,8 +14,7 @@ public class ObstacleScript : MonoBehaviour
 	{
 		if(other.tag == "Player")
 		{
-		    Destroy(other.gameObject);
-			
+		    other.SendMessage("Lose");
 		}
 	}
 }

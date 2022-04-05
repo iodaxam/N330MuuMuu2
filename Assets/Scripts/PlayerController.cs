@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 150f;
     private Rigidbody rigidbody;
     private float timeRemaining;
+    private float xPos = 0;
 
     void Start()
     {
@@ -23,16 +24,9 @@ public class PlayerController : MonoBehaviour
  
     void Update()
     {
-        timeRemaining -= Time.deltaTime;
-        if (timeRemaining <= 0)
-        {
-            startPosition = endPosition = Vector3.zero;
-        }
-        transform.position = new Vector3(Mathf.Lerp(transform.position.x, (endPosition.x > startPosition.x) ? 30 : -30, 0.5f), 0, transform.position.z);
-        //Vector3 localTransform = gameObject.transform.localPosition;
-        //transform.Translate(transform.forward * speed * Time.deltaTime);
+        transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
         rigidbody.AddRelativeForce( 0, 0, 1);
-        //Debug.Log(rigidbody.velocity);
+        
         if (Input.touchCount != 1) return;
         Touch touch = Input.GetTouch(0); // get the touch
         switch (touch.phase)
@@ -55,8 +49,8 @@ public class PlayerController : MonoBehaviour
                 {//It's a drag
                     //check if the drag is vertical or horizontal
                     if (Mathf.Abs(endPosition.x - startPosition.x) > Mathf.Abs(endPosition.y - startPosition.y))
-                    {   //If the horizontal movement is greater than the vertical movement...
-                        timeRemaining = 0.5f;
+                    {   //If the horizontal movement is greater than the vertical movement
+                        xPos += (endPosition.x > startPosition.x) ? 57 : -57;
                     }
                     else
                     {

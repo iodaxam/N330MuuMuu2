@@ -1,11 +1,26 @@
 fileFormatVersion: 2
-guid: ae7768c9e8e3da043a753876c55fd35f
+guid: df78af4d069348e46b6aada9aa5b4143
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
+      74: 885944232402757753
+    second: Armature|Action
+  - first:
+      74: -47757044105611666
+    second: Armature|Attack_01
+  - first:
+      74: 4743084820616853705
+    second: Armature|CameraAction
+  - first:
+      74: -4969461877665463971
+    second: Armature|CameraAction.001
+  - first:
       74: 8286213966144421055
     second: Armature|Idle_01
+  - first:
+      74: -2382795055912782974
+    second: Armature|Plane.001Action
   - first:
       74: -6788291789069941537
     second: Armature|SphereAction
@@ -36,7 +51,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|Attack_01
+      takeName: Armature|Attack_01
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []

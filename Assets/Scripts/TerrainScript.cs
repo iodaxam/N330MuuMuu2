@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ThreeLanes
+{
+	None,
+	Left,
+	Middle,
+	Right
+}
+
 public class TerrainScript : MonoBehaviour
 {
 	public bool StarterTile;
@@ -17,6 +25,11 @@ public class TerrainScript : MonoBehaviour
 	public Transform RightLane;
 
 	public GameObject RockPrefab;
+	private ThreeLanes OccupiedSpot1;
+	private ThreeLanes OccupiedSpot2;
+
+	private GameObject Rock1;
+	private GameObject Rock2;
 
 
 	void Start()
@@ -24,21 +37,46 @@ public class TerrainScript : MonoBehaviour
 		ColliderComponent = GetComponent<BoxCollider>();
 		GameManager = GameObject.Find("GameManager");
 
-		int RandRockNumber = Random.Range(0,3);
+		int RandRockNumber1 = Random.Range(0,3);
+		int RandRockNumber2 = Random.Range(0,3);
 	
 		if(!StarterTile) 
 		{
-			switch(RandRockNumber)
+			switch(RandRockNumber1)
 			{
 				case 0:
-					Instantiate(RockPrefab, LeftLane.position, Quaternion.identity);
+					Rock1 = Instantiate(RockPrefab, LeftLane.position, Quaternion.identity);
+					OccupiedSpot1 = ThreeLanes.Left;
 					break;
 				case 1:
-					Instantiate(RockPrefab, MiddleLane.position, Quaternion.identity);
+					Rock1 = Instantiate(RockPrefab, MiddleLane.position, Quaternion.identity);
+					OccupiedSpot1 = ThreeLanes.Middle;
 					break;
 				case 2:
-					Instantiate(RockPrefab, RightLane.position, Quaternion.identity);
+					Rock1 = Instantiate(RockPrefab, RightLane.position, Quaternion.identity);
+					OccupiedSpot1 = ThreeLanes.Right;
 					break;
+			}
+
+			switch(RandRockNumber2)
+			{
+				case 0:
+					Rock2 = Instantiate(RockPrefab, LeftLane.position, Quaternion.identity);
+					OccupiedSpot2 = ThreeLanes.Left;
+					break;
+				case 1:
+					Rock2 = Instantiate(RockPrefab, MiddleLane.position, Quaternion.identity);
+					OccupiedSpot2 = ThreeLanes.Middle;
+					break;
+				case 2:
+					Rock2 = Instantiate(RockPrefab, RightLane.position, Quaternion.identity);
+					OccupiedSpot2 = ThreeLanes.Right;
+					break;
+			}
+
+			if(OccupiedSpot1 == OccupiedSpot2) 
+			{
+				Destroy(Rock2.gameObject);
 			}
 		}
 	}

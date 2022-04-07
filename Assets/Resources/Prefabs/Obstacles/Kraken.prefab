@@ -224,6 +224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kraken_Tentacle (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: ae7768c9e8e3da043a753876c55fd35f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f422c9881324893448589daf7e3edc8a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae7768c9e8e3da043a753876c55fd35f, type: 3}
 --- !u!4 &6206434570629379528 stripped
@@ -298,6 +302,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kraken_Tentacle
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: ae7768c9e8e3da043a753876c55fd35f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f422c9881324893448589daf7e3edc8a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae7768c9e8e3da043a753876c55fd35f, type: 3}
 --- !u!4 &5781898410828320214 stripped
@@ -372,6 +380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kraken_Tentacle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: ae7768c9e8e3da043a753876c55fd35f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f422c9881324893448589daf7e3edc8a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae7768c9e8e3da043a753876c55fd35f, type: 3}
 --- !u!4 &7912296968399691507 stripped
@@ -446,6 +458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kraken_Tentacle (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: ae7768c9e8e3da043a753876c55fd35f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f422c9881324893448589daf7e3edc8a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae7768c9e8e3da043a753876c55fd35f, type: 3}
 --- !u!4 &7856775721042025703 stripped

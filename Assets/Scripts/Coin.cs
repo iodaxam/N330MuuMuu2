@@ -20,7 +20,7 @@ public class Coin : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            other.SendMessage("ScoreUp");
+            other.SendMessage("MoneyUp");
             Destroy(gameObject);
         }
     }

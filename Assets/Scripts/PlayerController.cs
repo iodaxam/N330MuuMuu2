@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     private GameObject GameManager;
     private int score;
+    private int coins;
     public Text money;
     private bool gameStarted;
 
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        coins = PlayerPrefs.GetInt("Money");
         gameStarted = false;
         score = 0;
         GameManager = GameObject.Find("GameManager");
@@ -38,11 +40,10 @@ public class PlayerController : MonoBehaviour
  
     void Update()
     {
-        money.text = score.ToString();
         if (gameStarted)
         {
             transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
-            rigidbody.AddRelativeForce( 0, 0, 1);
+            rigidbody.AddRelativeForce(0, 0, 1);
         }
 
         if (Input.touchCount != 1) return;
@@ -111,13 +112,20 @@ public class PlayerController : MonoBehaviour
         gameObject.transform.position = new Vector3(0, 0, 65.3f);
         gameStarted = false;
         GameManager.SendMessage("Restart");
+        SaveGame();
     }
 
-    private void ScoreUp()
+    private void MoneyUp()
     {
-        score += 1;
+        coins += 1;
+        money.text = coins.ToString();
     }
 
+    private void SaveGame()
+    {
+        PlayerPrefs.SetInt("Money", coins); 
+    }
+    
     private void StartGame()
     {
         rigidbody.velocity = new Vector3(0, 0, startSpeed);

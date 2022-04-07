@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    
+    [Header("Variables")]
     private Vector3 startPosition;   //First touch position
     private Vector3 endPosition;   //Last touch position
     private float dragDistance;  //minimum distance for a swipe to be registered
@@ -16,15 +16,20 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidbody;
     private float timeRemaining;
     private float xPos = 0;
+    public float startSpeed;
+    private int skinIndex;
 
+    [Header("References")]
     private GameObject GameManager;
     private int score;
     public Text money;
+    private bool gameStarted;
 
     private ThreeLanes CurrentLane = ThreeLanes.Middle;
 
     void Start()
     {
+        gameStarted = false;
         score = 0;
         GameManager = GameObject.Find("GameManager");
         dragDistance = Screen.height * 15 / 100; //dragDistance is 15% height of the screen
@@ -34,9 +39,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         money.text = score.ToString();
-        transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
-        rigidbody.AddRelativeForce( 0, 0, 1);
-        
+        if (gameStarted)
+        {
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
+            rigidbody.AddRelativeForce( 0, 0, 1);
+        }
+
         if (Input.touchCount != 1) return;
         Touch touch = Input.GetTouch(0); // get the touch
         switch (touch.phase)
@@ -84,30 +92,39 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 else
-                {   //It's a tap as the drag distance is less than 20% of the screen height
+                {   //It's a tap as the drag distance is less than 15% of the screen height
                     Debug.Log("Tap");
+                    if (!gameStarted)
+                    {
+                        StartGame();
+                    }
                 }
 
                 break;
             }
         }
-        
     }
 
-    void Lose()
+    private void Lose()
     {
         rigidbody.velocity = Vector3.zero;
         gameObject.transform.position = new Vector3(0, 0, 65.3f);
-
+        gameStarted = false;
         GameManager.SendMessage("Restart");
     }
 
-    void ScoreUp()
+    private void ScoreUp()
     {
         score += 1;
     }
 
-    void ChangeLane(int PositionChange) 
+    private void StartGame()
+    {
+        rigidbody.velocity = new Vector3(0, 0, startSpeed);
+        gameStarted = true;
+    }
+
+    private void ChangeLane(int PositionChange) 
     {
         switch(CurrentLane)
         {

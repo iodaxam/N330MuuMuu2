@@ -16,8 +16,11 @@ public class PlayerController : MonoBehaviour
     private float timeRemaining;
     private float xPos = 0;
 
+    private GameObject GameManager;
+
     void Start()
     {
+        GameManager = GameObject.Find("GameManager");
         dragDistance = Screen.height * 15 / 100; //dragDistance is 15% height of the screen
         rigidbody = GetComponent<Rigidbody>();
     }
@@ -73,5 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody.velocity = Vector3.zero;
         gameObject.transform.position = new Vector3(0, 0, 65.3f);
+
+        GameManager.SendMessage("Restart");
     }
 }

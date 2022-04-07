@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public GameObject SectionPrefab;
     public List<GameObject> GeneratedTerrain;
     private int MaxDistanceAhead;
+
+    public List<Transform> StartingPositions;
     
     //public GameObject Test;
 
@@ -41,5 +43,21 @@ public class GameManager : MonoBehaviour
 
         //Sets the newest generated section as the last index
         GeneratedTerrain[MaxDistanceAhead - 1] = NextSection;
+    }
+
+    public void Restart()
+    {
+        foreach(GameObject Section in GeneratedTerrain)
+        {
+            Destroy(Section);
+        }
+
+        int i = 0;
+
+        foreach(Transform StartLocation in StartingPositions)
+        {
+            GeneratedTerrain[i] = Instantiate(SectionPrefab, StartLocation.position, Quaternion.identity);
+            i++;
+        }
     }
 }

@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private GameObject GameManager;
     private int score;
 
+    private ThreeLanes CurrentLane = ThreeLanes.Middle;
+
     void Start()
     {
         GameManager = GameObject.Find("GameManager");
@@ -54,7 +56,22 @@ public class PlayerController : MonoBehaviour
                     //check if the drag is vertical or horizontal
                     if (Mathf.Abs(endPosition.x - startPosition.x) > Mathf.Abs(endPosition.y - startPosition.y))
                     {   //If the horizontal movement is greater than the vertical movement
-                        xPos += (endPosition.x > startPosition.x) ? 57 : -57;
+                        if((endPosition.x > startPosition.x) && (CurrentLane != ThreeLanes.Right))
+                        {
+                            xPos += 57;
+                            ChangeLane(57);
+                        } else if((endPosition.x < startPosition.x) && (CurrentLane != ThreeLanes.Left))
+                        {
+                            xPos -= 57;
+                            ChangeLane(-57);
+                        } else if(CurrentLane == ThreeLanes.Middle)
+                        {
+                            int ChangeAmount = (endPosition.x > startPosition.x) ? 57 : -57;
+
+                            xPos += ChangeAmount;
+
+                            ChangeLane(ChangeAmount);
+                        }
                     }
                     else
                     {
@@ -84,5 +101,30 @@ public class PlayerController : MonoBehaviour
     void ScoreUp()
     {
         score += 1;
+    }
+
+    void ChangeLane(int PositionChange) 
+    {
+        switch(CurrentLane)
+        {
+            case ThreeLanes.None:
+                Debug.Log("Lane set to none");
+                break;
+
+            case ThreeLanes.Left:
+                CurrentLane = ThreeLanes.Middle;
+                break;
+            case ThreeLanes.Middle:
+                if(PositionChange == 57)
+                {
+                    CurrentLane = ThreeLanes.Right;
+                } else {
+                    CurrentLane = ThreeLanes.Left;
+                }
+                break;
+            case ThreeLanes.Right:
+                CurrentLane = ThreeLanes.Middle;
+                break;
+        }
     }
 }

@@ -45,7 +45,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2623849345380539401
 Transform:
   m_ObjectHideFlags: 0
@@ -254,8 +254,7 @@ MonoBehaviour:
   LeftLane: {fileID: 7532813772635478263}
   MiddleLane: {fileID: 1264211863156192058}
   RightLane: {fileID: 7088818923645396607}
-  obstaclesFolder: []
-  obstacles: []
+  Coin: {fileID: 0}
 --- !u!1 &9176813618368071438
 GameObject:
   m_ObjectHideFlags: 0

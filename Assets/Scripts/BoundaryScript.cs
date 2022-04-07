@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class BoundaryScript : MonoBehaviour
 {
-    //public GameObject CubeObject;
-    //public Mesh NewMeshToSet;
+    public List<GameObject> RockObjects;
+    public Mesh LandMesh;
+
+    public bool isLand;
 
     void Start()
     {
         //MeshFilter ObjectsFilter = CubeObject.GetComponent<MeshFilter>();
         //ObjectsFilter.mesh = NewMeshToSet;
+
+        Debug.Log(isLand);
     }
 }

@@ -7,10 +7,17 @@ public class GameManager : MonoBehaviour
     public GameObject SectionPrefab;
     public List<GameObject> GeneratedTerrain;
     private int MaxDistanceAhead;
+    
+    //public GameObject Test;
 
     void Start()
     {
         MaxDistanceAhead = GeneratedTerrain.Count;
+
+
+        // GameObject ThisTest = Instantiate(Test, this.gameObject.transform.position, Quaternion.identity);
+        // ThisTest.GetComponent<BoundaryScript>().isLand = true;
+        // ThisTest.SetActive(true);
     }
 
     public void GenerateNextSection(Vector3 StartTransform)

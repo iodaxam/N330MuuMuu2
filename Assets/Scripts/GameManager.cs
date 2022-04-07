@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
             int AddedOffset = (i == (MaxDistanceAhead - 1)) ? 0 : 1;
 
             GeneratedTerrain[i] = GeneratedTerrain[i + AddedOffset];
+            GeneratedLeftBoundary[i] = GeneratedLeftBoundary[i + AddedOffset];
+            GeneratedRightBoundary[i] = GeneratedRightBoundary[i + AddedOffset];
         }  
 
         //Sets the newest generated section as the last index
@@ -82,10 +84,19 @@ public class GameManager : MonoBehaviour
         foreach(GameObject Section in GeneratedTerrain)
         {
             Destroy(Section);
-            Destroy(GeneratedLeftBoundary[i]);
-            Destroy(GeneratedRightBoundary[i]);
+            //Destroy(GeneratedLeftBoundary[i]);
+            //Destroy(GeneratedRightBoundary[i]);
             i++;
             //Debug.Log(i);
+        }
+        foreach(GameObject section in GeneratedLeftBoundary)
+        {
+            Destroy(section);
+        }
+
+        foreach(GameObject section in GeneratedRightBoundary)
+        {
+            Destroy(section);
         }
 
         i = 0;

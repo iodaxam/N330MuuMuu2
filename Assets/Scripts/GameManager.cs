@@ -27,7 +27,9 @@ public class GameManager : MonoBehaviour
         //Finds the end Gameobject within the last index object
         Vector3 EndTransform = GeneratedTerrain[MaxDistanceAhead - 1].transform.Find("Connectors").gameObject.transform.Find("End").transform.position;
         
-        GameObject NextSection = Instantiate(SectionPrefab, EndTransform, Quaternion.identity); 
+        GameObject NextSection = Instantiate(SectionPrefab, EndTransform, Quaternion.identity);
+        
+        NextSection.SetActive(true);
 
         //Destroys the section behind the ship
         Destroy(GeneratedTerrain[0]);
@@ -57,6 +59,12 @@ public class GameManager : MonoBehaviour
         foreach(Transform StartLocation in StartingPositions)
         {
             GeneratedTerrain[i] = Instantiate(SectionPrefab, StartLocation.position, Quaternion.identity);
+            
+            if(i <= 1) {
+                GeneratedTerrain[i].transform.Find("Connectors").gameObject.transform.Find("Start").gameObject.GetComponent<TerrainScript>().StarterTile =  true;
+            }
+            
+            GeneratedTerrain[i].SetActive(true);
             i++;
         }
     }

@@ -45,7 +45,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2623849345380539401
 Transform:
   m_ObjectHideFlags: 0
@@ -248,12 +248,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e862ffdaad44db438b403602fe56472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StarterTile: 0
   StartTransform: {fileID: 4406188254636576137}
   EndTransform: {fileID: 2516467231968761866}
   LeftLane: {fileID: 7532813772635478263}
   MiddleLane: {fileID: 1264211863156192058}
   RightLane: {fileID: 7088818923645396607}
-  RockPrefab: {fileID: 2251764136766813041, guid: 0743f43d27ccd46479af5d35982bc73b, type: 3}
+  obstaclesFolder: []
+  obstacles: []
 --- !u!1 &9176813618368071438
 GameObject:
   m_ObjectHideFlags: 0

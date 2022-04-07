@@ -90,6 +90,16 @@ public class TerrainScript : MonoBehaviour
 		}
 	}
 
+	void OnDestroy() 
+	{
+		Destroy(Rock1);
+
+		if (Rock2 != null)
+		{
+			Destroy(Rock2);
+		}
+	}
+
 	void OnTriggerEnter(Collider other)
 	{
 		if(other.tag == "Player")

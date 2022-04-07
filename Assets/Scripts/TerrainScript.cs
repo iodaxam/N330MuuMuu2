@@ -29,11 +29,12 @@ public class TerrainScript : MonoBehaviour
 	private ThreeLanes OccupiedSpot1;
 	private ThreeLanes OccupiedSpot2;
 
-	private GameObject Rock1;
-	private GameObject Rock2;
+	public GameObject Coin;
+	private GameObject Obstacle1;
+	private GameObject Obstacle2;
 
-	public GameObject[] obstaclesFolder;
-	public List<GameObject> obstacles;
+	private GameObject[] obstaclesFolder;
+	private List<GameObject> obstacles;
 
 
 	void Start()
@@ -51,15 +52,15 @@ public class TerrainScript : MonoBehaviour
 			switch(RandObstaclePlacement)
 			{
 				case 0:
-					Rock1 = Instantiate(ObstaclePrefab, LeftLane.position, Quaternion.identity);
+					Obstacle1 = Instantiate(ObstaclePrefab, LeftLane.position, Quaternion.identity);
 					OccupiedSpot1 = ThreeLanes.Left;
 					break;
 				case 1:
-					Rock1 = Instantiate(ObstaclePrefab, MiddleLane.position, Quaternion.identity);
+					Obstacle1 = Instantiate(ObstaclePrefab, MiddleLane.position, Quaternion.identity);
 					OccupiedSpot1 = ThreeLanes.Middle;
 					break;
 				case 2:
-					Rock1 = Instantiate(ObstaclePrefab, RightLane.position, Quaternion.identity);
+					Obstacle1 = Instantiate(ObstaclePrefab, RightLane.position, Quaternion.identity);
 					OccupiedSpot1 = ThreeLanes.Right;
 					break;
 			}
@@ -70,33 +71,33 @@ public class TerrainScript : MonoBehaviour
 			switch(RandObstaclePlacement)
 			{
 				case 0:
-					Rock2 = Instantiate(ObstaclePrefab, LeftLane.position, Quaternion.identity);
+					Obstacle2 = Instantiate(ObstaclePrefab, LeftLane.position, Quaternion.identity);
 					OccupiedSpot2 = ThreeLanes.Left;
 					break;
 				case 1:
-					Rock2 = Instantiate(ObstaclePrefab, MiddleLane.position, Quaternion.identity);
+					Obstacle2 = Instantiate(ObstaclePrefab, MiddleLane.position, Quaternion.identity);
 					OccupiedSpot2 = ThreeLanes.Middle;
 					break;
 				case 2:
-					Rock2 = Instantiate(ObstaclePrefab, RightLane.position, Quaternion.identity);
+					Obstacle2 = Instantiate(ObstaclePrefab, RightLane.position, Quaternion.identity);
 					OccupiedSpot2 = ThreeLanes.Right;
 					break;
 			}
 
 			if(OccupiedSpot1 == OccupiedSpot2) 
 			{
-				Destroy(Rock2.gameObject);
+				Destroy(Obstacle2.gameObject);
 			}
 		}
 	}
 
 	void OnDestroy() 
 	{
-		Destroy(Rock1);
+		Destroy(Obstacle1);
 
-		if (Rock2 != null)
+		if (Obstacle2 != null)
 		{
-			Destroy(Rock2);
+			Destroy(Obstacle2);
 		}
 	}
 

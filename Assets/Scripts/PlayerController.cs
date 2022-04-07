@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private float xPos = 0;
 
     private GameObject GameManager;
+    private int score;
 
     void Start()
     {
@@ -78,5 +79,10 @@ public class PlayerController : MonoBehaviour
         gameObject.transform.position = new Vector3(0, 0, 65.3f);
 
         GameManager.SendMessage("Restart");
+    }
+
+    void ScoreUp()
+    {
+        score += 1;
     }
 }

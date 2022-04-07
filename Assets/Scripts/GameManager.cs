@@ -5,12 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject SectionPrefab;
+    public GameObject BoundaryPrefab;
+
     public List<GameObject> GeneratedTerrain;
+    public List<GameObject> GeneratedLeftBoundary;
+    public List<GameObject> GeneratedRightBoundary;
+
     private int MaxDistanceAhead;
 
     public List<Transform> StartingPositions;
     
-    //public GameObject Test;
 
     void Start()
     {
@@ -28,11 +32,20 @@ public class GameManager : MonoBehaviour
         Vector3 EndTransform = GeneratedTerrain[MaxDistanceAhead - 1].transform.Find("Connectors").gameObject.transform.Find("End").transform.position;
         
         GameObject NextSection = Instantiate(SectionPrefab, EndTransform, Quaternion.identity);
+
+        GameObject LeftSection = Instantiate(BoundaryPrefab, new Vector3((EndTransform.x - 180), EndTransform.y, EndTransform.z), Quaternion.identity);
+        LeftSection.GetComponent<BoundaryScript>().isLeft = true;
+
+        GameObject RightSection = Instantiate(BoundaryPrefab, new Vector3((EndTransform.x + 180), EndTransform.y, EndTransform.z), Quaternion.identity);
         
         NextSection.SetActive(true);
+        LeftSection.SetActive(true);
+        RightSection.SetActive(true);
 
         //Destroys the section behind the ship
         Destroy(GeneratedTerrain[0]);
+        Destroy(GeneratedLeftBoundary[0]);
+        Destroy(GeneratedRightBoundary[0]);
 
         //Shifts all elements in list down one index
         for(int i=0; i < MaxDistanceAhead; i++)
@@ -45,27 +58,50 @@ public class GameManager : MonoBehaviour
 
         //Sets the newest generated section as the last index
         GeneratedTerrain[MaxDistanceAhead - 1] = NextSection;
+        GeneratedLeftBoundary[MaxDistanceAhead - 1] = LeftSection;
+        GeneratedRightBoundary[MaxDistanceAhead - 1] = RightSection;
     }
 
     public void Restart()
     {
+        int i = 0;
+
         foreach(GameObject Section in GeneratedTerrain)
         {
             Destroy(Section);
+            Destroy(GeneratedLeftBoundary[i]);
+            Destroy(GeneratedRightBoundary[i]);
+            i++;
+            //Debug.Log(i);
         }
 
-        int i = 0;
+        i = 0;
 
         foreach(Transform StartLocation in StartingPositions)
         {
+            Vector3 LocationPosition = StartLocation.position;
+
             GeneratedTerrain[i] = Instantiate(SectionPrefab, StartLocation.position, Quaternion.identity);
+            
+            GeneratedLeftBoundary[i] = Instantiate(BoundaryPrefab, new Vector3((LocationPosition.x - 180), LocationPosition.y, LocationPosition.z), Quaternion.identity);
+
+            GeneratedLeftBoundary[i].GetComponent<BoundaryScript>().isLeft = true;
+
+            GeneratedRightBoundary[i] = Instantiate(BoundaryPrefab, new Vector3((LocationPosition.x + 180), LocationPosition.y, LocationPosition.z), Quaternion.identity);
             
             if(i <= 1) {
                 GeneratedTerrain[i].transform.Find("Connectors").gameObject.transform.Find("Start").gameObject.GetComponent<TerrainScript>().StarterTile =  true;
             }
-            
+
             GeneratedTerrain[i].SetActive(true);
+            GeneratedLeftBoundary[i].SetActive(true);
+            GeneratedRightBoundary[i].SetActive(true);
+
             i++;
+            //Debug.Log(i);
         }
+
+
+
     }
 }

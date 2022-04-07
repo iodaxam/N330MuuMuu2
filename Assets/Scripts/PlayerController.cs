@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,11 +19,13 @@ public class PlayerController : MonoBehaviour
 
     private GameObject GameManager;
     private int score;
+    public Text money;
 
     private ThreeLanes CurrentLane = ThreeLanes.Middle;
 
     void Start()
     {
+        score = 0;
         GameManager = GameObject.Find("GameManager");
         dragDistance = Screen.height * 15 / 100; //dragDistance is 15% height of the screen
         rigidbody = GetComponent<Rigidbody>();
@@ -30,6 +33,7 @@ public class PlayerController : MonoBehaviour
  
     void Update()
     {
+        money.text = score.ToString();
         transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
         rigidbody.AddRelativeForce( 0, 0, 1);
         

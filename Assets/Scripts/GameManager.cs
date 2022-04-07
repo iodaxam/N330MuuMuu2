@@ -5,12 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject SectionPrefab;
+    public GameObject BoundaryPrefab;
+
     public List<GameObject> GeneratedTerrain;
+    public List<GameObject> GeneratedLeftBoundary;
+    public List<GameObject> GeneratedRightBoundary;
+
     private int MaxDistanceAhead;
 
     public List<Transform> StartingPositions;
     
-    //public GameObject Test;
 
     void Start()
     {
@@ -49,23 +53,44 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        int i = 0;
+
         foreach(GameObject Section in GeneratedTerrain)
         {
             Destroy(Section);
+            Destroy(GeneratedLeftBoundary[i]);
+            Destroy(GeneratedRightBoundary[i]);
+            i++;
+            //Debug.Log(i);
         }
 
-        int i = 0;
+        i = 0;
 
         foreach(Transform StartLocation in StartingPositions)
         {
+            Vector3 LocationPosition = StartLocation.position;
+
             GeneratedTerrain[i] = Instantiate(SectionPrefab, StartLocation.position, Quaternion.identity);
+            
+            GeneratedLeftBoundary[i] = Instantiate(BoundaryPrefab, new Vector3((LocationPosition.x - 180), LocationPosition.y, LocationPosition.z), Quaternion.identity);
+
+            GeneratedLeftBoundary[i].GetComponent<BoundaryScript>().isLeft = true;
+
+            GeneratedRightBoundary[i] = Instantiate(BoundaryPrefab, new Vector3((LocationPosition.x + 180), LocationPosition.y, LocationPosition.z), Quaternion.identity);
             
             if(i <= 1) {
                 GeneratedTerrain[i].transform.Find("Connectors").gameObject.transform.Find("Start").gameObject.GetComponent<TerrainScript>().StarterTile =  true;
             }
-            
+
             GeneratedTerrain[i].SetActive(true);
+            GeneratedLeftBoundary[i].SetActive(true);
+            GeneratedRightBoundary[i].SetActive(true);
+
             i++;
+            //Debug.Log(i);
         }
+
+
+
     }
 }

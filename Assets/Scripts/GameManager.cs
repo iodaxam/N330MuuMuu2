@@ -32,11 +32,20 @@ public class GameManager : MonoBehaviour
         Vector3 EndTransform = GeneratedTerrain[MaxDistanceAhead - 1].transform.Find("Connectors").gameObject.transform.Find("End").transform.position;
         
         GameObject NextSection = Instantiate(SectionPrefab, EndTransform, Quaternion.identity);
+
+        GameObject LeftSection = Instantiate(BoundaryPrefab, new Vector3((EndTransform.x - 180), EndTransform.y, EndTransform.z), Quaternion.identity);
+        LeftSection.GetComponent<BoundaryScript>().isLeft = true;
+
+        GameObject RightSection = Instantiate(BoundaryPrefab, new Vector3((EndTransform.x + 180), EndTransform.y, EndTransform.z), Quaternion.identity);
         
         NextSection.SetActive(true);
+        LeftSection.SetActive(true);
+        RightSection.SetActive(true);
 
         //Destroys the section behind the ship
         Destroy(GeneratedTerrain[0]);
+        Destroy(GeneratedLeftBoundary[0]);
+        Destroy(GeneratedRightBoundary[0]);
 
         //Shifts all elements in list down one index
         for(int i=0; i < MaxDistanceAhead; i++)
@@ -49,6 +58,8 @@ public class GameManager : MonoBehaviour
 
         //Sets the newest generated section as the last index
         GeneratedTerrain[MaxDistanceAhead - 1] = NextSection;
+        GeneratedLeftBoundary[MaxDistanceAhead - 1] = LeftSection;
+        GeneratedRightBoundary[MaxDistanceAhead - 1] = RightSection;
     }
 
     public void Restart()

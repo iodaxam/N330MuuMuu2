@@ -33,11 +33,11 @@ public class BoundaryScript : MonoBehaviour
             LandMeshFilter.mesh = LandMesh;
 
             if(!isLeft)
-            {
+            {   
                 Vector3 OriginalPosition = LandObject.transform.position;
-                LandObject.transform.position = new Vector3(200, OriginalPosition.y, OriginalPosition.z);
+                LandObject.transform.position = new Vector3((OriginalPosition.x + 120), OriginalPosition.y, OriginalPosition.z);
 
-                LandObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+                LandObject.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
         }
     }

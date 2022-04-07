@@ -14,20 +14,26 @@ public class GameManager : MonoBehaviour
     private int MaxDistanceAhead;
 
     public List<Transform> StartingPositions;
+
+    private int Distance = 1;
+    public int ChangeDistance = 3;
+    public bool LandSection;
     
 
     void Start()
     {
         MaxDistanceAhead = GeneratedTerrain.Count;
-
-
-        // GameObject ThisTest = Instantiate(Test, this.gameObject.transform.position, Quaternion.identity);
-        // ThisTest.GetComponent<BoundaryScript>().isLand = true;
-        // ThisTest.SetActive(true);
     }
 
     public void GenerateNextSection(Vector3 StartTransform)
     {
+        
+        if((Distance % ChangeDistance) == 0) 
+        {
+            LandSection = (!LandSection) ? true : false;
+        }
+    
+        Distance++;
         //Finds the end Gameobject within the last index object
         Vector3 EndTransform = GeneratedTerrain[MaxDistanceAhead - 1].transform.Find("Connectors").gameObject.transform.Find("End").transform.position;
         
@@ -37,6 +43,12 @@ public class GameManager : MonoBehaviour
         LeftSection.GetComponent<BoundaryScript>().isLeft = true;
 
         GameObject RightSection = Instantiate(BoundaryPrefab, new Vector3((EndTransform.x + 180), EndTransform.y, EndTransform.z), Quaternion.identity);
+
+        if(LandSection)
+        {
+            LeftSection.GetComponent<BoundaryScript>().isLand = true;
+            RightSection.GetComponent<BoundaryScript>().isLand = true;
+        }
         
         NextSection.SetActive(true);
         LeftSection.SetActive(true);
@@ -64,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        Distance = 1;
         int i = 0;
 
         foreach(GameObject Section in GeneratedTerrain)

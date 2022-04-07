@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnedRockObjects: []
-  LandMesh: {fileID: 4300000, guid: 76491b684a003ec47bfa98be8ab0d80c, type: 3}
+  LandMesh: {fileID: 4300000, guid: 28356e958cec7044489eff22a567b12e, type: 3}
   isLand: 0
   LandObject: {fileID: 6024636927505695384}
   RockPrefabs:
@@ -311,8 +311,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6024636927505695384}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -200, y: -32.787, z: 90}
-  m_LocalScale: {x: 23.248669, y: 23.248669, z: 23.248669}
+  m_LocalPosition: {x: -60, y: -3.4, z: 71.623}
+  m_LocalScale: {x: 14.589666, y: 16.430573, z: 16.326181}
   m_Children: []
   m_Father: {fileID: 2623849345380539401}
   m_RootOrder: 3

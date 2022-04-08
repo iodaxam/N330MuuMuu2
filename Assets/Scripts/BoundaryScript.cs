@@ -21,7 +21,12 @@ public class BoundaryScript : MonoBehaviour
             
             foreach(Transform SpawnLocation in RockLocations)
             {
-                GameObject SpawnedRock = Instantiate(RockPrefabs[Random.Range(0, RockPrefabs.Count)], SpawnLocation.position, Quaternion.identity);
+                float Orientation = Random.Range(0,360);
+
+                GameObject SpawnedRock = Instantiate(RockPrefabs[Random.Range(0, RockPrefabs.Count)], SpawnLocation.position, Quaternion.Euler(0, Orientation, 0));
+
+                //(Random.Range(0f, 360f)
+
                 SpawnedRockObjects.Add(SpawnedRock);
 
                 SpawnedRock.transform.localScale = new Vector3(5f, 5f, 5f);

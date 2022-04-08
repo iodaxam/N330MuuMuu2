@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private int coins;
     public Text money;
     private bool gameStarted;
+    public GameObject TextCanvas;
 
     private ThreeLanes CurrentLane = ThreeLanes.Middle;
 
@@ -37,14 +38,23 @@ public class PlayerController : MonoBehaviour
         dragDistance = Screen.height * 15 / 100; //dragDistance is 15% height of the screen
         rigidbody = GetComponent<Rigidbody>();
     }
- 
-    void Update()
+    
+    void FixedUpdate()
     {
-        if (gameStarted)
+            if (gameStarted)
         {
             transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
-            rigidbody.AddRelativeForce(0, 0, 1);
+            rigidbody.AddRelativeForce(0, 0, 10);
         }
+    }
+
+    void Update()
+    {
+        // if (gameStarted)
+        // {
+        //     transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
+        //     rigidbody.AddRelativeForce(0, 0, 1);
+        // }
 
         if (Input.touchCount != 1) return;
         Touch touch = Input.GetTouch(0); // get the touch
@@ -113,6 +123,7 @@ public class PlayerController : MonoBehaviour
         gameStarted = false;
         GameManager.SendMessage("Restart");
         SaveGame();
+        TextCanvas.SetActive(true);
     }
 
     private void MoneyUp()
@@ -130,6 +141,8 @@ public class PlayerController : MonoBehaviour
     {
         rigidbody.velocity = new Vector3(0, 0, startSpeed);
         gameStarted = true;
+        TextCanvas.SetActive(false);
+
     }
 
     private void ChangeLane(int PositionChange) 

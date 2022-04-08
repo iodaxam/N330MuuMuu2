@@ -84,7 +84,8 @@ MonoBehaviour:
   RockPrefabs:
   - {fileID: 5881329166530172120, guid: 4f7c1fd759c9f8348905cb1a36ca52fb, type: 3}
   - {fileID: 187470, guid: f7a9904488fffb8458355a1532858d62, type: 3}
-  - {fileID: 171108, guid: 587533877fcb5c946b9b4aff4e2a3bae, type: 3}
+  - {fileID: 5832829505755699235, guid: 4fe6e5dae48aeaf4690a2540c0d1fd8a, type: 3}
+  - {fileID: 8459706067093145580, guid: 61eca0a6f1120bf42aa0f14aa9911b2a, type: 3}
   RockLocations:
   - {fileID: 7532813772635478263}
   - {fileID: 5605423812365004908}

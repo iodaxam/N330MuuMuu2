@@ -202,6 +202,7 @@ MonoBehaviour:
   rotationSpeed: 150
   startSpeed: 0
   money: {fileID: 0}
+  TextCanvas: {fileID: 0}
 --- !u!54 &1792722652711881916
 Rigidbody:
   m_ObjectHideFlags: 0

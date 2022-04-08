@@ -82,9 +82,9 @@ MonoBehaviour:
   isLand: 0
   LandObject: {fileID: 6024636927505695384}
   RockPrefabs:
-  - {fileID: 136274, guid: 178878bcf5455764d89195155eee7e66, type: 3}
+  - {fileID: 5881329166530172120, guid: 4f7c1fd759c9f8348905cb1a36ca52fb, type: 3}
   - {fileID: 187470, guid: f7a9904488fffb8458355a1532858d62, type: 3}
-  - {fileID: 165080, guid: aaf146f0b1899d54a8a5cf4be35172cd, type: 3}
+  - {fileID: 171108, guid: 587533877fcb5c946b9b4aff4e2a3bae, type: 3}
   RockLocations:
   - {fileID: 7532813772635478263}
   - {fileID: 5605423812365004908}

@@ -3206,11 +3206,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2580236410780882576, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2580236410780882576, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 654.2
+      value: 176
       objectReference: {fileID: 0}
     - target: {fileID: 2580236410780882576, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3245,8 +3245,44 @@ PrefabInstance:
       value: FogParticlySystem
       objectReference: {fileID: 0}
     - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
       propertyPath: ShapeModule.m_Scale.x
       value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 29876
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0.22352941
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}

@@ -48,8 +48,13 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if (!gameStarted) return;
+
         transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
-        rigidbody.AddRelativeForce(0, 0, 10);
+
+        if(rigidbody.velocity.z < 250f)
+        {
+            rigidbody.AddRelativeForce(0, 0, 30);
+        }
     }
 
     void Update()

@@ -139,12 +139,15 @@ public class PlayerController : MonoBehaviour
             highScoreText.text = "HighScore: " + highScore;
         }
         TitleScreen.SetActive(true);
+        GameManager.SendMessage("Play", "CrashSound");
     }
 
     private void MoneyUp()
     {
         coins += 1;
         money.text = coins.ToString();
+
+        GameManager.SendMessage("Play", "CoinSound");
     }
 
     private void SaveGame()
@@ -159,6 +162,7 @@ public class PlayerController : MonoBehaviour
         gameStarted = true;
         TitleScreen.SetActive(false);
         score = 0;
+        GameManager.SendMessage("Play", "BellSound");
     }
 
     private void ChangeLane(int PositionChange) 

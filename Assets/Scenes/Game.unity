@@ -3794,7 +3794,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.20963131, y: 0.012903144, z: -0.0027666218, w: 0.9776915}
+  m_LocalRotation: {x: 0.20963131, y: 0.01290311, z: -0.0027666145, w: 0.9776915}
   m_LocalPosition: {x: 0.19999981, y: 192, z: -177.99998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -4937,7 +4937,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201059983}
-  m_LocalRotation: {x: 0.20963131, y: 0.012903144, z: -0.0027666218, w: 0.9776915}
+  m_LocalRotation: {x: 0.20963131, y: 0.01290311, z: -0.0027666145, w: 0.9776915}
   m_LocalPosition: {x: 0.19999981, y: 192, z: -177.99998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6387,6 +6387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1722922297}
   - component: {fileID: 1722922296}
+  - component: {fileID: 1722922298}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6452,6 +6453,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1722922298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722922295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e446925b5fdf459488231ed309280340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BackgroundMusic
+    clip: {fileID: 8300000, guid: 7b13d345313cb2744b0d2638ef17e838, type: 3}
+    volume: 0.303
+    pitch: 1
+    time: 70.8
+    loop: 1
+    source: {fileID: 0}
+  - name: BellSound
+    clip: {fileID: 8300000, guid: ea1def23c3a325047a535d1e5e7a4c7a, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: CoinSound
+    clip: {fileID: 8300000, guid: 02da9425337471f4790c868a2214b79a, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: CrashSound
+    clip: {fileID: 8300000, guid: 3564ae41ed6217e408139730ff87efa2, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0.2
+    loop: 0
+    source: {fileID: 0}
+  - name: SailingSound
+    clip: {fileID: 8300000, guid: d44b807397f16d041a93e2faafdebed0, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
 --- !u!1001 &1727486130
 PrefabInstance:
   m_ObjectHideFlags: 0

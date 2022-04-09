@@ -3840,11 +3840,15 @@ PrefabInstance:
     - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
       propertyPath: TextCanvas
       value: 
-      objectReference: {fileID: 773448716}
+      objectReference: {fileID: 209883770}
     - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
       propertyPath: startSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
+      propertyPath: CanvasImage
+      value: 
+      objectReference: {fileID: 215574935}
     - target: {fileID: 1090546261143808263, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
       propertyPath: m_IsActive
       value: 0

@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public Text money;
     private bool gameStarted;
     public GameObject TextCanvas;
+    public GameObject CanvasImage;
 
     private ThreeLanes CurrentLane = ThreeLanes.Middle;
 
@@ -124,6 +125,7 @@ public class PlayerController : MonoBehaviour
         GameManager.SendMessage("Restart");
         SaveGame();
         TextCanvas.SetActive(true);
+        CanvasImage.SetActive(true);
     }
 
     private void MoneyUp()
@@ -142,6 +144,7 @@ public class PlayerController : MonoBehaviour
         rigidbody.velocity = new Vector3(0, 0, startSpeed);
         gameStarted = true;
         TextCanvas.SetActive(false);
+        CanvasImage.SetActive(false);
 
     }
 

@@ -22,31 +22,34 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     private GameObject GameManager;
     private int score;
+    private int highScore = 0;
     private int coins;
     public Text money;
     private bool gameStarted;
-    public GameObject TextCanvas;
-    public GameObject CanvasImage;
+    public GameObject TitleScreen;
+    public Text highScoreText;
+    public Text scoreText;
 
     private ThreeLanes CurrentLane = ThreeLanes.Middle;
 
     void Start()
     {
         coins = PlayerPrefs.GetInt("Money");
+        highScore = PlayerPrefs.GetInt("HighScore");
         gameStarted = false;
         score = 0;
         GameManager = GameObject.Find("GameManager");
         dragDistance = Screen.height * 15 / 100; //dragDistance is 15% height of the screen
         rigidbody = GetComponent<Rigidbody>();
+        money.text = coins.ToString();
+        highScoreText.text = "High Score: " + highScore;
     }
     
     void FixedUpdate()
     {
-            if (gameStarted)
-        {
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
-            rigidbody.AddRelativeForce(0, 0, 10);
-        }
+        if (!gameStarted) return;
+        transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
+        rigidbody.AddRelativeForce(0, 0, 10);
     }
 
     void Update()
@@ -56,7 +59,8 @@ public class PlayerController : MonoBehaviour
         //     transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
         //     rigidbody.AddRelativeForce(0, 0, 1);
         // }
-
+        score = Mathf.RoundToInt(transform.position.z - 65.3f);
+        scoreText.text = score.ToString();
         if (Input.touchCount != 1) return;
         Touch touch = Input.GetTouch(0); // get the touch
         switch (touch.phase)
@@ -124,8 +128,12 @@ public class PlayerController : MonoBehaviour
         gameStarted = false;
         GameManager.SendMessage("Restart");
         SaveGame();
-        TextCanvas.SetActive(true);
-        CanvasImage.SetActive(true);
+        if (score > highScore)
+        {
+            highScore = score;
+            highScoreText.text = "HighScore: " + highScore;
+        }
+        TitleScreen.SetActive(true);
     }
 
     private void MoneyUp()
@@ -137,15 +145,15 @@ public class PlayerController : MonoBehaviour
     private void SaveGame()
     {
         PlayerPrefs.SetInt("Money", coins); 
+        PlayerPrefs.SetInt("HighScore", highScore);
     }
     
     private void StartGame()
     {
         rigidbody.velocity = new Vector3(0, 0, startSpeed);
         gameStarted = true;
-        TextCanvas.SetActive(false);
-        CanvasImage.SetActive(false);
-
+        TitleScreen.SetActive(false);
+        score = 0;
     }
 
     private void ChangeLane(int PositionChange) 

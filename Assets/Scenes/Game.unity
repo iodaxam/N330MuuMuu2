@@ -2029,72 +2029,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2623849345380539401, guid: 0c8182c2f8e4ea147b3c2df6df8fcc94, type: 3}
   m_PrefabInstance: {fileID: 814186732}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &565604404
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 565604406}
-  - component: {fileID: 565604405}
-  - component: {fileID: 565604407}
-  m_Layer: 0
-  m_Name: Global Volume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &565604405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 565604404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: d6001afb9bf4481429850f9b1bd26127, type: 2}
---- !u!4 &565604406
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 565604404}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &565604407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 565604404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 0}
 --- !u!1001 &633945948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6468,28 +6402,28 @@ MonoBehaviour:
   sounds:
   - name: BackgroundMusic
     clip: {fileID: 8300000, guid: 7b13d345313cb2744b0d2638ef17e838, type: 3}
-    volume: 0.303
+    volume: 0
     pitch: 1
     time: 70.8
     loop: 1
     source: {fileID: 0}
   - name: BellSound
     clip: {fileID: 8300000, guid: ea1def23c3a325047a535d1e5e7a4c7a, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     time: 0
     loop: 0
     source: {fileID: 0}
   - name: CoinSound
     clip: {fileID: 8300000, guid: 02da9425337471f4790c868a2214b79a, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     time: 0
     loop: 0
     source: {fileID: 0}
   - name: CrashSound
     clip: {fileID: 8300000, guid: 3564ae41ed6217e408139730ff87efa2, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     time: 0.2
     loop: 0
@@ -6510,7 +6444,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: MenuSound
     clip: {fileID: 8300000, guid: 7c1bf97bace138a4c8d8348d13a23734, type: 3}
-    volume: 0.17
+    volume: 0.039
     pitch: 1
     time: 0
     loop: 1

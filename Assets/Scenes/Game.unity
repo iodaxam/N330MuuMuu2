@@ -6437,7 +6437,7 @@ MonoBehaviour:
   - {fileID: 79025958}
   - {fileID: 1147448605}
   - {fileID: 10173376}
-  ChangeDistance: 3
+  ChangeDistance: 9
   LandSection: 0
 --- !u!4 &1722922297
 Transform:
@@ -6496,7 +6496,21 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: SailingSound
     clip: {fileID: 8300000, guid: d44b807397f16d041a93e2faafdebed0, type: 3}
-    volume: 1
+    volume: 0
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: SloshSound
+    clip: {fileID: 8300000, guid: e9aa1e6d331573744abe162be6153b49, type: 3}
+    volume: 0.408
+    pitch: 1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: MenuSound
+    clip: {fileID: 8300000, guid: 7c1bf97bace138a4c8d8348d13a23734, type: 3}
+    volume: 0.17
     pitch: 1
     time: 0
     loop: 1

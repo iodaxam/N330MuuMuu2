@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
 
     private ThreeLanes CurrentLane = ThreeLanes.Middle;
 
+    private AudioManager AudioManagerScript;
+    private float cooldown = .5f;
+
     void Start()
     {
         coins = PlayerPrefs.GetInt("Money");
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         money.text = coins.ToString();
         highScoreText.text = "High Score: " + highScore;
+        AudioManagerScript = GameManager.GetComponent<AudioManager>();
     }
     
     void FixedUpdate()
@@ -59,6 +63,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(cooldown > 0) {
+            cooldown -= Time.deltaTime;
+        }
+        
         // if (gameStarted)
         // {
         //     transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
@@ -128,6 +136,7 @@ public class PlayerController : MonoBehaviour
 
     private void Lose()
     {
+        cooldown = .5f;
         rigidbody.velocity = Vector3.zero;
         gameObject.transform.position = new Vector3(0, 0, 65.3f);
         gameStarted = false;
@@ -139,7 +148,11 @@ public class PlayerController : MonoBehaviour
             highScoreText.text = "HighScore: " + highScore;
         }
         TitleScreen.SetActive(true);
+        GameManager.SendMessage("StopFades");
         GameManager.SendMessage("Play", "CrashSound");
+        GameManager.SendMessage("FadeOut", "SailingSound");
+        GameManager.SendMessage("FadeOut", "BackgroundMusic");
+        AudioManagerScript.FadeIn("MenuSound", .17f, 1f);
     }
 
     private void MoneyUp()
@@ -158,15 +171,22 @@ public class PlayerController : MonoBehaviour
     
     private void StartGame()
     {
-        rigidbody.velocity = new Vector3(0, 0, startSpeed);
-        gameStarted = true;
-        TitleScreen.SetActive(false);
-        score = 0;
-        GameManager.SendMessage("Play", "BellSound");
+        if(cooldown <= 0) {
+            rigidbody.velocity = new Vector3(0, 0, startSpeed);
+            gameStarted = true;
+            TitleScreen.SetActive(false);
+            score = 0;
+            GameManager.SendMessage("StopFades");
+            GameManager.SendMessage("Play", "BellSound");
+            GameManager.SendMessage("FadeOut", "MenuSound");
+            AudioManagerScript.FadeIn("BackgroundMusic", .5f, 1f);
+            AudioManagerScript.FadeIn("SailingSound", .5f, 8f);
+        }
     }
 
     private void ChangeLane(int PositionChange) 
     {
+        GameManager.SendMessage("Play", "SloshSound");
         switch(CurrentLane)
         {
             case ThreeLanes.None:

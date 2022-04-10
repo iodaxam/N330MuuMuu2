@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -27,8 +28,12 @@ public class PlayerController : MonoBehaviour
     public Text money;
     private bool gameStarted;
     public GameObject TitleScreen;
+    public GameObject ShopScreen;
     public Text highScoreText;
     public Text scoreText;
+    public GameObject Score;
+
+    public int[] ownedSkins;
 
     private ThreeLanes CurrentLane = ThreeLanes.Middle;
 
@@ -37,6 +42,12 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        ownedSkins = new int[4] {0,0,0,0};
+        for (int i = 0; i < ownedSkins.Length; i++)
+        {
+            ownedSkins[i] = PlayerPrefs.GetInt("Skin" + i);
+        }
+        
         coins = PlayerPrefs.GetInt("Money");
         highScore = PlayerPrefs.GetInt("HighScore");
         gameStarted = false;
@@ -167,6 +178,13 @@ public class PlayerController : MonoBehaviour
     {
         PlayerPrefs.SetInt("Money", coins); 
         PlayerPrefs.SetInt("HighScore", highScore);
+        
+        for (int i = 0; i < ownedSkins.Length; i++)
+        {
+            PlayerPrefs.SetInt("Skin"+i, ownedSkins[i]);
+        }
+
+
     }
     
     private void StartGame()
@@ -208,5 +226,39 @@ public class PlayerController : MonoBehaviour
                 CurrentLane = ThreeLanes.Middle;
                 break;
         }
+    }
+
+    public void OpenShop()
+    {  
+        TitleScreen.SetActive(false);
+        Score.SetActive(false);
+        ShopScreen.SetActive(true);
+    }
+
+    public void CloseShop()
+    {
+        TitleScreen.SetActive(true);
+        Score.SetActive(true);
+        ShopScreen.SetActive(false);
+    }
+
+    public void SelectSkin(int skindex)
+    {
+        if (ownedSkins[skindex] == 1)
+        {
+            
+        }
+    }
+
+    public void PurchaseSkin(int skindex)
+    {
+        int cost = 25 * (skindex + 1) * (skindex + 1);
+        if (coins >= cost)
+        {
+            coins -= cost;
+        }
+
+        ownedSkins[skindex] = 1;
+        SaveGame();
     }
 }

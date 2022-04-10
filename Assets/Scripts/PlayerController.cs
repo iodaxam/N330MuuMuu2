@@ -31,7 +31,11 @@ public class PlayerController : MonoBehaviour
     public GameObject ShopScreen;
     public Text highScoreText;
     public Text scoreText;
-    public GameObject Score;
+    public GameObject ScoreUI;
+    public GameObject[] skins;
+    public Button PurchaseButton;
+    public Button StartButton;
+    private int selectedSkin;
 
     public int[] ownedSkins;
 
@@ -42,12 +46,14 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+
         ownedSkins = new int[4] {0,0,0,0};
         for (int i = 0; i < ownedSkins.Length; i++)
         {
             ownedSkins[i] = PlayerPrefs.GetInt("Skin" + i);
         }
         
+        ShopScreen.SetActive(false);
         coins = PlayerPrefs.GetInt("Money");
         highScore = PlayerPrefs.GetInt("HighScore");
         gameStarted = false;
@@ -134,10 +140,10 @@ public class PlayerController : MonoBehaviour
                 else
                 {   //It's a tap as the drag distance is less than 15% of the screen height
                     Debug.Log("Tap");
-                    if (!gameStarted)
-                    {
-                        StartGame();
-                    }
+                    // if (!gameStarted)
+                    // {
+                    //     StartGame();
+                    // }
                 }
 
                 break;
@@ -183,11 +189,9 @@ public class PlayerController : MonoBehaviour
         {
             PlayerPrefs.SetInt("Skin"+i, ownedSkins[i]);
         }
-
-
     }
     
-    private void StartGame()
+    public void StartGame()
     {
         if(cooldown <= 0) {
             rigidbody.velocity = new Vector3(0, 0, startSpeed);
@@ -231,14 +235,14 @@ public class PlayerController : MonoBehaviour
     public void OpenShop()
     {  
         TitleScreen.SetActive(false);
-        Score.SetActive(false);
+        ScoreUI.SetActive(false);
         ShopScreen.SetActive(true);
     }
 
     public void CloseShop()
     {
         TitleScreen.SetActive(true);
-        Score.SetActive(true);
+        ScoreUI.SetActive(true);
         ShopScreen.SetActive(false);
     }
 
@@ -246,19 +250,30 @@ public class PlayerController : MonoBehaviour
     {
         if (ownedSkins[skindex] == 1)
         {
-            
+            PurchaseButton.enabled = false;
+            foreach (GameObject skin in skins)
+            {
+                skin.SetActive(false);
+            }
+            skins[skindex].SetActive(true);
         }
+        else
+        {
+            PurchaseButton.enabled = true;
+        }
+        selectedSkin = skindex;
     }
 
-    public void PurchaseSkin(int skindex)
+    public void PurchaseSkin()
     {
-        int cost = 25 * (skindex + 1) * (skindex + 1);
+        int cost = 25 * (selectedSkin + 1) * (selectedSkin + 1);
         if (coins >= cost)
         {
             coins -= cost;
         }
 
-        ownedSkins[skindex] = 1;
+        ownedSkins[selectedSkin] = 1;
+        PurchaseButton.enabled = false;
         SaveGame();
     }
 }

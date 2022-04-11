@@ -2,6 +2,8 @@ using UnityEngine.Audio;
 using System;
 using System.Collections;
 using UnityEngine;
+using Random=UnityEngine.Random;
+using System.Linq;
 
 public class AudioManager : MonoBehaviour
 {
@@ -29,6 +31,13 @@ public class AudioManager : MonoBehaviour
     public void Play(string name)
     { 
         Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Play();
+    }
+
+    public void PlayPitched(string name) 
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.pitch = (Random.Range(0.8f, 1.2f));
         s.source.Play();
     }
 

@@ -4223,13 +4223,13 @@ Avatar:
     260793638: Skins/SM_Veh_Boat_Medium_01_Hull_Pirate_Attachments/SM_Veh_Boat_Medium_01_Sails_Up_Pirate
     605154755: Skins/SM_Veh_Boat_Warship_01_Hull_Pirate_Attachments/Attachments/SM_Prop_Crate_03
     4251476096: Skins/SM_Veh_Boat_Medium_01_Hull_Pirate_Attachments/Attachments/SM_Veh_Extra_Barrel_02
-    1394007381: Skins/SM_Veh_Boat_Warship_01_Hull_Pirate_Attachments/Attachments/SM_Prop_Crate_02
+    4020563545: Skins/SM_Veh_Boat_Small_01_Hull_Pirate_Attachments/Attachments/SM_Prop_Oar_02
     3540303278: Skins/SM_Veh_Boat_Warship_01_Hull_Pirate_Attachments/Attachments/SM_Prop_Crate_11
     828121164: Skins/SM_Veh_Boat_Warship_01_Hull_Pirate_Attachments/Attachments/SM_Veh_Extra_Barrel_03
     4066122981: Skins/SM_Veh_Veh_Boat_Large_01_Hull_Pirate_Attachments/Attachments/SM_Prop_Cannon_11
     3746709856: Skins/SM_Veh_Boat_Warship_01_Hull_Pirate_Attachments/Attachments/SM_Veh_Extra_Barrel_01
     3391065327: Skins/SM_Veh_Boat_Warship_01_Hull_Pirate_Attachments/Attachments/SM_Prop_Crate_01
-    4020563545: Skins/SM_Veh_Boat_Small_01_Hull_Pirate_Attachments/Attachments/SM_Prop_Oar_02
+    1394007381: Skins/SM_Veh_Boat_Warship_01_Hull_Pirate_Attachments/Attachments/SM_Prop_Crate_02
     715268735: Skins/SM_Veh_Veh_Boat_Large_01_Hull_Pirate_Attachments/SMVeh__Boat_Large_Mast_02_Pirate
     3815485966: Skins/SM_Veh_Veh_Boat_Large_01_Hull_Pirate_Attachments/Attachments/SM_Prop_Crate_Cannonballs_02
     3128260704: Skins/SM_Veh_Boat_Warship_01_Hull_Pirate_Attachments/Attachments/SM_Prop_Crate_04
@@ -12806,14 +12806,14 @@ RectTransform:
   m_GameObject: {fileID: 2144056338}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.84092563, y: 0.84092563, z: 0.84092563}
+  m_LocalScale: {x: 0.83, y: 0.83, z: 0.83}
   m_Children: []
   m_Father: {fileID: 1257034158}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.21700001, y: 0.064612135}
   m_AnchorMax: {x: 0.5, y: 0.86}
-  m_AnchoredPosition: {x: 6.0329895, y: -0.5000534}
+  m_AnchoredPosition: {x: -63.215584, y: 8.407028}
   m_SizeDelta: {x: 14, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2144056340

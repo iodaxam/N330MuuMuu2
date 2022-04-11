@@ -25,21 +25,21 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     private GameObject GameManager;
     private int score;
-    private int highScore = 0;
+    private int highScore;
     private int coins;
     public Text money;
     private bool gameStarted;
     public GameObject TitleScreen;
-    public GameObject ShopScreen;
+    // public GameObject ShopScreen;
     public Text highScoreText;
     public Text scoreText;
-    public GameObject ScoreUI;
-    public GameObject[] skins;
-    public Button PurchaseButton;
-    public Button StartButton;
+    // public GameObject ScoreUI;
+    // public GameObject[] skins;
+    // public Button PurchaseButton;
+    // public Button StartButton;
     private int selectedSkin;
 
-    public int[] ownedSkins;
+    // public int[] ownedSkins;
 
     private ThreeLanes CurrentLane = ThreeLanes.Middle;
 
@@ -48,13 +48,13 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        ownedSkins = new int[4] {0,0,0,0};
-        for (int i = 0; i < ownedSkins.Length; i++)
-        {
-            ownedSkins[i] = PlayerPrefs.GetInt("Skin" + i);
-        }
+        // ownedSkins = new int[4] {0,0,0,0};
+        // for (int i = 0; i < ownedSkins.Length; i++)
+        // {
+        //     ownedSkins[i] = PlayerPrefs.GetInt("Skin" + i);
+        // }
         
-        ShopScreen.SetActive(false);
+        // ShopScreen.SetActive(false);
         coins = PlayerPrefs.GetInt("Money");
         highScore = PlayerPrefs.GetInt("HighScore");
         gameStarted = false;
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
             // transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
             // rb.AddRelativeForce(0, 0, 1);
         // }
-        score = Mathf.RoundToInt(transform.position.z - 65.3f);
+        score = Mathf.RoundToInt(transform.position.z - 100);
         scoreText.text = score.ToString();
         if (Input.touchCount != 1) return;
         Touch touch = Input.GetTouch(0); // get the touch
@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
         }
         TitleScreen.SetActive(true);
         GameManager.SendMessage("StopFades");
-        GameManager.SendMessage("Play", "CrashSound");
+        GameManager.SendMessage("PlayPitched", "CrashSound");
         GameManager.SendMessage("FadeOut", "SailingSound");
         GameManager.SendMessage("FadeOut", "BackgroundMusic");
         AudioManagerScript.FadeIn("MenuSound", .05f, 1f);
@@ -184,7 +184,7 @@ public class PlayerController : MonoBehaviour
         coins += 1;
         money.text = coins.ToString();
 
-        GameManager.SendMessage("Play", "CoinSound");
+        GameManager.SendMessage("PlayPitched", "CoinSound");
     }
 
     private void SaveGame()
@@ -192,10 +192,10 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("Money", coins); 
         PlayerPrefs.SetInt("HighScore", highScore);
         
-        for (int i = 0; i < ownedSkins.Length; i++)
-        {
-            PlayerPrefs.SetInt("Skin"+i, ownedSkins[i]);
-        }
+    //     for (int i = 0; i < ownedSkins.Length; i++)
+    //     {
+    //         PlayerPrefs.SetInt("Skin"+i, ownedSkins[i]);
+    //     }
     }
     
     public void StartGame()
@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
             TitleScreen.SetActive(false);
             score = 0;
             GameManager.SendMessage("StopFades");
-            GameManager.SendMessage("Play", "BellSound");
+            GameManager.SendMessage("PlayPitched", "BellSound");
             GameManager.SendMessage("FadeOut", "MenuSound");
             AudioManagerScript.FadeIn("BackgroundMusic", .5f, 1f);
             AudioManagerScript.FadeIn("SailingSound", .5f, 8f);
@@ -215,7 +215,7 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeLane(int PositionChange) 
     {
-        GameManager.SendMessage("Play", "SloshSound");
+        GameManager.SendMessage("PlayPitched", "SloshSound");
         switch(CurrentLane)
         {
             case ThreeLanes.None:
@@ -239,48 +239,48 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OpenShop()
-    {  
-        TitleScreen.SetActive(false);
-        ScoreUI.SetActive(false);
-        ShopScreen.SetActive(true);
-    }
+//     public void OpenShop()
+//     {  
+//         TitleScreen.SetActive(false);
+//         ScoreUI.SetActive(false);
+//         ShopScreen.SetActive(true);
+//     }
 
-    public void CloseShop()
-    {
-        TitleScreen.SetActive(true);
-        ScoreUI.SetActive(true);
-        ShopScreen.SetActive(false);
-    }
+//     public void CloseShop()
+//     {
+//         TitleScreen.SetActive(true);
+//         ScoreUI.SetActive(true);
+//         ShopScreen.SetActive(false);
+//     }
 
-    public void SelectSkin(int skindex)
-    {
-        if (ownedSkins[skindex] == 1)
-        {
-            PurchaseButton.enabled = false;
-            foreach (GameObject skin in skins)
-            {
-                skin.SetActive(false);
-            }
-            skins[skindex].SetActive(true);
-        }
-        else
-        {
-            PurchaseButton.enabled = true;
-        }
-        selectedSkin = skindex;
-    }
+//     public void SelectSkin(int skindex)
+//     {
+//         if (ownedSkins[skindex] == 1)
+//         {
+//             PurchaseButton.enabled = false;
+//             foreach (GameObject skin in skins)
+//             {
+//                 skin.SetActive(false);
+//             }
+//             skins[skindex].SetActive(true);
+//         }
+//         else
+//         {
+//             PurchaseButton.enabled = true;
+//         }
+//         selectedSkin = skindex;
+//     }
 
-    public void PurchaseSkin()
-    {
-        int cost = 25 * (selectedSkin + 1) * (selectedSkin + 1);
-        if (coins >= cost)
-        {
-            coins -= cost;
-        }
+//     public void PurchaseSkin()
+//     {
+//         int cost = 25 * (selectedSkin + 1) * (selectedSkin + 1);
+//         if (coins >= cost)
+//         {
+//             coins -= cost;
+//         }
 
-        ownedSkins[selectedSkin] = 1;
-        PurchaseButton.enabled = false;
-        SaveGame();
-    }
+//         ownedSkins[selectedSkin] = 1;
+//         PurchaseButton.enabled = false;
+//         SaveGame();
+//     }
 }

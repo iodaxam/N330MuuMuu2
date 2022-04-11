@@ -239,7 +239,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*public void OpenShop()
+    public void OpenShop()
     {  
         TitleScreen.SetActive(false);
         ScoreUI.SetActive(false);
@@ -282,5 +282,5 @@ public class PlayerController : MonoBehaviour
         ownedSkins[selectedSkin] = 1;
         PurchaseButton.enabled = false;
         SaveGame();
-    }*/
+    }
 }

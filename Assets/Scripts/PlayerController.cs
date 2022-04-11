@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
             TitleScreen.SetActive(false);
             score = 0;
             GameManager.SendMessage("StopFades");
-            GameManager.SendMessage("PlayPitched", "BellSound");
+            GameManager.SendMessage("Play", "BellSound");
             GameManager.SendMessage("FadeOut", "MenuSound");
             AudioManagerScript.FadeIn("BackgroundMusic", .5f, 1f);
             AudioManagerScript.FadeIn("SailingSound", .5f, 8f);

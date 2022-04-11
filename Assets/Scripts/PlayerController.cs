@@ -140,10 +140,10 @@ public class PlayerController : MonoBehaviour
                 else
                 {   //It's a tap as the drag distance is less than 15% of the screen height
                     Debug.Log("Tap");
-                    // if (!gameStarted)
-                    // {
-                    //     StartGame();
-                    // }
+                    if (!gameStarted)
+                    {
+                        StartGame();
+                    }
                 }
 
                 break;
@@ -232,7 +232,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OpenShop()
+    /*public void OpenShop()
     {  
         TitleScreen.SetActive(false);
         ScoreUI.SetActive(false);
@@ -275,5 +275,5 @@ public class PlayerController : MonoBehaviour
         ownedSkins[selectedSkin] = 1;
         PurchaseButton.enabled = false;
         SaveGame();
-    }
+    }*/
 }

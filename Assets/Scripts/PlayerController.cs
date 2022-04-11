@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
     {
         cooldown = .5f;
         rb.velocity = Vector3.zero;
-        gameObject.transform.position = new Vector3(0, 0, 65.3f);
+        gameObject.transform.position = new Vector3(0, 0, 100);
         gameStarted = false;
         GameManager.SendMessage("Restart");
         SaveGame();
@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
         GameManager.SendMessage("Play", "CrashSound");
         GameManager.SendMessage("FadeOut", "SailingSound");
         GameManager.SendMessage("FadeOut", "BackgroundMusic");
-        AudioManagerScript.FadeIn("MenuSound", .17f, 1f);
+        AudioManagerScript.FadeIn("MenuSound", .05f, 1f);
     }
 
     private void MoneyUp()

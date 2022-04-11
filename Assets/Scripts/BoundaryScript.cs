@@ -23,13 +23,28 @@ public class BoundaryScript : MonoBehaviour
             {
                 float Orientation = Random.Range(0,360);
 
-                GameObject SpawnedRock = Instantiate(RockPrefabs[Random.Range(0, RockPrefabs.Count)], SpawnLocation.position, Quaternion.Euler(0, Orientation, 0));
+                int RandNumber = Random.Range(0, RockPrefabs.Count);
 
-                //(Random.Range(0f, 360f)
+                GameObject SpawnedRock = Instantiate(RockPrefabs[RandNumber], SpawnLocation.position, Quaternion.Euler(0, Orientation, 0));
+
+                if(RandNumber == 2) {
+                    
+                    int Offset = (isLeft) ? -15 : 15;
+
+                    SpawnedRock.transform.position = new Vector3((SpawnedRock.transform.position.x + Offset), SpawnedRock.transform.position.y, SpawnedRock.transform.position.z);
+                }
 
                 SpawnedRockObjects.Add(SpawnedRock);
 
                 SpawnedRock.transform.localScale = new Vector3(5f, 5f, 5f);
+            }
+
+            if(!isLeft)
+            {   
+                Vector3 OriginalPosition = LandObject.transform.position;
+                LandObject.transform.position = new Vector3((OriginalPosition.x + 120), OriginalPosition.y, OriginalPosition.z);
+
+                LandObject.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
         } else {

@@ -11,10 +11,12 @@ public class PlayerController : MonoBehaviour
     [Header("Variables")]
     private Vector3 startPosition;   //First touch position
     private Vector3 endPosition;   //Last touch position
+    private Vector3 camPos;
     private float dragDistance;  //minimum distance for a swipe to be registered
     public float speed = 5;
     public float rotationSpeed = 150f;
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
+    private Animator anim;
     private float timeRemaining;
     private float xPos = 0;
     public float startSpeed;
@@ -46,7 +48,6 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-
         ownedSkins = new int[4] {0,0,0,0};
         for (int i = 0; i < ownedSkins.Length; i++)
         {
@@ -60,10 +61,11 @@ public class PlayerController : MonoBehaviour
         score = 0;
         GameManager = GameObject.Find("GameManager");
         dragDistance = Screen.height * 15 / 100; //dragDistance is 15% height of the screen
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         money.text = coins.ToString();
         highScoreText.text = "High Score: " + highScore;
         AudioManagerScript = GameManager.GetComponent<AudioManager>();
+        anim = GetComponentInChildren<Animator>();
     }
     
     void FixedUpdate()
@@ -72,9 +74,9 @@ public class PlayerController : MonoBehaviour
 
         transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
 
-        if(rigidbody.velocity.z < 250f)
+        if(rb.velocity.z < 250f)
         {
-            rigidbody.AddRelativeForce(0, 0, 30);
+            rb.AddRelativeForce(0, 0, 30);
         }
     }
 
@@ -83,11 +85,15 @@ public class PlayerController : MonoBehaviour
         if(cooldown > 0) {
             cooldown -= Time.deltaTime;
         }
-        
+        if(gameStarted) {
+            anim.SetFloat("Blend", 1, 0.1f, Time.deltaTime);
+        } else {
+            anim.SetFloat("Blend", .3f, 0.1f, Time.deltaTime);
+        }
         // if (gameStarted)
         // {
-        //     transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
-        //     rigidbody.AddRelativeForce(0, 0, 1);
+            // transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
+            // rb.AddRelativeForce(0, 0, 1);
         // }
         score = Mathf.RoundToInt(transform.position.z - 65.3f);
         scoreText.text = score.ToString();
@@ -118,14 +124,15 @@ public class PlayerController : MonoBehaviour
                         {
                             xPos += 57;
                             ChangeLane(57);
+                            if(gameStarted){anim.Play("Right Turn");}
                         } else if((endPosition.x < startPosition.x) && (CurrentLane != ThreeLanes.Left))
                         {
                             xPos -= 57;
                             ChangeLane(-57);
+                            if(gameStarted){anim.Play("Left Turn");}
                         } else if(CurrentLane == ThreeLanes.Middle)
                         {
-                            int ChangeAmount = (endPosition.x > startPosition.x) ? 57 : -57;
-
+                            int ChangeAmount = (endPosition.x > startPosition.x) ? 57 : -57;                     
                             xPos += ChangeAmount;
 
                             ChangeLane(ChangeAmount);
@@ -140,10 +147,10 @@ public class PlayerController : MonoBehaviour
                 else
                 {   //It's a tap as the drag distance is less than 15% of the screen height
                     Debug.Log("Tap");
-                    // if (!gameStarted)
-                    // {
-                    //     StartGame();
-                    // }
+                    if (!gameStarted)
+                    {
+                        StartGame();
+                    }
                 }
 
                 break;
@@ -154,7 +161,7 @@ public class PlayerController : MonoBehaviour
     private void Lose()
     {
         cooldown = .5f;
-        rigidbody.velocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
         gameObject.transform.position = new Vector3(0, 0, 65.3f);
         gameStarted = false;
         GameManager.SendMessage("Restart");
@@ -194,7 +201,7 @@ public class PlayerController : MonoBehaviour
     public void StartGame()
     {
         if(cooldown <= 0) {
-            rigidbody.velocity = new Vector3(0, 0, startSpeed);
+            rb.velocity = new Vector3(0, 0, startSpeed);
             gameStarted = true;
             TitleScreen.SetActive(false);
             score = 0;

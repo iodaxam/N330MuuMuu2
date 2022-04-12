@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         gameStarted = false;
         score = 0;
         GameManager = GameObject.Find("GameManager");
-        dragDistance = Screen.height * 15 / 100; //dragDistance is 15% height of the screen
+        dragDistance = Screen.height * 10 / 100; //dragDistance is 15% height of the screen
         rb = GetComponent<Rigidbody>();
         money.text = coins.ToString();
         highScoreText.text = "High Score: " + highScore;

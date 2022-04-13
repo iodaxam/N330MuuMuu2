@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour
     public Transform LaunchPosition;
     public GameObject CannonPE;
 
+    public int MaxBalls = 3;
+    private int CurrentBalls = 1;
+
     void Start()
     {
         // ownedSkins = new int[4] {0,0,0,0};
@@ -145,18 +148,23 @@ public class PlayerController : MonoBehaviour
                     else
                     {
                         //the vertical movement is greater than the horizontal movement
-                        Debug.Log(endPosition.y > startPosition.y ? "Up Swipe" : "Down Swipe");
-                        if(endPosition.y > startPosition.y)
+                        //Debug.Log(endPosition.y > startPosition.y ? "Up Swipe" : "Down Swipe");
+                        if(CurrentBalls > 0)
                         {
-                            GameObject CannonBall = Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
+                            if(endPosition.y > startPosition.y)
+                            {
+                                GameObject CannonBall = Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
 
-                            CannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
+                                CannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
 
-                            GameObject PE = Instantiate(CannonPE, LaunchPosition.position, Quaternion.identity);
+                                GameObject PE = Instantiate(CannonPE, LaunchPosition.position, Quaternion.identity);
 
-                            Destroy(PE, 2);
+                                Destroy(PE, 2);
 
-                            Destroy(CannonBall, 4);
+                                Destroy(CannonBall, 4);
+
+                                CurrentBalls--;
+                            }
                         }
                     }
                 }

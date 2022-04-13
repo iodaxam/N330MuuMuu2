@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653394714}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15.09, z: -6.44}
+  m_LocalRotation: {x: -0.021263048, y: -0, z: -0, w: 0.9997739}
+  m_LocalPosition: {x: 0, y: 18.1, z: -0.40000153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8253019595974430585}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.437, y: 0, z: 0}
 --- !u!1 &315835581903607461
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,8 +236,9 @@ MonoBehaviour:
   TitleScreen: {fileID: 0}
   highScoreText: {fileID: 0}
   scoreText: {fileID: 0}
-  CannonPrefab: {fileID: 0}
-  LaunchPosition: {fileID: 0}
+  CannonPrefab: {fileID: 8263080684486329568, guid: 309e51904192d0b468c6244b4999b966, type: 3}
+  LaunchPosition: {fileID: 653394715}
+  CannonPE: {fileID: 1030357214610109261, guid: 229f7a5d9d1d1f44b8303d5dd850d801, type: 3}
 --- !u!54 &1792722652711881916
 Rigidbody:
   m_ObjectHideFlags: 0

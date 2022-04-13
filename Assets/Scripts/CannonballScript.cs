@@ -13,11 +13,13 @@ public class CannonballScript : MonoBehaviour
             Destroy(gameObject);
         } else if(other.tag == "Obstacle")
         {
-            Destroy(gameObject);
-
             Destroy(other.gameObject);
 
             GameObject PE = Instantiate(ParticleEffect, other.transform.position, Quaternion.identity);
+
+            Destroy(PE, 2);
+
+            Destroy(gameObject);
         }
     }
 }

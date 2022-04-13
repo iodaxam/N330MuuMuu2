@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject CannonPrefab;
     public Transform LaunchPosition;
+    public GameObject CannonPE;
 
     void Start()
     {
@@ -150,6 +151,10 @@ public class PlayerController : MonoBehaviour
                             GameObject CannonBall = Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
 
                             CannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
+
+                            GameObject PE = Instantiate(CannonPE, LaunchPosition.position, Quaternion.identity);
+
+                            Destroy(PE, 2);
 
                             Destroy(CannonBall, 4);
                         }

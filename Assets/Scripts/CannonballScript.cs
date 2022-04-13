@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CannonballScript : MonoBehaviour
 {
+    public GameObject ParticleEffect;
+
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Terrain")
@@ -14,6 +16,8 @@ public class CannonballScript : MonoBehaviour
             Destroy(gameObject);
 
             Destroy(other.gameObject);
+
+            GameObject PE = Instantiate(ParticleEffect, other.transform.position, Quaternion.identity);
         }
     }
 }

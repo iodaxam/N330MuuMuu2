@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
     private AudioManager AudioManagerScript;
     private float cooldown = .5f;
 
+    public GameObject CannonPrefab;
+    public Transform LaunchPosition;
+
     void Start()
     {
         // ownedSkins = new int[4] {0,0,0,0};
@@ -142,6 +145,12 @@ public class PlayerController : MonoBehaviour
                     {
                         //the vertical movement is greater than the horizontal movement
                         Debug.Log(endPosition.y > startPosition.y ? "Up Swipe" : "Down Swipe");
+                        if(endPosition.y > startPosition.y)
+                        {
+                            GameObject CannonBall = Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
+
+                            CannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
+                        }
                     }
                 }
                 else

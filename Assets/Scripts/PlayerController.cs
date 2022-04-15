@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
     private float timeRemaining;
     private float xPos = 0;
     public float startSpeed;
-    private int skinIndex;
+    private int skindex;
+    public int laneDistance = 57;
 
     [Header("References")]
     private GameObject GameManager;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     // public Button PurchaseButton;
     // public Button StartButton;
     private int selectedSkin;
+    public GameObject skins;
 
     // public int[] ownedSkins;
 
@@ -102,6 +104,7 @@ public class PlayerController : MonoBehaviour
             // transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
             // rb.AddRelativeForce(0, 0, 1);
         // }
+        Debug.Log(skins.transform.position);
         score = Mathf.RoundToInt(transform.position.z - 100);
         scoreText.text = score.ToString();
         if (Input.touchCount != 1) return;
@@ -121,7 +124,7 @@ public class PlayerController : MonoBehaviour
             case TouchPhase.Ended:
             {
                 endPosition = touch.position;  //last touch position.
-                //Check if drag distance is greater than 20% of the screen height
+                //Check if drag distance is greater than 10% of the screen height
                 if (Mathf.Abs(endPosition.x - startPosition.x) > dragDistance || Mathf.Abs(endPosition.y - startPosition.y) > dragDistance)
                 {//It's a drag
                     //check if the drag is vertical or horizontal
@@ -129,14 +132,26 @@ public class PlayerController : MonoBehaviour
                     {   //If the horizontal movement is greater than the vertical movement
                         if((endPosition.x > startPosition.x) && (CurrentLane != ThreeLanes.Right))
                         {
-                            xPos += 57;
-                            ChangeLane(57);
-                            if(gameStarted){anim.Play("Right Turn");}
+                            if (!gameStarted)
+                            {
+                                SelectSkin(1);
+                            }
+                            else
+                            {
+                                ChangeLane(laneDistance);
+                                if(gameStarted){anim.Play("Right Turn");}
+                            }
                         } else if((endPosition.x < startPosition.x) && (CurrentLane != ThreeLanes.Left))
                         {
-                            xPos -= 57;
-                            ChangeLane(-57);
-                            if(gameStarted){anim.Play("Left Turn");}
+                            if (!gameStarted)
+                            {
+                                SelectSkin(-1);
+                            }
+                            else
+                            {
+                                ChangeLane(-laneDistance);
+                                if(gameStarted){anim.Play("Left Turn");}
+                            }
                         } else if(CurrentLane == ThreeLanes.Middle)
                         {
                             int ChangeAmount = (endPosition.x > startPosition.x) ? 57 : -57;                     
@@ -237,8 +252,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void ChangeLane(int PositionChange) 
+    private void ChangeLane(int PositionChange)
     {
+        xPos += PositionChange;
         GameManager.SendMessage("PlayPitched", "SloshSound");
         switch(CurrentLane)
         {
@@ -263,48 +279,36 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-//     public void OpenShop()
-//     {  
-//         TitleScreen.SetActive(false);
-//         ScoreUI.SetActive(false);
-//         ShopScreen.SetActive(true);
-//     }
+     private void SelectSkin(int direction)
+     {
+         skindex -= direction;
+         if (skindex < 0)
+         {
+             skindex = 4;
+         }
+         else if(skindex > 4)
+         {
+             skindex = 0;
+         }
 
-//     public void CloseShop()
-//     {
-//         TitleScreen.SetActive(true);
-//         ScoreUI.SetActive(true);
-//         ShopScreen.SetActive(false);
-//     }
+         Debug.Log(skindex);
+         var position = skins.transform.localPosition;
+         position = new Vector3( skindex * -500, position.y, position.z);
+         skins.transform.localPosition = position;
+         Debug.Log(skins.transform.position);
+         Debug.Log(position);
+     }
 
-//     public void SelectSkin(int skindex)
-//     {
-//         if (ownedSkins[skindex] == 1)
-//         {
-//             PurchaseButton.enabled = false;
-//             foreach (GameObject skin in skins)
-//             {
-//                 skin.SetActive(false);
-//             }
-//             skins[skindex].SetActive(true);
-//         }
-//         else
-//         {
-//             PurchaseButton.enabled = true;
-//         }
-//         selectedSkin = skindex;
-//     }
-
-//     public void PurchaseSkin()
-//     {
-//         int cost = 25 * (selectedSkin + 1) * (selectedSkin + 1);
-//         if (coins >= cost)
-//         {
-//             coins -= cost;
-//         }
-
-//         ownedSkins[selectedSkin] = 1;
-//         PurchaseButton.enabled = false;
-//         SaveGame();
-//     }
+     // public void PurchaseSkin()
+     // {
+     //     int cost = 25 * (selectedSkin + 1) * (selectedSkin + 1);
+     //     if (coins >= cost)
+     //     {
+     //         coins -= cost;
+     //     }
+     //
+     //     ownedSkins[selectedSkin] = 1;
+     //     PurchaseButton.enabled = false;
+     //     SaveGame();
+     // }
 }

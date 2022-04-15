@@ -5,6 +5,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,7 +16,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 camPos;
     private float dragDistance;  //minimum distance for a swipe to be registered
     public float speed = 5;
-    public float rotationSpeed = 150f;
     private Rigidbody rb;
     private Animator anim;
     private float timeRemaining;
@@ -37,11 +38,10 @@ public class PlayerController : MonoBehaviour
     public Text highScoreText;
     public Text scoreText;
     // public GameObject ScoreUI;
-    // public GameObject[] skins;
     // public Button PurchaseButton;
     // public Button StartButton;
     private int selectedSkin;
-    public GameObject skins;
+    public GameObject[] skins;
 
     // public int[] ownedSkins;
 
@@ -56,6 +56,9 @@ public class PlayerController : MonoBehaviour
 
     public int MaxBalls = 3;
     private int CurrentBalls = 3;
+
+
+    
 
     void Start()
     {
@@ -76,7 +79,7 @@ public class PlayerController : MonoBehaviour
         money.text = coins.ToString();
         highScoreText.text = "High Score: " + highScore;
         AudioManagerScript = GameManager.GetComponent<AudioManager>();
-        anim = GetComponentInChildren<Animator>();
+
     }
     
     void FixedUpdate()
@@ -93,20 +96,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        anim = GetComponentInChildren<Animator>();
         if(cooldown > 0) {
             cooldown -= Time.deltaTime;
         }
-        if(gameStarted) {
+        if (gameStarted) {
             anim.SetFloat("Blend", 1, 0.1f, Time.deltaTime);
         } else {
-            anim.SetFloat("Blend", .3f, 0.1f, Time.deltaTime);
+            anim.SetFloat("Blend", 0.3f, 0.1f, Time.deltaTime);
         }
         // if (gameStarted)
         // {
             // transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
             // rb.AddRelativeForce(0, 0, 1);
         // }
-        Debug.Log(skins.transform.position);
+        Debug.Log(skins[4]);
         score = Mathf.RoundToInt(transform.position.z - 100);
         scoreText.text = score.ToString();
         if (Input.touchCount != 1) return;
@@ -141,7 +145,7 @@ public class PlayerController : MonoBehaviour
                             else
                             {
                                 ChangeLane(laneDistance);
-                                if(gameStarted){anim.Play("Right Turn");}
+                                anim.Play("Right Turn");
                             }
                         } else if((endPosition.x < startPosition.x) && (CurrentLane != ThreeLanes.Left))
                         {
@@ -152,7 +156,7 @@ public class PlayerController : MonoBehaviour
                             else
                             {
                                 ChangeLane(-laneDistance);
-                                if(gameStarted){anim.Play("Left Turn");}
+                                anim.Play("Left Turn");
                             }
                         } else if(CurrentLane == ThreeLanes.Middle)
                         {
@@ -201,6 +205,7 @@ public class PlayerController : MonoBehaviour
 
     private void Lose()
     {
+        anim.SetFloat("Blend", 0.3f, 0.1f, Time.deltaTime);
         cooldown = .5f;
         rb.velocity = Vector3.zero;
         gameObject.transform.position = new Vector3(0, 0, 100);
@@ -241,6 +246,7 @@ public class PlayerController : MonoBehaviour
     
     public void StartGame()
     {
+        anim.SetFloat("Blend", 1, 0.1f, Time.deltaTime);
         if(cooldown <= 0) {
             rb.velocity = new Vector3(0, 0, startSpeed);
             gameStarted = true;
@@ -283,6 +289,8 @@ public class PlayerController : MonoBehaviour
 
      private void SelectSkin(int direction)
      {
+         skins[skindex].SetActive(false);
+         skins[skindex].transform.rotation = Quaternion.identity;
          skindex -= direction;
          if (skindex < 0)
          {
@@ -292,13 +300,8 @@ public class PlayerController : MonoBehaviour
          {
              skindex = 0;
          }
-
-         Debug.Log(skindex);
-         var position = skins.transform.localPosition;
-         position = new Vector3( skindex * -500, position.y, position.z);
-         skins.transform.localPosition = position;
-         Debug.Log(skins.transform.position);
-         Debug.Log(position);
+        skins[skindex].transform.rotation = Quaternion.identity;
+        skins[skindex].SetActive(true);
      }
 
      // public void PurchaseSkin()
@@ -314,3 +317,4 @@ public class PlayerController : MonoBehaviour
      //     SaveGame();
      // }
 }
+

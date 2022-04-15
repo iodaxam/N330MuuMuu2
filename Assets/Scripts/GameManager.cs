@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     public int ChangeDistance = 3;
     public bool LandSection;
     
-
     void Start()
     {
         MaxDistanceAhead = GeneratedTerrain.Count;

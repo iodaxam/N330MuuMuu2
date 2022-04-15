@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private float xPos = 0;
     public float startSpeed;
     private int skinIndex;
+    private int recoilForce;
 
     [Header("References")]
     private GameObject GameManager;
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
     public GameObject CannonPE;
 
     public int MaxBalls = 3;
-    private int CurrentBalls = 1;
+    private int CurrentBalls = 3;
 
     void Start()
     {

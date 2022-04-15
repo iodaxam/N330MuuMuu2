@@ -40,10 +40,9 @@ public class PlayerController : MonoBehaviour
     // public GameObject ScoreUI;
     // public Button PurchaseButton;
     // public Button StartButton;
-    private int selectedSkin;
     public GameObject[] skins;
 
-    // public int[] ownedSkins;
+    private int[] ownedSkins;
 
     private ThreeLanes CurrentLane = ThreeLanes.Middle;
 
@@ -62,27 +61,27 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        // ownedSkins = new int[4] {0,0,0,0};
-        // for (int i = 0; i < ownedSkins.Length; i++)
-        // {
-        //     ownedSkins[i] = PlayerPrefs.GetInt("Skin" + i);
-        // }
+        ownedSkins = new int[5] {1,0,0,0,0};
+        for (int i = 0; i < ownedSkins.Length; i++)
+        {
+            ownedSkins[i] = PlayerPrefs.GetInt("Skin" + i);
+        }
         
-        // ShopScreen.SetActive(false);
         coins = PlayerPrefs.GetInt("Money");
+        // coins = 9999; // uncomment for free money
         highScore = PlayerPrefs.GetInt("HighScore");
         gameStarted = false;
         score = 0;
         GameManager = GameObject.Find("GameManager");
-        dragDistance = Screen.height * 10 / 100; //dragDistance is 15% height of the screen
+        dragDistance = Screen.height * 10 / 100; //dragDistance is 10% height of the screen
         rb = GetComponent<Rigidbody>();
         money.text = coins.ToString();
         highScoreText.text = "High Score: " + highScore;
         AudioManagerScript = GameManager.GetComponent<AudioManager>();
 
     }
-    
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         if (!gameStarted) return;
 
@@ -94,7 +93,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         anim = GetComponentInChildren<Animator>();
         if(cooldown > 0) {
@@ -105,11 +104,13 @@ public class PlayerController : MonoBehaviour
         } else {
             anim.SetFloat("Blend", 0.3f, 0.1f, Time.deltaTime);
         }
-        // if (gameStarted)
-        // {
-            // transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
-            // rb.AddRelativeForce(0, 0, 1);
-        // }
+        
+        /*if (gameStarted)
+        {
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
+            rb.AddRelativeForce(0, 0, 1);
+        }*/
+        
         Debug.Log(skins[4]);
         score = Mathf.RoundToInt(transform.position.z - 100);
         scoreText.text = score.ToString();
@@ -167,22 +168,20 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                     else
-                    {
-                        //the vertical movement is greater than the horizontal movement
-                        //Debug.Log(endPosition.y > startPosition.y ? "Up Swipe" : "Down Swipe");
+                    { //the vertical movement is greater than the horizontal movement
                         if(CurrentBalls > 0)
                         {
                             if(endPosition.y > startPosition.y)
                             {
-                                GameObject CannonBall = Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
+                                GameObject cannonBall = Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
 
-                                CannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
+                                cannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
 
                                 GameObject PE = Instantiate(CannonPE, LaunchPosition.position, Quaternion.identity);
 
                                 Destroy(PE, 2);
 
-                                Destroy(CannonBall, 4);
+                                Destroy(cannonBall, 4);
 
                                 CurrentBalls--;
                             }
@@ -194,7 +193,14 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Tap");
                     if (!gameStarted)
                     {
-                        StartGame();
+                        if (ownedSkins[skindex] == 1)
+                        {
+                            StartGame();
+                        }
+                        else
+                        {
+                            PurchaseSkin(skindex);
+                        }
                     }
                 }
 
@@ -238,10 +244,10 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("Money", coins); 
         PlayerPrefs.SetInt("HighScore", highScore);
         
-    //     for (int i = 0; i < ownedSkins.Length; i++)
-    //     {
-    //         PlayerPrefs.SetInt("Skin"+i, ownedSkins[i]);
-    //     }
+        for (int i = 0; i < ownedSkins.Length; i++)
+        {
+            PlayerPrefs.SetInt("Skin"+i, ownedSkins[i]);
+        }
     }
     
     public void StartGame()
@@ -304,17 +310,17 @@ public class PlayerController : MonoBehaviour
         skins[skindex].SetActive(true);
      }
 
-     // public void PurchaseSkin()
-     // {
-     //     int cost = 25 * (selectedSkin + 1) * (selectedSkin + 1);
-     //     if (coins >= cost)
-     //     {
-     //         coins -= cost;
-     //     }
-     //
-     //     ownedSkins[selectedSkin] = 1;
-     //     PurchaseButton.enabled = false;
-     //     SaveGame();
-     // }
+     public void PurchaseSkin(int index)
+     {
+         int cost = 25 * index * index;
+         if (coins >= cost)
+         { 
+             coins -= cost; 
+             ownedSkins[index] = 1;
+             money.text = coins.ToString();
+             SaveGame();
+         }
+     
+     }
 }
 

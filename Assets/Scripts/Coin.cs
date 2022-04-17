@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject CollectPE;
 
     // Update is called once per frame
     void Update()
@@ -21,6 +17,11 @@ public class Coin : MonoBehaviour
         if(other.tag == "Player")
         {
             other.SendMessage("MoneyUp");
+
+            GameObject ParticleEffect = Instantiate(CollectPE, gameObject.transform.position, Quaternion.identity);
+
+            Destroy(ParticleEffect, 1);
+
             Destroy(gameObject);
         }
     }

@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public int laneDistance = 57;
     private int skinIndex;
     private int recoilForce;
+    public float krakenAnimationTime;
 
     [Header("References")]
     private GameObject GameManager;
@@ -229,6 +230,18 @@ public class PlayerController : MonoBehaviour
         GameManager.SendMessage("FadeOut", "SailingSound");
         GameManager.SendMessage("FadeOut", "BackgroundMusic");
         AudioManagerScript.FadeIn("MenuSound", .05f, 1f);
+    }
+
+    private void Kraken()
+    {
+        // call animation stuff here 
+        StartCoroutine(nameof(krakenTimer));
+    }
+
+    IEnumerable krakenTimer()
+    {
+        yield return new WaitForSeconds(krakenAnimationTime);
+        Lose();
     }
 
     private void MoneyUp()

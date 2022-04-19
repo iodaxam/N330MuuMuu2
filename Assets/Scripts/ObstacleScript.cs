@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class ObstacleScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    void OnTriggerEnter(Collider other)
+	void OnTriggerEnter(Collider other)
 	{
-		if(other.tag == "Player")
+		if(other.CompareTag("Player"))
 		{
 		    other.SendMessage("Lose");
 		}

@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private int skinIndex;
     private int recoilForce;
     public float krakenAnimationTime;
+    private int shields;
 
     [Header("References")]
     private GameObject GameManager;
@@ -212,25 +213,33 @@ public class PlayerController : MonoBehaviour
 
     private void Lose()
     {
-        anim.SetFloat("Blend", 0.3f, 0.1f, Time.deltaTime);
-        cooldown = .5f;
-        rb.velocity = Vector3.zero;
-        gameObject.transform.position = new Vector3(0, 0, 100);
-        gameStarted = false;
-        GameManager.SendMessage("Restart");
-        SaveGame();
-        if (score > highScore)
+        if (shields > 0)
         {
-            highScore = score;
-            highScoreText.text = "HighScore: " + highScore;
+            shields -= 1;
+            // animation / particles here?
         }
-        TitleScreen.SetActive(true);
-        GameManager.SendMessage("StopFades");
-        GameManager.SendMessage("PlayPitched", "CrashSound");
-        GameManager.SendMessage("FadeOut", "SailingSound");
-        GameManager.SendMessage("FadeOut", "BackgroundMusic");
-        AudioManagerScript.FadeIn("MenuSound", .05f, 1f);
-        CurrentBalls = 3;
+        else
+        {
+            anim.SetFloat("Blend", 0.3f, 0.1f, Time.deltaTime);
+            cooldown = .5f;
+            rb.velocity = Vector3.zero;
+            gameObject.transform.position = new Vector3(0, 0, 100);
+            gameStarted = false;
+            GameManager.SendMessage("Restart");
+            SaveGame();
+            if (score > highScore)
+            {
+                highScore = score;
+                highScoreText.text = "HighScore: " + highScore;
+            }
+            TitleScreen.SetActive(true);
+            GameManager.SendMessage("StopFades");
+            GameManager.SendMessage("PlayPitched", "CrashSound");
+            GameManager.SendMessage("FadeOut", "SailingSound");
+            GameManager.SendMessage("FadeOut", "BackgroundMusic");
+            AudioManagerScript.FadeIn("MenuSound", .05f, 1f);
+            CurrentBalls = 3;
+        }
     }
 
     private void Kraken()
@@ -327,14 +336,22 @@ public class PlayerController : MonoBehaviour
      public void PurchaseSkin(int index)
      {
          int cost = 25 * index * index;
-         if (coins >= cost)
-         { 
-             coins -= cost; 
-             ownedSkins[index] = 1;
-             money.text = coins.ToString();
-             SaveGame();
-         }
-     
+         if (coins < cost) return;
+         coins -= cost; 
+         ownedSkins[index] = 1;
+         money.text = coins.ToString();
+         SaveGame();
+
+     }
+
+     private void AddShield(int amount)
+     {
+         shields += amount;
+     }
+
+     private void AddCannonBall(int amount)
+     {
+         CurrentBalls += amount;
      }
 }
 

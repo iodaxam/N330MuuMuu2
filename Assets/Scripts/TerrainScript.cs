@@ -29,23 +29,34 @@ public class TerrainScript : MonoBehaviour
 	private ThreeLanes OccupiedSpot1;
 	private ThreeLanes OccupiedSpot2;
 
+	public int percentChanceOfPowerUp;
 	public GameObject Coin;
 	private GameObject Obstacle1;
 	private GameObject Obstacle2;
 
-	private GameObject[] obstaclesFolder;
+	//private GameObject[] obstaclesFolder;
+	//private GameObject[] powerUpsFolder;
 	private List<GameObject> obstacles;
+	private List<GameObject> powerUps;
 
 
 	void Start()
 	{
+		powerUps = Resources.LoadAll<GameObject>("Prafabs/PowerUps").ToList();
 		obstacles = Resources.LoadAll<GameObject>("Prefabs/Obstacles").ToList();
 
 		ColliderComponent = GetComponent<BoxCollider>();
 		GameManager = GameObject.Find("GameManager");
 
 		int RandObstaclePlacement = Random.Range(0, 3);
-		ObstaclePrefab = obstacles[Random.Range(0, obstacles.Count)];
+		if (Random.Range(0, 100) <= percentChanceOfPowerUp)
+		{
+			ObstaclePrefab = powerUps[Random.Range(0, powerUps.Count)];
+		}
+		else
+		{
+			ObstaclePrefab = obstacles[Random.Range(0, obstacles.Count)];	
+		}
 
 		if(!StarterTile) 
 		{

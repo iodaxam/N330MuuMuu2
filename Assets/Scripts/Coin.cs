@@ -16,7 +16,7 @@ public class Coin : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            other.SendMessage("MoneyUp");
+            other.SendMessage("MoneyUp", 1);
 
             GameObject ParticleEffect = Instantiate(CollectPE, gameObject.transform.position, Quaternion.identity);
 

@@ -245,9 +245,9 @@ public class PlayerController : MonoBehaviour
         Lose();
     }
 
-    private void MoneyUp()
+    private void MoneyUp(int amount)
     {
-        coins += 1;
+        coins += amount;
         money.text = coins.ToString();
 
         GameManager.SendMessage("PlayPitched", "CoinSound");

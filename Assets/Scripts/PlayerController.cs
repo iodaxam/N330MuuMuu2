@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         gameStarted = false;
         score = 0;
         GameManager = GameObject.Find("GameManager");
-        dragDistance = Screen.height * 10 / 100; //dragDistance is 10% height of the screen
+        dragDistance = Screen.height * 2/ 100; //dragDistance is 10% height of the screen
         rb = GetComponent<Rigidbody>();
         money.text = coins.ToString();
         highScoreText.text = "High Score: " + highScore;
@@ -230,6 +230,7 @@ public class PlayerController : MonoBehaviour
         GameManager.SendMessage("FadeOut", "SailingSound");
         GameManager.SendMessage("FadeOut", "BackgroundMusic");
         AudioManagerScript.FadeIn("MenuSound", .05f, 1f);
+        CurrentBalls = 3;
     }
 
     private void Kraken()

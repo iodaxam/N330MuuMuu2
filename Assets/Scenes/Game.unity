@@ -5064,6 +5064,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1003731165}
     - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
+      propertyPath: kraken
+      value: 
+      objectReference: {fileID: 2251764136766813041, guid: c91affa95985eb047a0d9dd60a2dab1d, type: 3}
+    - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 586852734}

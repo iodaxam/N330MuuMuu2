@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5;
     private Rigidbody rb;
     private Animator anim;
+    public GameObject kraken;
     private float timeRemaining;
     private float xPos = 0;
     public float startSpeed;
@@ -113,7 +114,6 @@ public class PlayerController : MonoBehaviour
             rb.AddRelativeForce(0, 0, 1);
         }*/
         
-        Debug.Log(skins[4]);
         score = Mathf.RoundToInt(transform.position.z - 100);
         scoreText.text = score.ToString();
         if (Input.touchCount != 1) return;
@@ -245,6 +245,7 @@ public class PlayerController : MonoBehaviour
     private void Kraken()
     {
         // call animation stuff here 
+        rb.velocity = Vector3.zero;
         StartCoroutine(nameof(krakenTimer));
     }
 

@@ -40,13 +40,15 @@ public class TerrainScript : MonoBehaviour
 	private List<GameObject> powerUps;
 
 
+
 	void Start()
 	{
-		powerUps = Resources.LoadAll<GameObject>("Prafabs/PowerUps").ToList();
+		powerUps = Resources.LoadAll<GameObject>("Prefabs/PowerUps").ToList();
 		obstacles = Resources.LoadAll<GameObject>("Prefabs/Obstacles").ToList();
 
 		ColliderComponent = GetComponent<BoxCollider>();
 		GameManager = GameObject.Find("GameManager");
+
 
 		int RandObstaclePlacement = Random.Range(0, 3);
 		if (Random.Range(0, 100) <= percentChanceOfPowerUp)
@@ -100,6 +102,7 @@ public class TerrainScript : MonoBehaviour
 				Destroy(Obstacle2.gameObject);
 			}
 		}
+		Animator krakenAnim = Instantiate(obstacles[1].GetComponentInChildren<Animator>());
 	}
 
 	void OnDestroy() 

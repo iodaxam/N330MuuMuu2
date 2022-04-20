@@ -60,7 +60,9 @@ public class GameManager : MonoBehaviour
             CurrentBiome = Biome.Beach;
 
         } else {
+            SelectedBoundary = BoundaryPrefab;
 
+            CurrentBiome = Biome.Ocean;
         }
     
         Distance++;

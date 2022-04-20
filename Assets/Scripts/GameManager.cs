@@ -3,10 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Biome
+{
+    Ocean,
+    Beach,
+    PirateTown
+}
+
 public class GameManager : MonoBehaviour
 {
     public GameObject SectionPrefab;
     public GameObject BoundaryPrefab;
+    public GameObject BeachBoundaryPrefab;
 
     public List<GameObject> GeneratedTerrain;
     public List<GameObject> GeneratedLeftBoundary;
@@ -19,6 +27,10 @@ public class GameManager : MonoBehaviour
     private int Distance = 1;
     public int ChangeDistance = 3;
     public bool LandSection;
+    public int BeachDistance = 5;
+    public int PirateTownDistance = 10;
+
+    private Biome CurrentBiome;
     
     void Start()
     {
@@ -28,9 +40,27 @@ public class GameManager : MonoBehaviour
     public void GenerateNextSection(Vector3 StartTransform)
     {
         
-        if((Distance % ChangeDistance) == 0) 
-        {
-            LandSection = (!LandSection) ? true : false;
+        // if((Distance % ChangeDistance) == 0) 
+        // {
+        //     LandSection = (!LandSection) ? true : false;
+        // }
+        
+        GameObject SelectedBoundary  = BoundaryPrefab;
+
+        if(Distance < BeachDistance) {
+
+            SelectedBoundary = BoundaryPrefab;
+
+            CurrentBiome = Biome.Ocean;
+
+        } else if(Distance < PirateTownDistance) {
+
+            SelectedBoundary = BeachBoundaryPrefab;
+
+            CurrentBiome = Biome.Beach;
+
+        } else {
+
         }
     
         Distance++;
@@ -39,16 +69,27 @@ public class GameManager : MonoBehaviour
         
         GameObject NextSection = Instantiate(SectionPrefab, EndTransform, Quaternion.identity);
 
-        GameObject LeftSection = Instantiate(BoundaryPrefab, new Vector3((EndTransform.x - 180), EndTransform.y, EndTransform.z), Quaternion.identity);
-        LeftSection.GetComponent<BoundaryScript>().isLeft = true;
-
-        GameObject RightSection = Instantiate(BoundaryPrefab, new Vector3((EndTransform.x + 180), EndTransform.y, EndTransform.z), Quaternion.identity);
-
-        if(LandSection)
+        GameObject LeftSection = Instantiate(SelectedBoundary, new Vector3((EndTransform.x - 180), EndTransform.y, EndTransform.z), Quaternion.identity);
+        
+        switch(CurrentBiome)
         {
-            LeftSection.GetComponent<BoundaryScript>().isLand = true;
-            RightSection.GetComponent<BoundaryScript>().isLand = true;
+            case Biome.Ocean:
+                LeftSection.GetComponent<BoundaryScript>().isLeft = true;
+                break;
+            case Biome.Beach:
+                LeftSection.GetComponent<BoundaryScriptBeach>().isLeft = true;
+                break;
+            case Biome.PirateTown:
+                break;
         }
+
+        GameObject RightSection = Instantiate(SelectedBoundary, new Vector3((EndTransform.x + 180), EndTransform.y, EndTransform.z), Quaternion.identity);
+
+        // if(LandSection)
+        // {
+        //     LeftSection.GetComponent<BoundaryScript>().isLand = true;
+        //     RightSection.GetComponent<BoundaryScript>().isLand = true;
+        // }
         
         NextSection.SetActive(true);
         LeftSection.SetActive(true);

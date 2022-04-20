@@ -102,7 +102,7 @@ public class TerrainScript : MonoBehaviour
 				Destroy(Obstacle2.gameObject);
 			}
 		}
-		Animator krakenAnim = Instantiate(obstacles[1].GetComponentInChildren<Animator>());
+		// Animator krakenAnim = Instantiate(obstacles[1].GetComponentInChildren<Animator>());
 	}
 
 	void OnDestroy() 

@@ -9758,6 +9758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SectionPrefab: {fileID: 1217401525971368481, guid: 23e965b9ed82e5f4e99c220457f8748b, type: 3}
   BoundaryPrefab: {fileID: 1217401525971368481, guid: 0c8182c2f8e4ea147b3c2df6df8fcc94, type: 3}
+  BeachBoundaryPrefab: {fileID: 1217401525971368481, guid: 2ce86d40c8c3020428666488be47465d, type: 3}
   GeneratedTerrain:
   - {fileID: 1845030996}
   - {fileID: 1956244224}
@@ -9788,6 +9789,8 @@ MonoBehaviour:
   - {fileID: 10173376}
   ChangeDistance: 9
   LandSection: 0
+  BeachDistance: 5
+  PirateTownDistance: 10
 --- !u!4 &1722922297
 Transform:
   m_ObjectHideFlags: 0

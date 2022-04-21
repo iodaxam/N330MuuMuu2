@@ -6,9 +6,13 @@ public class Kraken : MonoBehaviour
 {
 	private Animator anim;
     // Start is called before the first frame update
+
     void Start()
     {
+		int n = Random.Range(1, 3);
+		var idle = "Idle " + n.ToString();
         anim = GetComponentInChildren<Animator>();
+		anim.Play(idle, 0, Random.value);
     }
 
 	// private void LateUpdate(){

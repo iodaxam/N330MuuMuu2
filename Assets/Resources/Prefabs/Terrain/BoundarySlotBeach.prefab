@@ -85,12 +85,57 @@ MonoBehaviour:
   - {fileID: 6024636927505695384}
   - {fileID: 7420685201321597508}
   AdditionalTerrainObjects:
-  - {fileID: 919132149155446097, guid: 5c74819e011e52f4fa7626d89d928446, type: 3}
+  - {fileID: 3549319530253181678, guid: 1d2961060817ad140bb83ab24f147ee0, type: 3}
   LandParent: {fileID: 4945536752195724823}
   isLeft: 0
   terrainLayer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!1 &2708447448654651425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2856403442672732210}
+  - component: {fileID: 2705332193959762595}
+  m_Layer: 7
+  m_Name: MeshColliderEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2856403442672732210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708447448654651425}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8018581371845150211}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &2705332193959762595
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708447448654651425}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &4945536752195724823
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +179,6 @@ GameObject:
   - component: {fileID: 8018581371845150211}
   - component: {fileID: 2171066859963718158}
   - component: {fileID: 7200511443750770637}
-  - component: {fileID: 551532804598131030}
   m_Layer: 7
   m_Name: Land
   m_TagString: Untagged
@@ -152,7 +196,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -98.099976, y: -9.8, z: -6}
   m_LocalScale: {x: 14.589665, y: 16.430573, z: 16.326181}
-  m_Children: []
+  m_Children:
+  - {fileID: 2856403442672732210}
   m_Father: {fileID: 8912616049121830748}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -205,20 +250,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &551532804598131030
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6024636927505695384}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &7420685201321597508
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +261,6 @@ GameObject:
   - component: {fileID: 4488398288005139932}
   - component: {fileID: 7299097540991269853}
   - component: {fileID: 9150714191171868285}
-  - component: {fileID: 5566543875107316320}
   m_Layer: 7
   m_Name: Land2
   m_TagString: Untagged
@@ -248,7 +278,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -98.1, y: -9.8, z: 99}
   m_LocalScale: {x: 14.589665, y: 16.430573, z: 16.326181}
-  m_Children: []
+  m_Children:
+  - {fileID: 4936163411924303106}
   m_Father: {fileID: 8912616049121830748}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -301,20 +332,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5566543875107316320
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7420685201321597508}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &7512907933468221764
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +374,51 @@ Transform:
   m_Father: {fileID: 2623849345380539401}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7697394230932030823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4936163411924303106}
+  - component: {fileID: 8068607166632232542}
+  m_Layer: 7
+  m_Name: MeshColliderEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4936163411924303106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7697394230932030823}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4488398288005139932}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8068607166632232542
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7697394230932030823}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &9176813618368071438
 GameObject:
   m_ObjectHideFlags: 0

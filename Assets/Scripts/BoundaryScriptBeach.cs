@@ -16,6 +16,8 @@ public class BoundaryScriptBeach : MonoBehaviour
 
     public LayerMask terrainLayer;
 
+    private Vector3 HitPosition;
+
     void Start()
     {     
         foreach(GameObject SpawnLocation in BeachObjectLocations)
@@ -26,7 +28,11 @@ public class BoundaryScriptBeach : MonoBehaviour
 
             Filter.mesh = BeachMesh[RandNumber];
 
-            SpawnLocation.GetComponent<MeshCollider>().sharedMesh = BeachMesh[RandNumber];
+            GameObject ColliderChild = SpawnLocation.transform.Find("MeshColliderEmpty").gameObject;
+
+            ColliderChild.GetComponent<MeshCollider>().sharedMesh = BeachMesh[RandNumber];
+
+            //SpawnLocation.GetComponent<MeshCollider>().sharedMesh = BeachMesh[RandNumber];
 
             if(RandNumber == 0) {
                 //int Offset = (isLeft) ? 100 : -100;
@@ -37,6 +43,8 @@ public class BoundaryScriptBeach : MonoBehaviour
             }
 
             SpawnLocation.transform.localScale += new Vector3(0, 0, Random.Range(-12, 10));
+
+            //ColliderChild.transform.localScale = SpawnLocation.transform.localScale;
         }
 
         if(!isLeft)
@@ -50,15 +58,24 @@ public class BoundaryScriptBeach : MonoBehaviour
 
         SpawnedBeachObjects.Add(Instantiate(AdditionalTerrainObjects[0], gameObject.transform.position, Quaternion.identity));
 
-        SpawnedBeachObjects[0].transform.position += new Vector3(0, 100, 75);
+        SpawnedBeachObjects[0].transform.position += new Vector3(0, 150, 75);
 
-        Ray ray = new Ray((SpawnedBeachObjects[0].transform.position - new Vector3(0, 50, 0)), Vector3.down);
-        if(Physics.Raycast(ray, out RaycastHit info, 100, terrainLayer.value))
+        Ray ray = new Ray((SpawnedBeachObjects[0].transform.position - new Vector3(0, 0, 0)), Vector3.down);
+        if(Physics.Raycast(ray, out RaycastHit info, 400, terrainLayer.value))
         {
             Vector3 CurrentPosition = SpawnedBeachObjects[0].transform.position;
             SpawnedBeachObjects[0].transform.position = new Vector3(CurrentPosition.x, info.point.y, CurrentPosition.z);
             //Debug.Log(info.point);
+            HitPosition = info.point;
+
+            //info.collider.gameObject.tag = "Respawn";
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(HitPosition, 2f);
     }
 
     void OnDestroy()

@@ -8,10 +8,13 @@ public class BoundaryScriptBeach : MonoBehaviour
 
     public List<Mesh> BeachMesh;
     public List<GameObject> BeachObjectLocations;
+    public List<GameObject> AdditionalTerrainObjects;
 
     public GameObject LandParent;
 
     public bool isLeft;
+
+    public LayerMask terrainLayer;
 
     void Start()
     {     
@@ -22,6 +25,8 @@ public class BoundaryScriptBeach : MonoBehaviour
             MeshFilter Filter = SpawnLocation.GetComponent<MeshFilter>();
 
             Filter.mesh = BeachMesh[RandNumber];
+
+            SpawnLocation.GetComponent<MeshCollider>().sharedMesh = BeachMesh[RandNumber];
 
             if(RandNumber == 0) {
                 //int Offset = (isLeft) ? 100 : -100;
@@ -42,11 +47,26 @@ public class BoundaryScriptBeach : MonoBehaviour
             LandParent.transform.localRotation = Quaternion.Euler(0, 180, 0);
             LandParent.transform.localPosition = new Vector3(0, 0, 150);
         }
+
+        SpawnedBeachObjects.Add(Instantiate(AdditionalTerrainObjects[0], gameObject.transform.position, Quaternion.identity));
+
+        SpawnedBeachObjects[0].transform.position += new Vector3(0, 100, 75);
+
+        Ray ray = new Ray((SpawnedBeachObjects[0].transform.position - new Vector3(0, 50, 0)), Vector3.down);
+        if(Physics.Raycast(ray, out RaycastHit info, 100, terrainLayer.value))
+        {
+            Vector3 CurrentPosition = SpawnedBeachObjects[0].transform.position;
+            SpawnedBeachObjects[0].transform.position = new Vector3(CurrentPosition.x, info.point.y, CurrentPosition.z);
+            //Debug.Log(info.point);
+        }
     }
 
     void OnDestroy()
     {
-
+        foreach(GameObject AdditionalObject in SpawnedBeachObjects)
+        {
+            Destroy(AdditionalObject);
+        }
     }
 }  
 

@@ -18,6 +18,8 @@ public class BoundaryScriptBeach : MonoBehaviour
 
     private Vector3 HitPosition;
 
+    private int ObjectOffset;
+
     void Start()
     {     
         foreach(GameObject SpawnLocation in BeachObjectLocations)
@@ -78,19 +80,30 @@ public class BoundaryScriptBeach : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        SpawnedBeachObjects.Add(Instantiate(AdditionalTerrainObjects[0], gameObject.transform.position, Quaternion.identity));
+        int RandNumber = Random.Range(0, AdditionalTerrainObjects.Count);
+
+        Vector3 ObjectRotation = (RandNumber != 0) ? new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)): Vector3.zero;
+
+        SpawnedBeachObjects.Add(Instantiate(AdditionalTerrainObjects[RandNumber], gameObject.transform.position, Quaternion.Euler(ObjectRotation)));
 
         SpawnedBeachObjects[0].transform.position += new Vector3(0, 150, 75);
+
+        ObjectOffset = (RandNumber == 1) ? 30 : 10;
 
         Ray ray = new Ray((SpawnedBeachObjects[0].transform.position - new Vector3(0, 0, 0)), Vector3.down);
         if(Physics.Raycast(ray, out RaycastHit info, 400, terrainLayer.value))
         {
             Vector3 CurrentPosition = SpawnedBeachObjects[0].transform.position;
-            SpawnedBeachObjects[0].transform.position = new Vector3(CurrentPosition.x, (info.point.y - 10), CurrentPosition.z);
+            SpawnedBeachObjects[0].transform.position = new Vector3(CurrentPosition.x, (info.point.y - ObjectOffset), CurrentPosition.z);
             //Debug.Log(info.point);
             HitPosition = info.point;
 
             //info.collider.gameObject.tag = "Respawn";
+        }
+
+        if(RandNumber != 0)
+        {
+            SpawnedBeachObjects[0].transform.localScale = new Vector3(4, 4, 4);
         }
     }
 

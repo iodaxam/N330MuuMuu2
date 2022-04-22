@@ -86,6 +86,9 @@ MonoBehaviour:
   - {fileID: 7420685201321597508}
   AdditionalTerrainObjects:
   - {fileID: 3549319530253181678, guid: 1d2961060817ad140bb83ab24f147ee0, type: 3}
+  - {fileID: 105074, guid: 28789d35adf833348ae8a4ba476c34b7, type: 3}
+  - {fileID: 197196, guid: 4982275e186455342a472e320445fdda, type: 3}
+  - {fileID: 136260, guid: 4911f67b57e336d49982101e934a4e7f, type: 3}
   LandParent: {fileID: 4945536752195724823}
   isLeft: 0
   terrainLayer:

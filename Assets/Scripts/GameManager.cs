@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject SectionPrefab;
     public GameObject BoundaryPrefab;
     public GameObject BeachBoundaryPrefab;
+    public GameObject PirateTownBoundaryPrefab;
 
     public List<GameObject> GeneratedTerrain;
     public List<GameObject> GeneratedLeftBoundary;
@@ -60,9 +61,9 @@ public class GameManager : MonoBehaviour
             CurrentBiome = Biome.Beach;
 
         } else {
-            SelectedBoundary = BoundaryPrefab;
+            SelectedBoundary = PirateTownBoundaryPrefab;
 
-            CurrentBiome = Biome.Ocean;
+            CurrentBiome = Biome.PirateTown;
         }
     
         Distance++;
@@ -84,6 +85,7 @@ public class GameManager : MonoBehaviour
                 LeftSection.GetComponent<BoundaryScriptBeach>().isLeft = true;
                 break;
             case Biome.PirateTown:
+                LeftSection.GetComponent<PirateTownBoundaryScript>().isLeft = true;
                 break;
         }
 

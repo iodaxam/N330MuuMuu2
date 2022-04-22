@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
         
         GameObject NextSection = Instantiate(SectionPrefab, EndTransform, Quaternion.identity);
 
+        NextSection.transform.Find("Connectors").transform.Find("Start").GetComponent<TerrainScript>().WorldBiome = CurrentBiome;
+
         GameObject LeftSection = Instantiate(SelectedBoundary, new Vector3((EndTransform.x - 180), EndTransform.y, EndTransform.z), Quaternion.identity);
         
         switch(CurrentBiome)

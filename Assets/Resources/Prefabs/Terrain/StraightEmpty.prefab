@@ -271,6 +271,8 @@ MonoBehaviour:
   LeftLane: {fileID: 7532813772635478263}
   MiddleLane: {fileID: 1264211863156192058}
   RightLane: {fileID: 7088818923645396607}
+  WorldBiome: 0
+  percentChanceOfPowerUp: 0
   Coin: {fileID: 0}
 --- !u!1 &9176813618368071438
 GameObject:

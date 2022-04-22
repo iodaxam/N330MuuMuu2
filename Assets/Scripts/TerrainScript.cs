@@ -25,6 +25,8 @@ public class TerrainScript : MonoBehaviour
 	public Transform MiddleLane;
 	public Transform RightLane;
 
+	public Biome WorldBiome;
+
 	private GameObject ObstaclePrefab;
 	private ThreeLanes OccupiedSpot1;
 	private ThreeLanes OccupiedSpot2;
@@ -43,8 +45,20 @@ public class TerrainScript : MonoBehaviour
 
 	void Start()
 	{
+		switch(WorldBiome)
+		{
+			case Biome.Ocean:
+				obstacles = Resources.LoadAll<GameObject>("Prefabs/ObstaclesOcean").ToList();
+				break;
+			case Biome.Beach:
+				obstacles = Resources.LoadAll<GameObject>("Prefabs/ObstaclesBeach").ToList();
+				break;
+			case Biome.PirateTown:
+				obstacles = Resources.LoadAll<GameObject>("Prefabs/ObstaclesOcean").ToList();
+				break;
+		}
+
 		powerUps = Resources.LoadAll<GameObject>("Prefabs/PowerUps").ToList();
-		obstacles = Resources.LoadAll<GameObject>("Prefabs/Obstacles").ToList();
 
 		ColliderComponent = GetComponent<BoxCollider>();
 		GameManager = GameObject.Find("GameManager");

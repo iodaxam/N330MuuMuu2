@@ -19,6 +19,10 @@ public class PirateTownBoundaryScript : MonoBehaviour
             MeshFilter Filter = Plank.GetComponent<MeshFilter>();
 
             Filter.mesh = Platforms[RandNumber];
+
+            GameObject ColliderChild = Plank.transform.Find("MeshColliderEmpty").gameObject;
+
+            ColliderChild.GetComponent<MeshCollider>().sharedMesh = Platforms[RandNumber];
         }
 
         if(!isLeft)

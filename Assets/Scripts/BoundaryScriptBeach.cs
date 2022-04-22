@@ -56,6 +56,28 @@ public class BoundaryScriptBeach : MonoBehaviour
             LandParent.transform.localPosition = new Vector3(0, 0, 150);
         }
 
+        StartCoroutine(LateStart(.1f));
+
+        // SpawnedBeachObjects.Add(Instantiate(AdditionalTerrainObjects[0], gameObject.transform.position, Quaternion.identity));
+
+        // SpawnedBeachObjects[0].transform.position += new Vector3(0, 150, 75);
+
+        // Ray ray = new Ray((SpawnedBeachObjects[0].transform.position - new Vector3(0, 0, 0)), Vector3.down);
+        // if(Physics.Raycast(ray, out RaycastHit info, 400, terrainLayer.value))
+        // {
+        //     Vector3 CurrentPosition = SpawnedBeachObjects[0].transform.position;
+        //     SpawnedBeachObjects[0].transform.position = new Vector3(CurrentPosition.x, info.point.y, CurrentPosition.z);
+        //     //Debug.Log(info.point);
+        //     HitPosition = info.point;
+
+        //     //info.collider.gameObject.tag = "Respawn";
+        // }
+    }
+
+    IEnumerator LateStart(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
         SpawnedBeachObjects.Add(Instantiate(AdditionalTerrainObjects[0], gameObject.transform.position, Quaternion.identity));
 
         SpawnedBeachObjects[0].transform.position += new Vector3(0, 150, 75);
@@ -64,7 +86,7 @@ public class BoundaryScriptBeach : MonoBehaviour
         if(Physics.Raycast(ray, out RaycastHit info, 400, terrainLayer.value))
         {
             Vector3 CurrentPosition = SpawnedBeachObjects[0].transform.position;
-            SpawnedBeachObjects[0].transform.position = new Vector3(CurrentPosition.x, info.point.y, CurrentPosition.z);
+            SpawnedBeachObjects[0].transform.position = new Vector3(CurrentPosition.x, (info.point.y - 10), CurrentPosition.z);
             //Debug.Log(info.point);
             HitPosition = info.point;
 

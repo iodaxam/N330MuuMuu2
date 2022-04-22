@@ -54,7 +54,7 @@ public class TerrainScript : MonoBehaviour
 				obstacles = Resources.LoadAll<GameObject>("Prefabs/ObstaclesBeach").ToList();
 				break;
 			case Biome.PirateTown:
-				obstacles = Resources.LoadAll<GameObject>("Prefabs/ObstaclesOcean").ToList();
+				obstacles = Resources.LoadAll<GameObject>("Prefabs/ObstaclesPirateTown").ToList();
 				break;
 		}
 

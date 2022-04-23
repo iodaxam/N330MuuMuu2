@@ -128,7 +128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2623849345380539401
 Transform:
   m_ObjectHideFlags: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674d0f5645049d44bbf3af8b862be754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AddedObjects: []
   isLeft: 0
   LandParent: {fileID: 4945536752195724823}
   Platforms:
@@ -199,6 +200,14 @@ MonoBehaviour:
   - {fileID: 8928763925739750852}
   - {fileID: 4664723448188237293}
   - {fileID: 4938933642764171022}
+  BarrelObjects:
+  - {fileID: 750837042388548497, guid: c5d2efb91693f6a49a806f50a7828e3c, type: 3}
+  - {fileID: 750837042388548497, guid: cafea25a9221cde4dbe6919f8c4ed5aa, type: 3}
+  - {fileID: 750837042388548497, guid: eeacc3c6178c39f469ef17ce7b09f75e, type: 3}
+  BarrelSpawnLocation: {fileID: 7211416238969023984}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1559581191168874109
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +410,36 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1 &2983143014730370324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7211416238969023984}
+  m_Layer: 0
+  m_Name: BarrelSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7211416238969023984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2983143014730370324}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 54.7, y: 96.6, z: -58.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8912616049121830748}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3991051833389531040
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,6 +550,7 @@ Transform:
   - {fileID: 8928763925739750852}
   - {fileID: 4664723448188237293}
   - {fileID: 4938933642764171022}
+  - {fileID: 7211416238969023984}
   m_Father: {fileID: 2623849345380539401}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

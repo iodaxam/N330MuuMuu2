@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PirateTownBoundaryScript : MonoBehaviour
 {
-    private List<GameObject> AddedObjects;
+    public List<GameObject> AddedObjects;
 
     public bool isLeft;
     public GameObject LandParent;
@@ -13,6 +13,11 @@ public class PirateTownBoundaryScript : MonoBehaviour
     public List<GameObject> PlatformObjects;
     public List<GameObject> BuildingObjects;
     public List<Transform> BuildingLocations;
+    public List<GameObject> BarrelObjects;
+    public Transform BarrelSpawnLocation;
+
+
+    public LayerMask terrainLayer;
 
     void Start()
     {
@@ -46,8 +51,48 @@ public class PirateTownBoundaryScript : MonoBehaviour
         {
             int RandNumber = Random.Range(0, BuildingObjects.Count);
 
-            AddedObjects.Add(Instantiate(BuildingObjects[RandNumber], BuildingLocation.position, Quaternion.identity));
+            GameObject SpawnedObject = Instantiate(BuildingObjects[RandNumber], (BuildingLocation.position + new Vector3((Random.Range(-41,41)), 100, 0)), Quaternion.Euler(0, 90, 0));
+
+            AddedObjects.Add(SpawnedObject);
+
+            SpawnedObject.transform.localScale = new Vector3(10, 10, 10);
+
+            Ray ray = new Ray((SpawnedObject.transform.position), Vector3.down);
+
+            if(Physics.Raycast(ray, out RaycastHit info, 400, terrainLayer.value))
+            {
+                SpawnedObject.transform.position = info.point;
+            } else {
+                //This is wehre it should destroy if it doesn't hit terrain
+            }
+        }
+
+        if(Random.Range(0,3) == 1)
+        {
+            int RandNumber = Random.Range(0, BarrelObjects.Count);
+
+            GameObject SpawnedBarrel = Instantiate(BarrelObjects[RandNumber], BarrelSpawnLocation.position, Quaternion.identity);
+
+            AddedObjects.Add(SpawnedBarrel);
+
+            SpawnedBarrel.transform.localScale = new Vector3(13, 13, 13);
+
+            Ray ray = new Ray((SpawnedBarrel.transform.position), Vector3.down);
+
+            if(Physics.Raycast(ray, out RaycastHit info, 400, terrainLayer.value))
+            {
+                SpawnedBarrel.transform.position = info.point;
+            } else {
+                //This is wehre it should destroy if it doesn't hit terrain
+            }
+        }
+    }
+
+    void OnDestroy()
+    {
+        foreach(GameObject AddedThing in AddedObjects)
+        {
+            Destroy(AddedThing.gameObject);
         }
     }
 }  
-

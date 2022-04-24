@@ -11095,6 +11095,7 @@ MonoBehaviour:
   LandSection: 0
   BeachDistance: 10
   PirateTownDistance: 20
+  GhostYardDistance: 7
 --- !u!4 &1722922297
 Transform:
   m_ObjectHideFlags: 0

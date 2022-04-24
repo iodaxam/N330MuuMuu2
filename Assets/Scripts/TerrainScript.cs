@@ -110,7 +110,7 @@ public class TerrainScript : MonoBehaviour
 					break;
 			}
 
-			Instantiate(CoinPrefab, AvailableSpots[Random.Range(0, AvailableSpots.Count)].position, Quaternion.identity);
+			Obstacle2 = Instantiate(CoinPrefab, AvailableSpots[Random.Range(0, AvailableSpots.Count)].position, Quaternion.identity);
 
 		} else {
 			if(!StarterTile) 

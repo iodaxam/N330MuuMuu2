@@ -275,6 +275,7 @@ MonoBehaviour:
   percentChanceOfPowerUp: 0
   Coin: {fileID: 0}
   CoinPrefab: {fileID: 6175031514867218350, guid: 0c9b52e6aafdbaa4dbdf37f283a541f1, type: 3}
+  MissionGameObject: {fileID: 0}
 --- !u!1 &9176813618368071438
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public enum ThreeLanes
 {
@@ -43,10 +44,14 @@ public class TerrainScript : MonoBehaviour
 
 	public GameObject CoinPrefab;
 
+	public GameObject MissionGameObject;
+
 
 
 	void Start()
 	{
+		MissionGameObject = GameObject.Find("MissionObject");
+
 		switch(WorldBiome)
 		{
 			case Biome.Ocean:
@@ -174,6 +179,19 @@ public class TerrainScript : MonoBehaviour
 		if(other.tag == "Player")
 		{
 			GameManager.SendMessage("GenerateNextSection", StartTransform.position);
+
+			switch(WorldBiome)
+			{
+				case Biome.Ocean:
+					MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the Beach";
+					break;
+				case Biome.Beach:
+					MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the PirateTown";
+					break;
+				case Biome.PirateTown:
+					MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the ship graveyard";
+					break;
+			}
 			
 		}
 	}

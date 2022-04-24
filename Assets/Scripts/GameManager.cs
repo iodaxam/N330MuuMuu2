@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
             SelectedBoundary = PirateTownBoundaryPrefab;
 
             CurrentBiome = Biome.PirateTown;
+
         }
     
         Distance++;

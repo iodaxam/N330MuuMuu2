@@ -41,6 +41,8 @@ public class TerrainScript : MonoBehaviour
 	private List<GameObject> obstacles;
 	private List<GameObject> powerUps;
 
+	public GameObject CoinPrefab;
+
 
 
 	void Start()
@@ -74,49 +76,87 @@ public class TerrainScript : MonoBehaviour
 			ObstaclePrefab = obstacles[Random.Range(0, obstacles.Count)];	
 		}
 
-		if(!StarterTile) 
+		
+		if(WorldBiome == Biome.PirateTown)
 		{
+			List<Transform> AvailableSpots = new List<Transform>();
 			switch(RandObstaclePlacement)
 			{
 				case 0:
 					Obstacle1 = Instantiate(ObstaclePrefab, LeftLane.position, Quaternion.identity);
 					OccupiedSpot1 = ThreeLanes.Left;
+					AvailableSpots.Add(MiddleLane);
+					AvailableSpots.Add(RightLane);
 					break;
 				case 1:
+					if(ObstaclePrefab == obstacles[3]) {
+						obstacles.RemoveAt(3);
+						ObstaclePrefab = obstacles[Random.Range(0, obstacles.Count)];
+					}
 					Obstacle1 = Instantiate(ObstaclePrefab, MiddleLane.position, Quaternion.identity);
 					OccupiedSpot1 = ThreeLanes.Middle;
+					AvailableSpots.Add(LeftLane);
+					AvailableSpots.Add(RightLane);
 					break;
 				case 2:
 					Obstacle1 = Instantiate(ObstaclePrefab, RightLane.position, Quaternion.identity);
 					OccupiedSpot1 = ThreeLanes.Right;
+					AvailableSpots.Add(LeftLane);
+					AvailableSpots.Add(MiddleLane);
+
+					if(ObstaclePrefab == obstacles[3]) {
+						Obstacle1.transform.rotation = Quaternion.Euler(0, 180, 0);
+					}
 					break;
 			}
 
-			RandObstaclePlacement = Random.Range(0, 3);
-			ObstaclePrefab = obstacles[Random.Range(0, obstacles.Count)];
-			
-			switch(RandObstaclePlacement)
-			{
-				case 0:
-					Obstacle2 = Instantiate(ObstaclePrefab, LeftLane.position, Quaternion.identity);
-					OccupiedSpot2 = ThreeLanes.Left;
-					break;
-				case 1:
-					Obstacle2 = Instantiate(ObstaclePrefab, MiddleLane.position, Quaternion.identity);
-					OccupiedSpot2 = ThreeLanes.Middle;
-					break;
-				case 2:
-					Obstacle2 = Instantiate(ObstaclePrefab, RightLane.position, Quaternion.identity);
-					OccupiedSpot2 = ThreeLanes.Right;
-					break;
-			}
+			Instantiate(CoinPrefab, AvailableSpots[Random.Range(0, AvailableSpots.Count)].position, Quaternion.identity);
 
-			if(OccupiedSpot1 == OccupiedSpot2) 
+		} else {
+			if(!StarterTile) 
 			{
-				Destroy(Obstacle2.gameObject);
+				switch(RandObstaclePlacement)
+				{
+					case 0:
+						Obstacle1 = Instantiate(ObstaclePrefab, LeftLane.position, Quaternion.identity);
+						OccupiedSpot1 = ThreeLanes.Left;
+						break;
+					case 1:
+						Obstacle1 = Instantiate(ObstaclePrefab, MiddleLane.position, Quaternion.identity);
+						OccupiedSpot1 = ThreeLanes.Middle;
+						break;
+					case 2:
+						Obstacle1 = Instantiate(ObstaclePrefab, RightLane.position, Quaternion.identity);
+						OccupiedSpot1 = ThreeLanes.Right;
+						break;
+				}
+
+				RandObstaclePlacement = Random.Range(0, 3);
+				ObstaclePrefab = obstacles[Random.Range(0, obstacles.Count)];
+				
+				switch(RandObstaclePlacement)
+				{
+					case 0:
+						Obstacle2 = Instantiate(ObstaclePrefab, LeftLane.position, Quaternion.identity);
+						OccupiedSpot2 = ThreeLanes.Left;
+						break;
+					case 1:
+						Obstacle2 = Instantiate(ObstaclePrefab, MiddleLane.position, Quaternion.identity);
+						OccupiedSpot2 = ThreeLanes.Middle;
+						break;
+					case 2:
+						Obstacle2 = Instantiate(ObstaclePrefab, RightLane.position, Quaternion.identity);
+						OccupiedSpot2 = ThreeLanes.Right;
+						break;
+				}
+
+				if(OccupiedSpot1 == OccupiedSpot2) 
+				{
+					Destroy(Obstacle2.gameObject);
+				}
 			}
-		}
 		// Animator krakenAnim = Instantiate(obstacles[1].GetComponentInChildren<Animator>());
+		}
 	}
 
 	void OnDestroy() 

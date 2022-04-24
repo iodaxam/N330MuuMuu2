@@ -7,7 +7,8 @@ public enum Biome
 {
     Ocean,
     Beach,
-    PirateTown
+    PirateTown,
+    GhostYard
 }
 
 public class GameManager : MonoBehaviour
@@ -29,7 +30,8 @@ public class GameManager : MonoBehaviour
     public int ChangeDistance = 3;
     public bool LandSection;
     public int BeachDistance = 5;
-    public int PirateTownDistance = 10;
+    public int PirateTownDistance = 6;
+    public int GhostYardDistance = 7;
 
     private Biome CurrentBiome;
     
@@ -60,11 +62,13 @@ public class GameManager : MonoBehaviour
 
             CurrentBiome = Biome.Beach;
 
-        } else {
+        } else if(Distance < GhostYardDistance) {
             SelectedBoundary = PirateTownBoundaryPrefab;
 
             CurrentBiome = Biome.PirateTown;
 
+        } else {
+            CurrentBiome = Biome.GhostYard;
         }
     
         Distance++;

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
+using Random=UnityEngine.Random;
 
 
 public class PlayerController : MonoBehaviour
@@ -15,7 +15,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 endPosition;   //Last touch position
     private Vector3 camPos;
     private float dragDistance;  //minimum distance for a swipe to be registered
+
     public float speed = 5;
+    public bool isDead = false;
+    private float defSpeed;
     private Rigidbody rb;
     private Animator anim;
     public GameObject kraken;
@@ -26,10 +29,10 @@ public class PlayerController : MonoBehaviour
     public int laneDistance = 57;
     private int skinIndex;
     private int recoilForce;
-    public float krakenAnimationTime;
     private int shields;
 
     [Header("References")]
+    private Kraken kr;
     private GameObject GameManager;
     private int score;
     private int highScore;
@@ -56,13 +59,12 @@ public class PlayerController : MonoBehaviour
     public Transform LaunchPosition;
     public GameObject CannonPE;
 
+    private bool disableInput = false;
+    private int i;
     public int MaxBalls = 3;
     private int CurrentBalls = 3;
 
-
-    
-
-    void Start()
+    public void Start()
     {
         ownedSkins = new int[5] {1,0,0,0,0};
         for (int i = 0; i < ownedSkins.Length; i++)
@@ -84,15 +86,30 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void SpeedUp()
+    {
+            if (rb.velocity.magnitude < 400) {
+                rb.AddRelativeForce(0, 0, speed*(Mathf.Log(speed)*2));
+            } else if (rb.velocity.magnitude < 600) {
+                // StartCoroutine(speedTimer());
+                rb.AddRelativeForce(0, 0, speed/(Mathf.Log(speed, 2)*2));
+            } else if (rb.velocity.magnitude < 1000) {
+                rb.AddRelativeForce(0, 0, speed/Mathf.Exp(speed));
+            }
+    }
+
+    // IEnumerator speedTimer()
+    // {
+    //     float i = Random.Range(5.0f, 20.0f);
+    //     yield return new WaitForSeconds(i);
+    // }
+
     private void FixedUpdate()
     {
         if (!gameStarted) return;
-
         transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
-
-        if(rb.velocity.z < 250f)
-        {
-            rb.AddRelativeForce(0, 0, 30);
+        if (!isDead){
+            SpeedUp();
         }
     }
 
@@ -118,95 +135,98 @@ public class PlayerController : MonoBehaviour
         scoreText.text = score.ToString();
         if (Input.touchCount != 1) return;
         Touch touch = Input.GetTouch(0); // get the touch
-        switch (touch.phase)
-        {
-            //check for the first touch
-            case TouchPhase.Began:
-                startPosition = touch.position;
-                endPosition = touch.position;
-                break;
-            // update the last position based on where they moved
-            case TouchPhase.Moved:
-                endPosition = touch.position;
-                break;
-            //check if the finger is removed from the screen
-            case TouchPhase.Ended:
+        if (!isDead){
+            switch (touch.phase)
             {
-                endPosition = touch.position;  //last touch position.
-                //Check if drag distance is greater than 10% of the screen height
-                if (Mathf.Abs(endPosition.x - startPosition.x) > dragDistance || Mathf.Abs(endPosition.y - startPosition.y) > dragDistance)
-                {//It's a drag
-                    //check if the drag is vertical or horizontal
-                    if (Mathf.Abs(endPosition.x - startPosition.x) > Mathf.Abs(endPosition.y - startPosition.y))
-                    {   //If the horizontal movement is greater than the vertical movement
-                        if((endPosition.x > startPosition.x) && (CurrentLane != ThreeLanes.Right))
-                        {
-                            if (!gameStarted)
+                //check for the first touch
+                case TouchPhase.Began:
+                    startPosition = touch.position;
+                    endPosition = touch.position;
+                    break;
+                // update the last position based on where they moved
+                case TouchPhase.Moved:
+                    endPosition = touch.position;
+                    break;
+                //check if the finger is removed from the screen
+                case TouchPhase.Ended:
+                {
+                    endPosition = touch.position;  //last touch position.
+                    //Check if drag distance is greater than 10% of the screen height
+                    if (Mathf.Abs(endPosition.x - startPosition.x) > dragDistance || Mathf.Abs(endPosition.y - startPosition.y) > dragDistance)
+                    {//It's a drag
+                        //check if the drag is vertical or horizontal
+                        if (Mathf.Abs(endPosition.x - startPosition.x) > Mathf.Abs(endPosition.y - startPosition.y))
+                        {   //If the horizontal movement is greater than the vertical movement
+                            if((endPosition.x > startPosition.x) && (CurrentLane != ThreeLanes.Right))
                             {
-                                SelectSkin(1);
-                            }
-                            else
+                                if (!gameStarted)
+                                {
+                                    SelectSkin(1);
+                                }
+                                else
+                                {
+                                    ChangeLane(laneDistance);
+                                    anim.Play("Right Turn");
+                                }
+                            } else if((endPosition.x < startPosition.x) && (CurrentLane != ThreeLanes.Left))
                             {
-                                ChangeLane(laneDistance);
-                                anim.Play("Right Turn");
-                            }
-                        } else if((endPosition.x < startPosition.x) && (CurrentLane != ThreeLanes.Left))
-                        {
-                            if (!gameStarted)
+                                if (!gameStarted)
+                                {
+                                    SelectSkin(-1);
+                                }
+                                else
+                                {
+                                    ChangeLane(-laneDistance);
+                                    anim.Play("Left Turn");
+                                }
+                            } else if(CurrentLane == ThreeLanes.Middle)
                             {
-                                SelectSkin(-1);
-                            }
-                            else
-                            {
-                                ChangeLane(-laneDistance);
-                                anim.Play("Left Turn");
-                            }
-                        } else if(CurrentLane == ThreeLanes.Middle)
-                        {
-                            int ChangeAmount = (endPosition.x > startPosition.x) ? 57 : -57;                     
-                            xPos += ChangeAmount;
+                                int ChangeAmount = (endPosition.x > startPosition.x) ? 57 : -57;                     
+                                xPos += ChangeAmount;
 
-                            ChangeLane(ChangeAmount);
+                                ChangeLane(ChangeAmount);
+                            }
+                        }
+                        else
+                        { //the vertical movement is greater than the horizontal movement
+                            if(CurrentBalls > 0)
+                            {
+                                if(endPosition.y > startPosition.y)
+                                {
+                                    GameObject cannonBall = Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
+
+                                    cannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
+
+                                    GameObject PE = Instantiate(CannonPE, LaunchPosition.position, Quaternion.identity);
+
+                                    Destroy(PE, 2);
+
+                                    Destroy(cannonBall, 4);
+
+                                    CurrentBalls--;
+                                }
+                            } else {
+                            }
                         }
                     }
                     else
-                    { //the vertical movement is greater than the horizontal movement
-                        if(CurrentBalls > 0)
+                    {   //It's a tap as the drag distance is less than 15% of the screen height
+                        Debug.Log("Tap");
+                        if (!gameStarted)
                         {
-                            if(endPosition.y > startPosition.y)
+                            if (ownedSkins[skindex] == 1)
                             {
-                                GameObject cannonBall = Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
-
-                                cannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
-
-                                GameObject PE = Instantiate(CannonPE, LaunchPosition.position, Quaternion.identity);
-
-                                Destroy(PE, 2);
-
-                                Destroy(cannonBall, 4);
-
-                                CurrentBalls--;
+                                StartGame();
+                            }
+                            else
+                            {
+                                PurchaseSkin(skindex);
                             }
                         }
                     }
-                }
-                else
-                {   //It's a tap as the drag distance is less than 15% of the screen height
-                    Debug.Log("Tap");
-                    if (!gameStarted)
-                    {
-                        if (ownedSkins[skindex] == 1)
-                        {
-                            StartGame();
-                        }
-                        else
-                        {
-                            PurchaseSkin(skindex);
-                        }
-                    }
-                }
 
-                break;
+                    break;
+                }
             }
         }
     }
@@ -220,39 +240,48 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            anim.SetFloat("Blend", 0.3f, 0.1f, Time.deltaTime);
-            cooldown = .5f;
+            StartCoroutine(deathTimer());
             rb.velocity = Vector3.zero;
-            gameObject.transform.position = new Vector3(0, 0, 100);
-            gameStarted = false;
-            GameManager.SendMessage("Restart");
-            SaveGame();
-            if (score > highScore)
-            {
-                highScore = score;
-                highScoreText.text = "HighScore: " + highScore;
-            }
-            TitleScreen.SetActive(true);
-            GameManager.SendMessage("StopFades");
+            cooldown = .5f;
             GameManager.SendMessage("PlayPitched", "CrashSound");
+            GameManager.SendMessage("StopFades");
             GameManager.SendMessage("FadeOut", "SailingSound");
             GameManager.SendMessage("FadeOut", "BackgroundMusic");
-            AudioManagerScript.FadeIn("MenuSound", .05f, 1f);
-            CurrentBalls = 3;
+            isDead = true;
         }
     }
 
-    private void Kraken()
+    public void Kraken()
     {
         // call animation stuff here 
-        rb.velocity = Vector3.zero;
-        StartCoroutine(nameof(krakenTimer));
+        if (kr != null)
+            {
+                Debug.Log(kr.getLength());
+            }
+                else
+            {
+                Debug.Log("no");
+            }
+        Lose();
     }
 
-    IEnumerable krakenTimer()
+    IEnumerator deathTimer()
     {
-        yield return new WaitForSeconds(krakenAnimationTime);
-        Lose();
+        yield return new WaitForSeconds(1.25f);
+        gameStarted = false;
+        gameObject.transform.position = new Vector3(0, 0, 100);
+        GameManager.SendMessage("Restart");
+        SaveGame();
+        if (score > highScore)
+        {
+            highScore = score;
+            highScoreText.text = "HighScore: " + highScore;
+        }
+        AudioManagerScript.FadeIn("MenuSound", .05f, 1f);
+        TitleScreen.SetActive(true);
+        CurrentBalls = 3;
+        isDead = false;
+        anim.SetFloat("Blend", 1, 0.1f, Time.deltaTime);
     }
 
     private void MoneyUp(int amount)
@@ -276,7 +305,6 @@ public class PlayerController : MonoBehaviour
     
     public void StartGame()
     {
-        anim.SetFloat("Blend", 1, 0.1f, Time.deltaTime);
         if(cooldown <= 0) {
             rb.velocity = new Vector3(0, 0, startSpeed);
             gameStarted = true;
@@ -287,6 +315,7 @@ public class PlayerController : MonoBehaviour
             GameManager.SendMessage("FadeOut", "MenuSound");
             AudioManagerScript.FadeIn("BackgroundMusic", .5f, 1f);
             AudioManagerScript.FadeIn("SailingSound", .5f, 8f);
+            skins[skindex].transform.localRotation = Quaternion.identity;
         }
     }
 
@@ -319,8 +348,8 @@ public class PlayerController : MonoBehaviour
 
      private void SelectSkin(int direction)
      {
+         skins[skindex].transform.localRotation = Quaternion.identity;
          skins[skindex].SetActive(false);
-         skins[skindex].transform.rotation = Quaternion.identity;
          skindex -= direction;
          if (skindex < 0)
          {
@@ -330,8 +359,9 @@ public class PlayerController : MonoBehaviour
          {
              skindex = 0;
          }
-        skins[skindex].transform.rotation = Quaternion.identity;
         skins[skindex].SetActive(true);
+        skins[skindex].transform.localRotation = Quaternion.identity;
+        Debug.Log(skins[skindex] + "" + skindex);
      }
 
      public void PurchaseSkin(int index)

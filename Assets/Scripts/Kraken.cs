@@ -5,6 +5,9 @@ using UnityEngine;
 public class Kraken : MonoBehaviour
 {
 	private Animator anim;
+
+	private float krakenAnimationTime;
+
     // Start is called before the first frame update
 
     void Start()
@@ -26,11 +29,19 @@ public class Kraken : MonoBehaviour
 	// 	}
 	// }
 
+	public float getLength()
+    {
+		krakenAnimationTime = anim.GetCurrentAnimatorStateInfo(0).length;
+		return krakenAnimationTime;
+    }
+	
+
     void OnTriggerEnter(Collider other)
 	{
 		if(other.tag == "Player")
 		{
 		    other.SendMessage("Kraken");
+			krakenAnimationTime = anim.GetCurrentAnimatorStateInfo(0).length;
 		    // do animation stuff
 			anim.Play("Attack 1");
 		}

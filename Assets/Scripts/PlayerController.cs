@@ -40,9 +40,10 @@ public class PlayerController : MonoBehaviour
     public Text money;
     private bool gameStarted;
     public GameObject TitleScreen;
-    // public GameObject ShopScreen;
+    public GameObject ShopScreen;
     public Text highScoreText;
     public Text scoreText;
+    public Text shipCost;
     // public GameObject ScoreUI;
     // public Button PurchaseButton;
     // public Button StartButton;
@@ -67,10 +68,10 @@ public class PlayerController : MonoBehaviour
     public void Start()
     {
         ownedSkins = new int[5] {1,0,0,0,0};
-        for (int i = 0; i < ownedSkins.Length; i++)
-        {
-            ownedSkins[i] = PlayerPrefs.GetInt("Skin" + i);
-        }
+        // for (int i = 0; i < ownedSkins.Length; i++)
+        // {
+        //     ownedSkins[i] = PlayerPrefs.GetInt("Skin" + i);
+        // }
         
         coins = PlayerPrefs.GetInt("Money");
         // coins = 9999; // uncomment for free money
@@ -83,6 +84,7 @@ public class PlayerController : MonoBehaviour
         money.text = coins.ToString();
         highScoreText.text = "High Score: " + highScore;
         AudioManagerScript = GameManager.GetComponent<AudioManager>();
+        ShopScreen.SetActive(false);
 
     }
 
@@ -255,13 +257,13 @@ public class PlayerController : MonoBehaviour
     {
         // call animation stuff here 
         if (kr != null)
-            {
-                Debug.Log(kr.getLength());
-            }
-                else
-            {
-                Debug.Log("no");
-            }
+        {
+            Debug.Log(kr.getLength());
+        }
+        else
+        {
+            Debug.Log("no");
+        }
         Lose();
     }
 
@@ -361,16 +363,28 @@ public class PlayerController : MonoBehaviour
          }
         skins[skindex].SetActive(true);
         skins[skindex].transform.localRotation = Quaternion.identity;
-        Debug.Log(skins[skindex] + "" + skindex);
+        //Debug.Log(skins[skindex] + "" + skindex);
+        if (ownedSkins[skindex] == 1)
+        {
+            ShopScreen.SetActive(false);
+        }
+        else
+        {
+            ShopScreen.SetActive(true);
+            shipCost.text = (50 * skindex * skindex).ToString();
+            Debug.Log("Skindex: " + skindex);
+        }
+        
      }
 
      public void PurchaseSkin(int index)
      {
-         int cost = 25 * index * index;
+         int cost = 50 * index * index;
          if (coins < cost) return;
          coins -= cost; 
          ownedSkins[index] = 1;
          money.text = coins.ToString();
+         ShopScreen.SetActive(false);
          SaveGame();
 
      }

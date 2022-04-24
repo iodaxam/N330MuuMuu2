@@ -1417,7 +1417,7 @@ GameObject:
   - component: {fileID: 215574938}
   - component: {fileID: 215574937}
   m_Layer: 5
-  m_Name: TitleImage
+  m_Name: Render Texture Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1431,16 +1431,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215574935}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1292852, y: 0.2271202, z: 0.21008845}
+  m_LocalPosition: {x: 0, y: 0, z: -190.76183}
+  m_LocalScale: {x: 0.85677016, y: 0.8567702, z: 0.85677034}
   m_Children: []
-  m_Father: {fileID: 1001212539}
-  m_RootOrder: 0
+  m_Father: {fileID: 2111303445}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.16220774, y: 0.4321161}
   m_AnchorMax: {x: 0.85162324, y: 0.6301161}
-  m_AnchoredPosition: {x: -0.6916008, y: -6.2203}
-  m_SizeDelta: {x: 704.54, y: 840.62}
+  m_AnchoredPosition: {x: -905.2001, y: 1887.7515}
+  m_SizeDelta: {x: 773.4815, y: 880.20245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &215574937
 MonoBehaviour:
@@ -1698,7 +1698,7 @@ GameObject:
   - component: {fileID: 279751791}
   - component: {fileID: 279751790}
   m_Layer: 0
-  m_Name: Scroll UI Cam
+  m_Name: UI Cam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1795,12 +1795,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279751789}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1445.17, y: -501.51, z: 104.31}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.029907227, y: -0.30999756, z: -95.490005}
   m_LocalScale: {x: 0.001571351, y: 0.001571351, z: 0.001571351}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_Father: {fileID: 2111303445}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &280978060
 PrefabInstance:
@@ -6314,7 +6314,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 197.03642}
   m_LocalScale: {x: 6.3114076, y: 3.5926864, z: 3.8839436}
   m_Children:
-  - {fileID: 215574936}
+  - {fileID: 2111303445}
   m_Father: {fileID: 674501686}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13053,6 +13053,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2623849345380539401, guid: 0c8182c2f8e4ea147b3c2df6df8fcc94, type: 3}
   m_PrefabInstance: {fileID: 2108227020}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2111303444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2111303445}
+  m_Layer: 0
+  m_Name: Scroll
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2111303445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111303444}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 136.59317, y: -500.42175, z: 46.77666}
+  m_LocalScale: {x: 0.15089835, y: 0.26508883, z: 0.24520978}
+  m_Children:
+  - {fileID: 279751793}
+  - {fileID: 215574936}
+  - {fileID: 7790993591684025516}
+  m_Father: {fileID: 1001212539}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2113188226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13460,11 +13493,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7445852921387521558}
   m_LocalRotation: {x: 0.9999903, y: 0.0044056685, z: -0.0000004646423, w: 0.000000006366012}
-  m_LocalPosition: {x: 1445.2, y: -501.2, z: 199.8}
-  m_LocalScale: {x: 1656.326, y: 1656.3259, z: 1656.3259}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1656.3262, y: 1656.326, z: 1656.3259}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_Father: {fileID: 2111303445}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: -0.5050049}
 --- !u!4 &8421625348564716304
 Transform:

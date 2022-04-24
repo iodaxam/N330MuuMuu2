@@ -6312,7 +6312,7 @@ RectTransform:
   m_GameObject: {fileID: 1001212538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 197.03642}
-  m_LocalScale: {x: 6.3114076, y: 3.5926864, z: 3.8839436}
+  m_LocalScale: {x: 8.645998, y: 4.9216213, z: 5.3206143}
   m_Children:
   - {fileID: 2111303445}
   m_Father: {fileID: 674501686}
@@ -6320,7 +6320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -388.03717}
+  m_AnchoredPosition: {x: 0, y: -405}
   m_SizeDelta: {x: 100, y: 199.9113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1001212540
@@ -6336,7 +6336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.31764707}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13351,7 +13351,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a0dafca7209df66419a93bffdc98bc38, type: 2}
+  - {fileID: 2100000, guid: 428b4567d09efef43b78379bca6c220e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13461,7 +13461,7 @@ GameObject:
   - component: {fileID: 2420794601321149269}
   - component: {fileID: 7445852921387521559}
   m_Layer: 0
-  m_Name: MenuPlaceholder
+  m_Name: Scroll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13493,13 +13493,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7445852921387521558}
-  m_LocalRotation: {x: 0.9999903, y: 0.0044056685, z: -0.0000004646423, w: 0.000000006366012}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1656.3262, y: 1656.326, z: 1656.3259}
   m_Children: []
   m_Father: {fileID: 2111303445}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: -0.5050049}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 180}
 --- !u!4 &8421625348564716304
 Transform:
   m_ObjectHideFlags: 0

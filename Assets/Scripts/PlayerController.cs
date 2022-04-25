@@ -121,6 +121,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         anim = GetComponentInChildren<Animator>();
         if(cooldown > 0) {
             cooldown -= Time.deltaTime;
@@ -131,17 +132,92 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("Blend", 0.3f, 0.1f, Time.deltaTime);
         }
         
-        /*if (gameStarted)
-        {
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
-            rb.AddRelativeForce(0, 0, 1);
-        }*/
-        
-        score = Mathf.RoundToInt(transform.position.z - 100);
+        score = Mathf.RoundToInt(transform.position.z - 100) / 10 * (skindex + 1);
         scoreText.text = score.ToString();
-        if (Input.touchCount != 1) return;
-        Touch touch = Input.GetTouch(0); // get the touch
-        if (!isDead){
+
+        if (!isDead)
+        {
+            if (Input.anyKeyDown)
+            {
+                Debug.Log("KeyPressed");
+                if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
+                {
+                    if (Input.GetKey(KeyCode.RightArrow) && CurrentLane != ThreeLanes.Right)
+                    {
+                        if (!gameStarted)
+                        {
+                            SelectSkin(1);
+                        }
+                        else
+                        {
+                            ChangeLane(laneDistance);
+                            anim.Play("Right Turn");
+                        }
+                    }
+                    else if (Input.GetKey(KeyCode.LeftArrow) && CurrentLane != ThreeLanes.Left)
+                    {
+                        if (!gameStarted)
+                        {
+                            SelectSkin(-1);
+                        }
+                        else
+                        {
+                            ChangeLane(-laneDistance);
+                            anim.Play("Left Turn");
+                        }
+                    }
+                    else if (CurrentLane == ThreeLanes.Middle)
+                    {
+                        if (Input.GetKey(KeyCode.RightArrow))
+                        {
+                            xPos += laneDistance;
+                            ChangeLane(laneDistance);
+                        }
+                        else if (Input.GetKey(KeyCode.LeftArrow))
+                        {
+                            xPos -= laneDistance;
+                            ChangeLane(-laneDistance);
+                        }
+                    }
+                }
+                else if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+                {
+                    if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        if (gameStarted && CurrentBalls > 0)
+                        {
+                            GameObject cannonBall =
+                                Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
+
+                            cannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
+
+                            GameObject PE = Instantiate(CannonPE, LaunchPosition.position, Quaternion.identity);
+
+                            Destroy(PE, 2);
+
+                            Destroy(cannonBall, 4);
+
+                            CurrentBalls--;
+                        }
+                    }
+                    else if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        if (!gameStarted)
+                        {
+                            if (ownedSkins[skindex] == 1)
+                            {
+                                StartGame();
+                            }
+                            else
+                            {
+                                PurchaseSkin(skindex);
+                            }
+                        }
+                    }
+                }
+        }
+            if (Input.touchCount != 1) return;
+            Touch touch = Input.GetTouch(0); // get the touch
             switch (touch.phase)
             {
                 //check for the first touch
@@ -211,8 +287,7 @@ public class PlayerController : MonoBehaviour
 
                                     CurrentBalls--;
                                 }
-                            } else {
-                            }
+                            } 
                         }
                     }
                     else
@@ -256,7 +331,6 @@ public class PlayerController : MonoBehaviour
             isDead = true;
             startPosition = endPosition = Vector3.zero; // This is to fix the odd issue where the play can no longer swipe one direction until the game is started again.
         }
-        
     }
 
     public void Kraken()
@@ -368,7 +442,7 @@ public class PlayerController : MonoBehaviour
         skins[skindex].SetActive(true);
         skins[skindex].transform.localRotation = Quaternion.identity;
         //Debug.Log(skins[skindex] + "" + skindex);
-        if (ownedSkins[skindex] == 1)
+        if (ownedSkins[skindex] == 1 || skindex == 0)
         {
             ShopScreen.SetActive(false);
         }

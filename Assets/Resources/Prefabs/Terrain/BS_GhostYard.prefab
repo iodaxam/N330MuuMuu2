@@ -437,6 +437,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: FogParticlySystem
       objectReference: {fileID: 0}
+    - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580236410780882583, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0.11779833
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37ead781be37eaa4ea3afb01ad43faf3, type: 3}
 --- !u!4 &3214570512143219109 stripped

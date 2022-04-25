@@ -359,6 +359,9 @@ public class PlayerController : MonoBehaviour
         
         currentCoins = 0;
         currentCoinsText.text = currentCoins.ToString();
+        
+        xPos = 0;
+        CurrentLane = ThreeLanes.Middle;
     }
 
     private void MoneyUp(int amount)

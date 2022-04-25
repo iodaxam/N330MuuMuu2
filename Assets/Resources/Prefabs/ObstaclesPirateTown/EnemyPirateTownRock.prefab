@@ -64,7 +64,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FiringObject: 1
-  FirePrefab: {fileID: 6682411959531437410, guid: 9d03a8831c1d1374b804a7065add2dac, type: 3}
+  MovingObject: 0
+  FirePrefab: {fileID: 6682411959531437410, guid: 2dcb6c7824e93a340ad4f53fba528783, type: 3}
   ShootLocation: {fileID: 7630846664730686776}
 --- !u!54 &3081309240729445154
 Rigidbody:

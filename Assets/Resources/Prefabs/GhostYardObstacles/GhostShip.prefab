@@ -62,7 +62,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FiringObject: 1
-  FirePrefab: {fileID: 6682411959531437410, guid: 9d03a8831c1d1374b804a7065add2dac, type: 3}
+  MovingObject: 0
+  FirePrefab: {fileID: 6682411959531437410, guid: 2dcb6c7824e93a340ad4f53fba528783, type: 3}
   ShootLocation: {fileID: 3434824159835297827}
 --- !u!1 &3391687665154398278
 GameObject:
@@ -258,6 +259,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a83eddd324a6e0949bc61ec2b3fdae88, type: 2}
+    - target: {fileID: 64009938468750880, guid: 4982275e186455342a472e320445fdda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64116874578831990, guid: 4982275e186455342a472e320445fdda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64268748864882618, guid: 4982275e186455342a472e320445fdda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64627964929032568, guid: 4982275e186455342a472e320445fdda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64693490312543650, guid: 4982275e186455342a472e320445fdda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64734685818969980, guid: 4982275e186455342a472e320445fdda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64770854607965994, guid: 4982275e186455342a472e320445fdda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64829468265659736, guid: 4982275e186455342a472e320445fdda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64848415926554738, guid: 4982275e186455342a472e320445fdda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64934493462111352, guid: 4982275e186455342a472e320445fdda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4982275e186455342a472e320445fdda, type: 3}
 --- !u!4 &922938988519574277 stripped

@@ -6,6 +6,11 @@ public class EnemyCannonballScript : MonoBehaviour
 {
     public GameObject Rock_ParticleEffect;
 
+    void Start()
+    {
+        Destroy(gameObject, 5);
+    }
+
     void Update()
     {
         gameObject.transform.position += new Vector3(0, 0, -(300 * Time.deltaTime));
@@ -19,7 +24,7 @@ public class EnemyCannonballScript : MonoBehaviour
 
             Destroy(PE, 2);
 
-            other.SendMessage("Lose");
+            other.SendMessage("Lose", SendMessageOptions.DontRequireReceiver);
 
             Destroy(gameObject);
         }

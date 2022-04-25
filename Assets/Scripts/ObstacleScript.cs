@@ -23,7 +23,9 @@ public class ObstacleScript : MonoBehaviour
 
 			EnemyMovingScript script = SpawnedObject.GetComponent<EnemyMovingScript>();
 
-			script.Ship = gameObject;
+			script.Ship = this.gameObject;
+
+			SpawnedObject.SetActive(true);
 		}
 	}
 

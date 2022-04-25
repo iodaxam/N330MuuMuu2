@@ -136,12 +136,20 @@ public class TerrainScript : MonoBehaviour
 					OccupiedSpot1 = ThreeLanes.Middle;
 					AvailableSpots.Add(LeftLane);
 					AvailableSpots.Add(RightLane);
+					if(ObstaclePrefab == obstacles[1]) {
+						Vector3 newRotation = (Random.Range(0,2) == 0) ? Vector3.zero : new Vector3(0, 180, 0);
+
+						Obstacle1.transform.rotation = Quaternion.Euler(newRotation);
+					}
 					break;
 				case 2:
 					Obstacle1 = Instantiate(ObstaclePrefab, RightLane.position, Quaternion.identity);
 					OccupiedSpot1 = ThreeLanes.Right;
 					AvailableSpots.Add(LeftLane);
 					AvailableSpots.Add(MiddleLane);
+					if(ObstaclePrefab == obstacles[1]) {
+						Obstacle1.transform.rotation = Quaternion.Euler(0, 180, 0);
+					}
 					break;
 			}
 
@@ -209,21 +217,21 @@ public class TerrainScript : MonoBehaviour
 		{
 			GameManager.SendMessage("GenerateNextSection", StartTransform.position);
 
-			switch(WorldBiome)
-			{
-				case Biome.Ocean:
-					MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the Beach";
-					break;
-				case Biome.Beach:
-					MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the PirateTown";
-					break;
-				case Biome.PirateTown:
-					MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the ship graveyard";
-					break;
-				case Biome.GhostYard:
-					MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the Volcano";
-					break;
-			}
+			// switch(WorldBiome)
+			// {
+			// 	case Biome.Ocean:
+			// 		MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the Beach";
+			// 		break;
+			// 	case Biome.Beach:
+			// 		MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the PirateTown";
+			// 		break;
+			// 	case Biome.PirateTown:
+			// 		MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the ship graveyard";
+			// 		break;
+			// 	case Biome.GhostYard:
+			// 		MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the Volcano";
+			// 		break;
+			// }
 			
 		}
 	}

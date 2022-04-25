@@ -6,17 +6,28 @@ public class EnemyMovingScript : MonoBehaviour
 {
     public GameObject Ship;
 
-    //one for right and negative 1 for left
-    public float MoveDirection;
+    private bool startMoving;
+
+    private int MoveDirection;
     
     void Start() {
         Destroy(gameObject, 10);
     }
 
+    void Update()
+    {
+        if(startMoving)
+        {
+            Ship.transform.localPosition += ((Vector3.right * 30 * Time.deltaTime) * MoveDirection);
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player") {
-           
+           startMoving = true;
+
+            MoveDirection = (Ship.transform.rotation.y == 0) ? 1 : -1;
         }
     }
 }

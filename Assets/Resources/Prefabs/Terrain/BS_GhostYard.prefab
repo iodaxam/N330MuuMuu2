@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2623849345380539401
 Transform:
   m_ObjectHideFlags: 0
@@ -79,17 +79,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AddedObjects: []
-  isLeft: 0
-  LandParent: {fileID: 0}
-  Platforms: []
-  PlatformObjects: []
-  BuildingObjects: []
-  BuildingLocations: []
-  BarrelObjects: []
-  BarrelSpawnLocation: {fileID: 0}
-  terrainLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  ObjectSpawns:
+  - {fileID: 1685836662181105747}
+  - {fileID: 6395492365335526778}
+  - {fileID: 3502627806616505592}
+  - {fileID: 8823294188457565383}
+  - {fileID: 6223803105867883483}
+  - {fileID: 3437303757876579096}
+  - {fileID: 1101473337774125353}
+  - {fileID: 8024561778367697616}
+  - {fileID: 8658732835648482404}
+  ObjectPrefabs:
+  - {fileID: 129968, guid: cb70b578d1fec1e4892024ee505eda1b, type: 3}
+  - {fileID: 113156, guid: 3ee5a26aa7a392e4eb5055d9703e036d, type: 3}
+  - {fileID: 109168, guid: 208fdd3ef1228294c807f19ad1f8a2b3, type: 3}
+  - {fileID: 154830, guid: b2422d159a2884643ba9d94d7a1c57de, type: 3}
+  - {fileID: 136274, guid: 178878bcf5455764d89195155eee7e66, type: 3}
+  - {fileID: 128746, guid: 32c513dd4f75bc24692549a1a831b5c3, type: 3}
+  - {fileID: 2251764136766813041, guid: c91affa95985eb047a0d9dd60a2dab1d, type: 3}
+  - {fileID: 2251764136766813041, guid: c91affa95985eb047a0d9dd60a2dab1d, type: 3}
+  - {fileID: 105074, guid: 28789d35adf833348ae8a4ba476c34b7, type: 3}
+  - {fileID: 197196, guid: 4982275e186455342a472e320445fdda, type: 3}
+  - {fileID: 136260, guid: 4911f67b57e336d49982101e934a4e7f, type: 3}
+  ObjectScales: 0500000005000000050000000200000005000000010000000100000001000000020000000200000002000000
 --- !u!1 &1636548045947127900
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject BoundaryPrefab;
     public GameObject BeachBoundaryPrefab;
     public GameObject PirateTownBoundaryPrefab;
+    public GameObject GhostYardBoundaryPrefab;
 
     public List<GameObject> GeneratedTerrain;
     public List<GameObject> GeneratedLeftBoundary;
@@ -68,6 +69,8 @@ public class GameManager : MonoBehaviour
             CurrentBiome = Biome.PirateTown;
 
         } else {
+            SelectedBoundary = GhostYardBoundaryPrefab;
+
             CurrentBiome = Biome.GhostYard;
         }
     

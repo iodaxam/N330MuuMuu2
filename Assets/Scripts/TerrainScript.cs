@@ -63,6 +63,9 @@ public class TerrainScript : MonoBehaviour
 			case Biome.PirateTown:
 				obstacles = Resources.LoadAll<GameObject>("Prefabs/ObstaclesPirateTown").ToList();
 				break;
+			case Biome.GhostYard:
+				obstacles = Resources.LoadAll<GameObject>("Prefabs/GhostYardObstacles").ToList();
+				break;
 		}
 
 		powerUps = Resources.LoadAll<GameObject>("Prefabs/PowerUps").ToList();
@@ -117,6 +120,32 @@ public class TerrainScript : MonoBehaviour
 
 			Obstacle2 = Instantiate(CoinPrefab, AvailableSpots[Random.Range(0, AvailableSpots.Count)].position, Quaternion.identity);
 
+		} else if(WorldBiome == Biome.GhostYard) {
+			
+			List<Transform> AvailableSpots = new List<Transform>();
+			switch(RandObstaclePlacement)
+			{
+				case 0:
+					Obstacle1 = Instantiate(ObstaclePrefab, LeftLane.position, Quaternion.identity);
+					OccupiedSpot1 = ThreeLanes.Left;
+					AvailableSpots.Add(MiddleLane);
+					AvailableSpots.Add(RightLane);
+					break;
+				case 1:
+					Obstacle1 = Instantiate(ObstaclePrefab, MiddleLane.position, Quaternion.identity);
+					OccupiedSpot1 = ThreeLanes.Middle;
+					AvailableSpots.Add(LeftLane);
+					AvailableSpots.Add(RightLane);
+					break;
+				case 2:
+					Obstacle1 = Instantiate(ObstaclePrefab, RightLane.position, Quaternion.identity);
+					OccupiedSpot1 = ThreeLanes.Right;
+					AvailableSpots.Add(LeftLane);
+					AvailableSpots.Add(MiddleLane);
+					break;
+			}
+
+			Obstacle2 = Instantiate(CoinPrefab, AvailableSpots[Random.Range(0, AvailableSpots.Count)].position, Quaternion.identity);
 		} else {
 			if(!StarterTile) 
 			{
@@ -190,6 +219,9 @@ public class TerrainScript : MonoBehaviour
 					break;
 				case Biome.PirateTown:
 					MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the ship graveyard";
+					break;
+				case Biome.GhostYard:
+					MissionGameObject.GetComponent<TextMeshProUGUI>().text = "Current Mission: Reach the Volcano";
 					break;
 			}
 			

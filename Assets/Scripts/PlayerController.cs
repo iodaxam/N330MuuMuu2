@@ -255,15 +255,6 @@ public class PlayerController : MonoBehaviour
 
     public void Kraken()
     {
-        // call animation stuff here 
-        if (kr != null)
-        {
-            Debug.Log(kr.getLength());
-        }
-        else
-        {
-            Debug.Log("no");
-        }
         Lose();
     }
 

@@ -8,6 +8,10 @@ public class EnemyFireScript : MonoBehaviour
     public Transform FireLocation;
     public GameObject ExplosionParticle;
 
+    void Start() {
+        Destroy(gameObject, 10);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player") {

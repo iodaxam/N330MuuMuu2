@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstacleScript : MonoBehaviour
 {
 	public bool FiringObject;
+	public bool MovingObject;
 	public GameObject FirePrefab;
 	public Transform ShootLocation;
 
@@ -17,6 +18,12 @@ public class ObstacleScript : MonoBehaviour
 			SpawnedObject.GetComponent<EnemyFireScript>().FireLocation = ShootLocation;
 
 			SpawnedObject.SetActive(true);
+		} else if(MovingObject) {
+			GameObject SpawnedObject = Instantiate(FirePrefab, gameObject.transform.position, Quaternion.identity);
+
+			EnemyMovingScript script = SpawnedObject.GetComponent<EnemyMovingScript>();
+
+			script.Ship = gameObject;
 		}
 	}
 

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 48731201568040122}
   - component: {fileID: 376113858934039906}
-  - component: {fileID: 4113587174664531908}
+  - component: {fileID: 1855679531334982310}
   m_Layer: 0
-  m_Name: FireObjectPrefab
+  m_Name: MovingObjectPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 500
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4113587174664531908
+--- !u!114 &1855679531334982310
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,9 +54,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6682411959531437410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de62b80bb376bb64bac12202c7504111, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e8d8ced40d54ec48bd2fdf40cad0f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CannonballPrefab: {fileID: 8263080684486329568, guid: f3041ebc607c82f4fa1ab639f0780369, type: 3}
-  FireLocation: {fileID: 0}
-  ExplosionParticle: {fileID: 7571952667574766415, guid: 2a7ab0bb109add649b3f32e4e758743c, type: 3}
+  CannonballPrefab: {fileID: 0}
+  Ship: {fileID: 0}
+  MoveDirection: 0

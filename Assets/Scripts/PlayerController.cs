@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private int skinIndex;
     private int recoilForce;
     private int shields;
+    private int currentCoins;
 
     [Header("References")]
     private Kraken kr;
@@ -44,6 +45,8 @@ public class PlayerController : MonoBehaviour
     public Text highScoreText;
     public Text scoreText;
     public Text shipCost;
+    public Text currentCoinsText;
+    public GameObject inGameMenu;
     // public GameObject ScoreUI;
     // public Button PurchaseButton;
     // public Button StartButton;
@@ -68,10 +71,10 @@ public class PlayerController : MonoBehaviour
     public void Start()
     {
         ownedSkins = new int[5] {1,0,0,0,0};
-        // for (int i = 0; i < ownedSkins.Length; i++)
-        // {
-        //     ownedSkins[i] = PlayerPrefs.GetInt("Skin" + i);
-        // }
+        for (int i = 0; i < ownedSkins.Length; i++)
+        {
+            ownedSkins[i] = PlayerPrefs.GetInt("Skin" + i);
+        }
         
         coins = PlayerPrefs.GetInt("Money");
         // coins = 9999; // uncomment for free money
@@ -85,6 +88,7 @@ public class PlayerController : MonoBehaviour
         highScoreText.text = "High Score: " + highScore;
         AudioManagerScript = GameManager.GetComponent<AudioManager>();
         ShopScreen.SetActive(false);
+        inGameMenu.SetActive(false);
 
     }
 
@@ -250,7 +254,9 @@ public class PlayerController : MonoBehaviour
             GameManager.SendMessage("FadeOut", "SailingSound");
             GameManager.SendMessage("FadeOut", "BackgroundMusic");
             isDead = true;
+            startPosition = endPosition = Vector3.zero; // This is to fix the odd issue where the play can no longer swipe one direction until the game is started again.
         }
+        
     }
 
     public void Kraken()
@@ -272,14 +278,20 @@ public class PlayerController : MonoBehaviour
         }
         AudioManagerScript.FadeIn("MenuSound", .05f, 1f);
         TitleScreen.SetActive(true);
+        inGameMenu.SetActive(false);
         CurrentBalls = 3;
         isDead = false;
         anim.SetFloat("Blend", 1, 0.1f, Time.deltaTime);
+        
+        currentCoins = 0;
+        currentCoinsText.text = currentCoins.ToString();
     }
 
     private void MoneyUp(int amount)
     {
         coins += amount;
+        currentCoins += amount;
+        currentCoinsText.text = currentCoins.ToString();
         money.text = coins.ToString();
 
         GameManager.SendMessage("PlayPitched", "CoinSound");
@@ -302,6 +314,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector3(0, 0, startSpeed);
             gameStarted = true;
             TitleScreen.SetActive(false);
+            inGameMenu.SetActive(true);
             score = 0;
             GameManager.SendMessage("StopFades");
             GameManager.SendMessage("Play", "BellSound");

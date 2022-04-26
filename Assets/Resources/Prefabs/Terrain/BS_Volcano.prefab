@@ -100,7 +100,7 @@ MonoBehaviour:
   BackLocations:
   - {fileID: 7630387224129221681}
   - {fileID: 5667737180356586038}
-  TreePrefab: {fileID: 0}
+  TreePrefab: {fileID: 7600684399390388956, guid: a24e2f1721428ad428e4f63ff32d4c79, type: 3}
   isLeft: 0
   LandParent: {fileID: 4945536752195724823}
   VolcanoMat: {fileID: 2100000, guid: 7b199c063774f0b46b3fcab6c0e9f89e, type: 2}

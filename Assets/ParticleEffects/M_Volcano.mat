@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Test
+  m_Name: M_Volcano
   m_Shader: {fileID: -6465566751694194690, guid: 6fa684c9f1389954cac35cf2ac1e15c2, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
@@ -82,6 +82,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_a2f1e882a776453ebc7230a44ff664a1_Texture_1:
         m_Texture: {fileID: 2800000, guid: 9f55a16bf21a247429f66b5eee7d7432, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_addfb2db28e6449fbb3dd270045ee89d_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 7f8d45ff709776241b6a2ebfd40d8274, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:

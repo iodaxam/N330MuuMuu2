@@ -87,13 +87,13 @@ MonoBehaviour:
   - {fileID: 4300000, guid: b5a9fe27f6d8cb0409b973910bb5505a, type: 3}
   - {fileID: 4300000, guid: 4034c2997372dbc4aabd01b166acb78e, type: 3}
   - {fileID: 4300000, guid: 421fd44f2bb5fcf43b47ba898ed96df1, type: 3}
-  - {fileID: -1333685580964499329, guid: e027a68a4a42302409ce9d5eee37ecc6, type: 3}
+  - {fileID: -1333685580964499329, guid: d5cfc9b6acf6ce2498f325de1a442611, type: 3}
   BackPrefabs:
   - {fileID: 154830, guid: b2422d159a2884643ba9d94d7a1c57de, type: 3}
   - {fileID: 141854, guid: cab18c6c98d812e45a5e64e9860b3772, type: 3}
   - {fileID: 175828, guid: e0c965224454eb34e84586d6fe313eae, type: 3}
   - {fileID: 138394, guid: 292cf169b6cd4c5478006bf83b2a8b25, type: 3}
-  - {fileID: 919132149155446097, guid: e027a68a4a42302409ce9d5eee37ecc6, type: 3}
+  - {fileID: 3054947727647304242, guid: 00d936e254c6f194b9bb14871ba3b2ed, type: 3}
   FrontLocations:
   - {fileID: 7038110988133301637}
   - {fileID: 6080550006493673620}
@@ -103,7 +103,7 @@ MonoBehaviour:
   TreePrefab: {fileID: 7600684399390388956, guid: a24e2f1721428ad428e4f63ff32d4c79, type: 3}
   isLeft: 0
   LandParent: {fileID: 4945536752195724823}
-  VolcanoMat: {fileID: 2100000, guid: 7b199c063774f0b46b3fcab6c0e9f89e, type: 2}
+  VolcanoMat: {fileID: 2100000, guid: 28688e4262bc6d043830943cf3f890d6, type: 2}
   Obsidian: {fileID: 2100000, guid: b670bc11231c50e49aeedfe71b127856, type: 2}
   terrainLayer:
     serializedVersion: 2

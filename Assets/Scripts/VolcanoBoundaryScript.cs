@@ -19,6 +19,8 @@ public class VolcanoBoundaryScript : MonoBehaviour
 
     public GameObject LandParent;
 
+    public Material VolcanoMat;
+
     void Start()
     {
         if(!isLeft)
@@ -47,7 +49,14 @@ public class VolcanoBoundaryScript : MonoBehaviour
 
                 Filter.mesh = RockMeshs[RandNumber];
 
-                Location.transform.localScale = new Vector3(3, 3, 3);
+                Location.transform.localScale = (RandNumber == 4) ? new Vector3(30, 30, 30) : new Vector3(3, 3, 3);
+
+                if(RandNumber == 4)
+                {
+                    Renderer MatRend = Location.GetComponent<Renderer>();
+
+                    MatRend.material = VolcanoMat;
+                }
             }
 
             Location.transform.localScale += new Vector3(0, 0, Random.Range(-1, 2));
@@ -57,14 +66,26 @@ public class VolcanoBoundaryScript : MonoBehaviour
         {
             int RandNumber = Random.Range(0, BackPrefabs.Count);
 
-            GameObject SpawnedObject = Instantiate(BackPrefabs[RandNumber], Location.position, Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)));
+            Vector3 NewRotation = new Vector3(0, Random.Range(0, 360), 0);
+            
+            //(RandNumber <= 3) ? new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)) : new Vector3(0, Random.Range(0, 360), 0);
+
+            Vector3 NewScale = (RandNumber <= 3) ? new Vector3(4, 2, Random.Range(4, 6)) : new Vector3(44, 44, 44);
+
+            GameObject SpawnedObject = Instantiate(BackPrefabs[RandNumber], Location.position, Quaternion.Euler(NewRotation));
+
+            SpawnedObject.transform.localScale = NewScale;
 
             AddedObjects.Add(SpawnedObject);
-
-            SpawnedObject.transform.localScale = new Vector3(4, 4, 4);
-
-            Location.transform.localScale += new Vector3(0, 0, Random.Range(-1, 2));
         }
+
+        StartCoroutine(LateStart(.1f));
+    }
+
+    IEnumerator LateStart(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
     }
 
     void OnDestroy()

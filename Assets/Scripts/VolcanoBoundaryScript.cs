@@ -20,6 +20,7 @@ public class VolcanoBoundaryScript : MonoBehaviour
     public GameObject LandParent;
 
     public Material VolcanoMat;
+    public Material Obsidian;
 
     void Start()
     {
@@ -56,6 +57,10 @@ public class VolcanoBoundaryScript : MonoBehaviour
                     Renderer MatRend = Location.GetComponent<Renderer>();
 
                     MatRend.material = VolcanoMat;
+                } else {
+                     Renderer MatRend = Location.GetComponent<Renderer>();
+
+                    MatRend.material = Obsidian;
                 }
             }
 
@@ -77,6 +82,13 @@ public class VolcanoBoundaryScript : MonoBehaviour
             SpawnedObject.transform.localScale = NewScale;
 
             AddedObjects.Add(SpawnedObject);
+
+            if(RandNumber <= 3)
+            {
+                Renderer MatRend = SpawnedObject.GetComponent<Renderer>();
+
+                MatRend.material = Obsidian;
+            }
         }
 
         StartCoroutine(LateStart(.1f));

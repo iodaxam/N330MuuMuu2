@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2623849345380539401
 Transform:
   m_ObjectHideFlags: 0
@@ -104,6 +104,7 @@ MonoBehaviour:
   isLeft: 0
   LandParent: {fileID: 4945536752195724823}
   VolcanoMat: {fileID: 2100000, guid: 7b199c063774f0b46b3fcab6c0e9f89e, type: 2}
+  Obsidian: {fileID: 2100000, guid: b670bc11231c50e49aeedfe71b127856, type: 2}
 --- !u!1 &2939561644657748607
 GameObject:
   m_ObjectHideFlags: 0

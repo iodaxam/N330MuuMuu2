@@ -105,6 +105,9 @@ MonoBehaviour:
   LandParent: {fileID: 4945536752195724823}
   VolcanoMat: {fileID: 2100000, guid: 7b199c063774f0b46b3fcab6c0e9f89e, type: 2}
   Obsidian: {fileID: 2100000, guid: b670bc11231c50e49aeedfe71b127856, type: 2}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &2939561644657748607
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4157465393400995143}
   - component: {fileID: 2053838291063277518}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeshColliderThing
   m_TagString: Terrain
   m_Icon: {fileID: 0}
@@ -460,7 +463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875490004339330863}
   - component: {fileID: 74392865557007229}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MeshColliderThing
   m_TagString: Terrain
   m_Icon: {fileID: 0}

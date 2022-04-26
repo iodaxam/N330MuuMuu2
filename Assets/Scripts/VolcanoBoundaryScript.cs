@@ -22,6 +22,8 @@ public class VolcanoBoundaryScript : MonoBehaviour
     public Material VolcanoMat;
     public Material Obsidian;
 
+    public LayerMask terrainLayer;
+
     void Start()
     {
         if(!isLeft)
@@ -98,6 +100,21 @@ public class VolcanoBoundaryScript : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
+        foreach(GameObject Location in FrontLocations)
+        {
+            Vector3 NewPosition = Location.transform.position + new Vector3(Random.Range(-30, 40), 200, Random.Range(-13, 13));
+
+            Ray ray = new Ray(NewPosition, Vector3.down);
+
+            if(Physics.Raycast(ray, out RaycastHit info, 400, terrainLayer.value))
+            {
+                GameObject NewTrees = Instantiate(TreePrefab, NewPosition, Quaternion.Euler(0, Random.Range(0, 360), 0));
+
+                NewTrees.transform.position = info.point;
+
+                AddedObjects.Add(NewTrees);
+            }
+        }
     }
 
     void OnDestroy()

@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rock_ParticleEffect: {fileID: 7571952667574766415, guid: 2a7ab0bb109add649b3f32e4e758743c, type: 3}
-  Water_ParticleEffect: {fileID: 3190212820381677263, guid: 17035b883fe3ea44a9bb55c98e5ab910, type: 3}
+  Water_ParticleEffect: {fileID: 3190212820381677263, guid: a0db0e1e8d5e42347815932c8c53bb8f, type: 3}
 --- !u!1001 &8924716863725820483
 PrefabInstance:
   m_ObjectHideFlags: 0

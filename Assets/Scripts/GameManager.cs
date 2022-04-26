@@ -8,7 +8,8 @@ public enum Biome
     Ocean,
     Beach,
     PirateTown,
-    GhostYard
+    GhostYard,
+    VolcanoZone
 }
 
 public class GameManager : MonoBehaviour
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject BeachBoundaryPrefab;
     public GameObject PirateTownBoundaryPrefab;
     public GameObject GhostYardBoundaryPrefab;
+    public GameObject VolcanoBoundaryPrefab;
 
     public List<GameObject> GeneratedTerrain;
     public List<GameObject> GeneratedLeftBoundary;
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
     public int BeachDistance = 5;
     public int PirateTownDistance = 6;
     public int GhostYardDistance = 7;
+    public int VolcanoDistance = 8;
 
     private Biome CurrentBiome;
     
@@ -68,10 +71,14 @@ public class GameManager : MonoBehaviour
 
             CurrentBiome = Biome.PirateTown;
 
-        } else {
+        } else if(Distance < VolcanoDistance) {
             SelectedBoundary = GhostYardBoundaryPrefab;
 
             CurrentBiome = Biome.GhostYard;
+        } else {
+            SelectedBoundary = VolcanoBoundaryPrefab;
+
+            CurrentBiome = Biome.VolcanoZone;
         }
     
         Distance++;
@@ -94,6 +101,9 @@ public class GameManager : MonoBehaviour
                 break;
             case Biome.PirateTown:
                 LeftSection.GetComponent<PirateTownBoundaryScript>().isLeft = true;
+                break;
+            case Biome.VolcanoZone:
+                LeftSection.GetComponent<VolcanoBoundaryScript>().isLeft = true;
                 break;
         }
 

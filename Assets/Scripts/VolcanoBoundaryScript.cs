@@ -73,15 +73,15 @@ public class VolcanoBoundaryScript : MonoBehaviour
         {
             int RandNumber = Random.Range(0, BackPrefabs.Count);
 
-            Vector3 NewRotation = new Vector3(0, Random.Range(0, 360), 0);
+            //Vector3 NewRotation = new Vector3(0, Random.Range(0, 360), 0);
             
             //(RandNumber <= 3) ? new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)) : new Vector3(0, Random.Range(0, 360), 0);
 
-            Vector3 NewScale = (RandNumber <= 3) ? new Vector3(4, 2, Random.Range(4, 6)) : new Vector3(1, 1, 1);
+            Vector3 NewScale = (RandNumber <= 3) ? new Vector3(4, 2, Random.Range(6, 9)) : new Vector3(1, 1, 1);
 
             NewScale = (RandNumber == 5) ? new Vector3(1,1,1) : NewScale;
 
-            GameObject SpawnedObject = Instantiate(BackPrefabs[RandNumber], Location.position, Quaternion.Euler(NewRotation));
+            GameObject SpawnedObject = Instantiate(BackPrefabs[RandNumber], Location.position, Quaternion.identity);
 
             SpawnedObject.transform.localScale = NewScale;
 

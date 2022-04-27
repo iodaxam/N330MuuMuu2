@@ -16,9 +16,11 @@ public class EnemyMovingScript : MonoBehaviour
 
     void Update()
     {
-        if(startMoving)
-        {
-            Ship.transform.localPosition += ((Vector3.right * 30 * Time.deltaTime) * MoveDirection);
+        if(Ship != null) {
+            if(startMoving)
+            {
+                Ship.transform.localPosition += ((Vector3.right * 30 * Time.deltaTime) * MoveDirection);
+            }
         }
     }
 

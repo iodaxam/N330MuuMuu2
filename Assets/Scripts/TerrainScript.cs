@@ -36,6 +36,7 @@ public class TerrainScript : MonoBehaviour
 	public GameObject Coin;
 	private GameObject Obstacle1;
 	private GameObject Obstacle2;
+	private GameObject Obstacle3;
 
 	//private GameObject[] obstaclesFolder;
 	//private GameObject[] powerUpsFolder;
@@ -179,8 +180,16 @@ public class TerrainScript : MonoBehaviour
 					AvailableSpots.Add(MiddleLane);
 					break;
 			}
+			Vector3 NewSpot = AvailableSpots[Random.Range(0, AvailableSpots.Count)].position;
+			
+			if(Random.Range(0, 2) == 0) {
+				Obstacle2 = Instantiate(CoinPrefab, NewSpot, Quaternion.identity);
+			}
 
-			Obstacle2 = Instantiate(CoinPrefab, AvailableSpots[Random.Range(0, AvailableSpots.Count)].position, Quaternion.identity);
+			if(Random.Range(0,5) == 0) {
+				Obstacle3 = Instantiate(obstacles[0], NewSpot, Quaternion.identity);
+			}
+
 		} else {
 			if(!StarterTile) 
 			{
@@ -235,6 +244,10 @@ public class TerrainScript : MonoBehaviour
 		if (Obstacle2 != null)
 		{
 			Destroy(Obstacle2);
+		}
+		if (Obstacle3 != null)
+		{
+			Destroy(Obstacle3);
 		}
 	}
 

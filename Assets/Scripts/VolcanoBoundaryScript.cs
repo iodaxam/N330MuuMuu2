@@ -79,6 +79,8 @@ public class VolcanoBoundaryScript : MonoBehaviour
 
             Vector3 NewScale = (RandNumber <= 3) ? new Vector3(4, 2, Random.Range(4, 6)) : new Vector3(44, 44, 44);
 
+            NewScale = (RandNumber == 5) ? new Vector3(1,1,1) : NewScale;
+
             GameObject SpawnedObject = Instantiate(BackPrefabs[RandNumber], Location.position, Quaternion.Euler(NewRotation));
 
             SpawnedObject.transform.localScale = NewScale;

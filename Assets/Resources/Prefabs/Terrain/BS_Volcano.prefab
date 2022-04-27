@@ -94,6 +94,7 @@ MonoBehaviour:
   - {fileID: 175828, guid: e0c965224454eb34e84586d6fe313eae, type: 3}
   - {fileID: 138394, guid: 292cf169b6cd4c5478006bf83b2a8b25, type: 3}
   - {fileID: 3054947727647304242, guid: 00d936e254c6f194b9bb14871ba3b2ed, type: 3}
+  - {fileID: 9196295489753965530, guid: 0abc42e425bb2f84b890dca3050adce8, type: 3}
   FrontLocations:
   - {fileID: 7038110988133301637}
   - {fileID: 6080550006493673620}

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExpLocation: {fileID: 2540284960633192972}
-  ExplosionPS: {fileID: 1030357214610109261, guid: 229f7a5d9d1d1f44b8303d5dd850d801, type: 3}
+  ExplosionPS: {fileID: 1030357214610109261, guid: bab57be2c36396c418fcbedd3793294d, type: 3}
 --- !u!135 &5800052508920122435
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -103,15 +103,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5cfc9b6acf6ce2498f325de1a442611, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5cfc9b6acf6ce2498f325de1a442611, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5cfc9b6acf6ce2498f325de1a442611, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5cfc9b6acf6ce2498f325de1a442611, type: 3}
       propertyPath: m_LocalPosition.x

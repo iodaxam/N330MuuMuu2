@@ -9,6 +9,8 @@ public class PowerUp : MonoBehaviour
     public int amount;
 
     private BoxCollider collider;
+
+    public GameObject ParticleSystem;
     
     // Update is called once per frame
     void Update()
@@ -23,6 +25,8 @@ public class PowerUp : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
+
+        GameObject SpawnedThing = Instantiate(ParticleSystem, gameObject.transform.position, Quaternion.identity);
         other.SendMessage(functionName, amount);
         Destroy(gameObject);
     }

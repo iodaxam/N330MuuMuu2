@@ -154,6 +154,30 @@ public class TerrainScript : MonoBehaviour
 						Obstacle1.transform.rotation = Quaternion.Euler(0, 180, 0);
 					}
 					break;
+			} 
+		} else if(WorldBiome == Biome.VolcanoZone) {
+			
+			List<Transform> AvailableSpots = new List<Transform>();
+			switch(RandObstaclePlacement)
+			{
+				case 0:
+					Obstacle1 = Instantiate(ObstaclePrefab, LeftLane.position, Quaternion.identity);
+					OccupiedSpot1 = ThreeLanes.Left;
+					AvailableSpots.Add(MiddleLane);
+					AvailableSpots.Add(RightLane);
+					break;
+				case 1:
+					Obstacle1 = Instantiate(ObstaclePrefab, MiddleLane.position, Quaternion.identity);
+					OccupiedSpot1 = ThreeLanes.Middle;
+					AvailableSpots.Add(LeftLane);
+					AvailableSpots.Add(RightLane);
+					break;
+				case 2:
+					Obstacle1 = Instantiate(ObstaclePrefab, RightLane.position, Quaternion.identity);
+					OccupiedSpot1 = ThreeLanes.Right;
+					AvailableSpots.Add(LeftLane);
+					AvailableSpots.Add(MiddleLane);
+					break;
 			}
 
 			Obstacle2 = Instantiate(CoinPrefab, AvailableSpots[Random.Range(0, AvailableSpots.Count)].position, Quaternion.identity);

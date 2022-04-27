@@ -67,7 +67,7 @@ public class TerrainScript : MonoBehaviour
 				obstacles = Resources.LoadAll<GameObject>("Prefabs/GhostYardObstacles").ToList();
 				break;
 			case Biome.VolcanoZone:
-				obstacles = Resources.LoadAll<GameObject>("Prefabs/ObstaclesOcean").ToList();
+				obstacles = Resources.LoadAll<GameObject>("Prefabs/VolcanoObstacles").ToList();
 				break;
 		}
 

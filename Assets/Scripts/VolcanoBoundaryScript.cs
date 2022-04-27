@@ -77,7 +77,7 @@ public class VolcanoBoundaryScript : MonoBehaviour
             
             //(RandNumber <= 3) ? new Vector3(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)) : new Vector3(0, Random.Range(0, 360), 0);
 
-            Vector3 NewScale = (RandNumber <= 3) ? new Vector3(4, 2, Random.Range(4, 6)) : new Vector3(44, 44, 44);
+            Vector3 NewScale = (RandNumber <= 3) ? new Vector3(4, 2, Random.Range(4, 6)) : new Vector3(1, 1, 1);
 
             NewScale = (RandNumber == 5) ? new Vector3(1,1,1) : NewScale;
 

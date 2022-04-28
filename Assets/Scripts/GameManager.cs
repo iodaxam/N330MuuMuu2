@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     public int VolcanoDistance = 8;
 
     private Biome CurrentBiome;
+
+    public GameObject NotificationObject;
     
     void Start()
     {
@@ -62,20 +64,40 @@ public class GameManager : MonoBehaviour
 
         } else if(Distance < PirateTownDistance) {
 
+            if(CurrentBiome != Biome.Beach)
+            {
+                StartCoroutine(NotificationObject.GetComponent<NotifScript>().NotifFade(Biome.Beach));
+            }
+
             SelectedBoundary = BeachBoundaryPrefab;
 
             CurrentBiome = Biome.Beach;
 
         } else if(Distance < GhostYardDistance) {
+            if(CurrentBiome != Biome.PirateTown)
+            {
+                StartCoroutine(NotificationObject.GetComponent<NotifScript>().NotifFade(Biome.PirateTown));
+            }
+
             SelectedBoundary = PirateTownBoundaryPrefab;
 
             CurrentBiome = Biome.PirateTown;
 
         } else if(Distance < VolcanoDistance) {
+            if(CurrentBiome != Biome.GhostYard)
+            {
+                StartCoroutine(NotificationObject.GetComponent<NotifScript>().NotifFade(Biome.GhostYard));
+            }
+
             SelectedBoundary = GhostYardBoundaryPrefab;
 
             CurrentBiome = Biome.GhostYard;
         } else {
+            if(CurrentBiome != Biome.VolcanoZone)
+            {
+                StartCoroutine(NotificationObject.GetComponent<NotifScript>().NotifFade(Biome.VolcanoZone));
+            }
+
             SelectedBoundary = VolcanoBoundaryPrefab;
 
             CurrentBiome = Biome.VolcanoZone;

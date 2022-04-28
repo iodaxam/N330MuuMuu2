@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
     private float CurrentAlpha;
     private Renderer ShieldRend;
 
+    public GameObject NotificationObject;
+
     public void Start()
     {
         ownedSkins = new int[5] {1,0,0,0,0};
@@ -419,6 +421,8 @@ public class PlayerController : MonoBehaviour
             AudioManagerScript.FadeIn("BackgroundMusic", .5f, 1f);
             AudioManagerScript.FadeIn("SailingSound", .5f, 8f);
             skins[skindex].transform.localRotation = Quaternion.identity;
+
+            StartCoroutine(NotificationObject.GetComponent<NotifScript>().NotifFade(Biome.Ocean));
         }
     }
 

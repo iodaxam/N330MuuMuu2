@@ -15,6 +15,8 @@ public class NotifScript : MonoBehaviour
     private Color DefaultImageColor;
     private Color DefaultTextColor;
 
+    private float timer;
+
     void Start()
     {
         DefaultImageColor = gameObject.GetComponent<Image>().color;
@@ -26,6 +28,8 @@ public class NotifScript : MonoBehaviour
         StopCoroutine("NotifFade");
 
         CurrentOpacity = 0;
+
+        timer = 3f;
 
         gameObject.GetComponent<Image>().color = new Color(DefaultImageColor.r, DefaultImageColor.g, DefaultImageColor.b, CurrentOpacity);
         LineObject.GetComponent<Image>().color = new Color(DefaultTextColor.r, DefaultTextColor.g, DefaultTextColor.b, CurrentOpacity);
@@ -74,7 +78,13 @@ public class NotifScript : MonoBehaviour
             yield return null; 
         }
 
-        yield return new WaitForSeconds(3f);
+        for(timer = 3 ; timer >= 0 ; timer -= Time.deltaTime )
+        {
+            
+            yield return null ;
+        }
+        //don't use waitforseconds, it gets funky if the player loses in the middle of it
+        //yield return new WaitForSeconds(3f);
         
         while(CurrentOpacity > 0)
         {

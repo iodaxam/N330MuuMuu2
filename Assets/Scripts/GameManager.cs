@@ -168,6 +168,8 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        NotificationObject.GetComponent<NotifScript>().RestartFadeStats();
+
         Distance = 1;
         int i = 0;
 

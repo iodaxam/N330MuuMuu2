@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4711681266356950169}
   - component: {fileID: 6480048785210754408}
   - component: {fileID: 5368664670146700423}
-  - component: {fileID: 72838028561374080}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -82,20 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &72838028561374080
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5115496606784496085}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7421397928465027946
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +92,6 @@ GameObject:
   - component: {fileID: 4190000124407034906}
   - component: {fileID: 8549904516918161510}
   - component: {fileID: 5669028441061502463}
-  - component: {fileID: 2234756013702088775}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -178,19 +162,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2234756013702088775
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7421397928465027946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9196295489753965530
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +357,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b670bc11231c50e49aeedfe71b127856, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64994134491569234, guid: e0c965224454eb34e84586d6fe313eae, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e0c965224454eb34e84586d6fe313eae, type: 3}
 --- !u!4 &7755180891927420434 stripped
 Transform:

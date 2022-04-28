@@ -21,6 +21,18 @@ public class NotifScript : MonoBehaviour
         DefaultTextColor = LineObject.GetComponent<Image>().color;
     }
     
+    public void RestartFadeStats()
+    {
+        StopCoroutine("NotifFade");
+
+        CurrentOpacity = 0;
+
+        gameObject.GetComponent<Image>().color = new Color(DefaultImageColor.r, DefaultImageColor.g, DefaultImageColor.b, CurrentOpacity);
+        LineObject.GetComponent<Image>().color = new Color(DefaultTextColor.r, DefaultTextColor.g, DefaultTextColor.b, CurrentOpacity);
+        TopTextObject.GetComponent<TextMeshProUGUI>().color = new Color(DefaultTextColor.r, DefaultTextColor.g, DefaultTextColor.b, CurrentOpacity);
+        BottomTextObject.GetComponent<TextMeshProUGUI>().color = new Color(DefaultTextColor.r, DefaultTextColor.g, DefaultTextColor.b, CurrentOpacity);
+    }
+
     public IEnumerator NotifFade(Biome CurrentArea)
     {
         switch(CurrentArea)

@@ -51,7 +51,6 @@ public class NotifScript : MonoBehaviour
 
         while(CurrentOpacity < 1f)
         {
-            Debug.Log("SDLKFJ:LSDKFJSDL:KFJSD:LKFS:DLKFJS:LDFKSJEDF");
             CurrentOpacity += Time.deltaTime;
 
             if(CurrentOpacity <= .5f) {

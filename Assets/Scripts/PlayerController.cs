@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
     public void Start()
     {
-        ownedSkins = new int[5] {1,0,0,0,0};
+        ownedSkins = new int[9] {1,0,0,0,0,0,0,0,0};
         for (int i = 0; i < ownedSkins.Length; i++)
         {
             ownedSkins[i] = PlayerPrefs.GetInt("Skin" + i);
@@ -460,9 +460,9 @@ public class PlayerController : MonoBehaviour
          skindex -= direction;
          if (skindex < 0)
          {
-             skindex = 4;
+             skindex = 8;
          }
-         else if(skindex > 4)
+         else if(skindex > 8)
          {
              skindex = 0;
          }

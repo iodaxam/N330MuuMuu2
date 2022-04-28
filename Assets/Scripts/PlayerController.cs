@@ -68,6 +68,10 @@ public class PlayerController : MonoBehaviour
     public int MaxBalls = 3;
     private int CurrentBalls = 3;
 
+    public GameObject ShieldObject;
+    private float CurrentAlpha;
+    private Renderer ShieldRend;
+
     public void Start()
     {
         ownedSkins = new int[5] {1,0,0,0,0};
@@ -90,6 +94,7 @@ public class PlayerController : MonoBehaviour
         ShopScreen.SetActive(false);
         inGameMenu.SetActive(false);
 
+        ShieldRend = ShieldObject.GetComponent<Renderer>();
     }
 
     private void SpeedUp()
@@ -318,6 +323,9 @@ public class PlayerController : MonoBehaviour
         {
             shields -= 1;
             // animation / particles here?
+            CurrentAlpha = 1f;
+            ShieldRend.material.SetFloat("Malpha", CurrentAlpha);
+            StartCoroutine(ShieldTimer());
         }
         else
         {
@@ -330,6 +338,18 @@ public class PlayerController : MonoBehaviour
             GameManager.SendMessage("FadeOut", "BackgroundMusic");
             isDead = true;
             startPosition = endPosition = Vector3.zero; // This is to fix the odd issue where the play can no longer swipe one direction until the game is started again.
+        }
+    }
+
+    IEnumerator ShieldTimer()
+    {
+        while(CurrentAlpha > 0)
+        {
+            CurrentAlpha -= Time.deltaTime * 1f;
+
+            ShieldRend.material.SetFloat("Malpha", CurrentAlpha);
+
+            yield return null;
         }
     }
 

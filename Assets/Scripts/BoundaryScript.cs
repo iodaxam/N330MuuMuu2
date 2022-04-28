@@ -41,8 +41,8 @@ public class BoundaryScript : MonoBehaviour
 
             if(!isLeft)
             {   
-                Vector3 OriginalPosition = LandObject.transform.position;
-                LandObject.transform.position = new Vector3((OriginalPosition.x + 120), OriginalPosition.y, OriginalPosition.z);
+                //Vector3 OriginalPosition = LandObject.transform.position;
+                //LandObject.transform.position = new Vector3((OriginalPosition.x + 120), OriginalPosition.y, OriginalPosition.z);
 
                 LandObject.transform.rotation = Quaternion.Euler(0, 180, 0);
             }

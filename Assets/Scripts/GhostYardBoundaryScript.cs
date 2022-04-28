@@ -10,8 +10,14 @@ public class GhostYardBoundaryScript : MonoBehaviour
     public List<GameObject> ObjectPrefabs;
     public List<int> ObjectScales;
 
+    public bool isLeft;
+    public GameObject LandParent;
+
     void Start()
     {
+        if(!isLeft) {
+            LandParent.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
         foreach(Transform Spawn in ObjectSpawns)
         {
             int Randnumber = Random.Range(0, ObjectPrefabs.Count);

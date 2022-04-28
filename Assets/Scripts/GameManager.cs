@@ -124,6 +124,9 @@ public class GameManager : MonoBehaviour
             case Biome.PirateTown:
                 LeftSection.GetComponent<PirateTownBoundaryScript>().isLeft = true;
                 break;
+            case Biome.GhostYard:
+                LeftSection.GetComponent<GhostYardBoundaryScript>().isLeft = true;
+                break;
             case Biome.VolcanoZone:
                 LeftSection.GetComponent<VolcanoBoundaryScript>().isLeft = true;
                 break;

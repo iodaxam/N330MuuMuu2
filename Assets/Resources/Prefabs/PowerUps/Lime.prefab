@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   functionName: AddCannonBall
-  amount: 2
+  amount: 3
   ParticleSystem: {fileID: 1436358295575739190, guid: 6538e7aa121412a4e90f3af0ba256000, type: 3}
 --- !u!135 &2920423151498478747
 SphereCollider:

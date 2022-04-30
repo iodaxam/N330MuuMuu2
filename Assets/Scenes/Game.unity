@@ -1429,7 +1429,7 @@ GameObject:
   - component: {fileID: 259874758}
   - component: {fileID: 259874757}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CannonBall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1447,7 +1447,7 @@ RectTransform:
   m_LocalScale: {x: 0.18688785, y: 0.18688785, z: 0.18688785}
   m_Children: []
   m_Father: {fileID: 2001904038}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2472,7 +2472,7 @@ GameObject:
   - component: {fileID: 449928315}
   - component: {fileID: 449928314}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CannonBallImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2490,7 +2490,7 @@ RectTransform:
   m_LocalScale: {x: 0.43400767, y: 0.43400767, z: 0.43400767}
   m_Children: []
   m_Father: {fileID: 2001904038}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5452,6 +5452,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 674501685}
     - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
+      propertyPath: UICannonBalls
+      value: 
+      objectReference: {fileID: 2001904037}
+    - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
       propertyPath: highScoreText
       value: 
       objectReference: {fileID: 266834965}
@@ -5463,6 +5467,22 @@ PrefabInstance:
       propertyPath: NotificationObject
       value: 
       objectReference: {fileID: 1156766727}
+    - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
+      propertyPath: UICannonBalls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
+      propertyPath: UICannonBalls.Array.data[0]
+      value: 
+      objectReference: {fileID: 259874755}
+    - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
+      propertyPath: UICannonBalls.Array.data[1]
+      value: 
+      objectReference: {fileID: 1815723144}
+    - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
+      propertyPath: UICannonBalls.Array.data[2]
+      value: 
+      objectReference: {fileID: 1162681104}
     - target: {fileID: 1135352373499904765, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -6683,7 +6703,7 @@ GameObject:
   - component: {fileID: 1162681107}
   - component: {fileID: 1162681106}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: CannonBall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6701,7 +6721,7 @@ RectTransform:
   m_LocalScale: {x: 0.18688785, y: 0.18688785, z: 0.18688785}
   m_Children: []
   m_Father: {fileID: 2001904038}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11003,7 +11023,7 @@ GameObject:
   - component: {fileID: 1815723147}
   - component: {fileID: 1815723146}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: CannonBall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11021,7 +11041,7 @@ RectTransform:
   m_LocalScale: {x: 0.18688785, y: 0.18688785, z: 0.18688785}
   m_Children: []
   m_Father: {fileID: 2001904038}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11896,7 +11916,7 @@ GameObject:
   - component: {fileID: 2001904040}
   - component: {fileID: 2001904039}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CannonBallHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11913,10 +11933,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.9431307, y: 3.9431307, z: 3.9431307}
   m_Children:
-  - {fileID: 449928313}
   - {fileID: 259874756}
   - {fileID: 1815723145}
   - {fileID: 1162681105}
+  - {fileID: 449928313}
   m_Father: {fileID: 1089911273}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

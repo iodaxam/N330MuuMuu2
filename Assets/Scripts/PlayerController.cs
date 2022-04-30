@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using Random=UnityEngine.Random;
 
@@ -47,18 +48,17 @@ public class PlayerController : MonoBehaviour
     public Text shipCost;
     public Text currentCoinsText;
     public GameObject inGameMenu;
-    // public GameObject ScoreUI;
-    // public Button PurchaseButton;
-    // public Button StartButton;
     public GameObject[] skins;
+    public GameObject[] UICannonBalls;
 
     private int[] ownedSkins;
 
+    
     private ThreeLanes CurrentLane = ThreeLanes.Middle;
 
     private AudioManager AudioManagerScript;
     private float cooldown = .5f;
-
+    
     public GameObject CannonPrefab;
     public Transform LaunchPosition;
     public GameObject CannonPE;
@@ -146,7 +146,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                Debug.Log("KeyPressed");
                 if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
                 {
                     if (Input.GetKey(KeyCode.RightArrow) && CurrentLane != ThreeLanes.Right)
@@ -193,18 +192,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (gameStarted && CurrentBalls > 0)
                         {
-                            GameObject cannonBall =
-                                Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
-
-                            cannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
-
-                            GameObject PE = Instantiate(CannonPE, LaunchPosition.position, Quaternion.identity);
-
-                            Destroy(PE, 2);
-
-                            Destroy(cannonBall, 4);
-
-                            CurrentBalls--;
+                            FireCannon();
                         }
                     }
                     else if (Input.GetKey(KeyCode.DownArrow))
@@ -222,7 +210,7 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                 }
-        }
+            }
             if (Input.touchCount != 1) return;
             Touch touch = Input.GetTouch(0); // get the touch
             switch (touch.phase)
@@ -282,24 +270,13 @@ public class PlayerController : MonoBehaviour
                             {
                                 if(endPosition.y > startPosition.y)
                                 {
-                                    GameObject cannonBall = Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
-
-                                    cannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
-
-                                    GameObject PE = Instantiate(CannonPE, LaunchPosition.position, Quaternion.identity);
-
-                                    Destroy(PE, 2);
-
-                                    Destroy(cannonBall, 4);
-
-                                    CurrentBalls--;
+                                    FireCannon();
                                 }
                             } 
                         }
                     }
                     else
                     {   //It's a tap as the drag distance is less than 15% of the screen height
-                        Debug.Log("Tap");
                         if (!gameStarted)
                         {
                             if (ownedSkins[skindex] == 1)
@@ -355,6 +332,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void FireCannon()
+    {
+        GameObject cannonBall = Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
+        cannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
+        
+        GameObject PE = Instantiate(CannonPE, LaunchPosition.position, Quaternion.identity);
+
+        Destroy(PE, 2);
+        Destroy(cannonBall, 4);
+
+        CurrentBalls--;
+        UICannonBalls[CurrentBalls].SetActive(false);
+    }
+    
     public void Kraken()
     {
         Lose();
@@ -376,6 +367,11 @@ public class PlayerController : MonoBehaviour
         TitleScreen.SetActive(true);
         inGameMenu.SetActive(false);
         CurrentBalls = 3;
+        for (i = 0; i < CurrentBalls; i++)
+        {
+            UICannonBalls[i].SetActive(true);
+        }
+        
         isDead = false;
         anim.SetFloat("Blend", 1, 0.1f, Time.deltaTime);
         
@@ -414,6 +410,7 @@ public class PlayerController : MonoBehaviour
             gameStarted = true;
             TitleScreen.SetActive(false);
             inGameMenu.SetActive(true);
+
             score = 0;
             GameManager.SendMessage("StopFades");
             GameManager.SendMessage("Play", "BellSound");
@@ -468,7 +465,6 @@ public class PlayerController : MonoBehaviour
          }
         skins[skindex].SetActive(true);
         skins[skindex].transform.localRotation = Quaternion.identity;
-        //Debug.Log(skins[skindex] + "" + skindex);
         if (ownedSkins[skindex] == 1 || skindex == 0)
         {
             ShopScreen.SetActive(false);
@@ -477,7 +473,6 @@ public class PlayerController : MonoBehaviour
         {
             ShopScreen.SetActive(true);
             shipCost.text = (50 * skindex * skindex).ToString();
-            Debug.Log("Skindex: " + skindex);
         }
         
      }
@@ -496,12 +491,31 @@ public class PlayerController : MonoBehaviour
 
      private void AddShield(int amount)
      {
-         shields += amount;
+         if (shields == 0)
+         {
+             StartCoroutine(nameof(ShieldActiveTimer));
+         }
+         shields = Mathf.Clamp(shields + amount, amount, 5);
+     }
+
+     private IEnumerable ShieldActiveTimer()
+     {
+         yield return new WaitForSeconds(1f);
+         shields -= 1;
+         Debug.Log(shields);
+         if (shields > 0)
+         {
+             StartCoroutine(nameof(ShieldActiveTimer));
+         }
      }
 
      private void AddCannonBall(int amount)
      {
-         CurrentBalls += amount;
+         CurrentBalls = Mathf.Clamp(CurrentBalls + amount, amount, 3);
+         for (i = 0; i < CurrentBalls; i++)
+         {
+             UICannonBalls[i].SetActive(true);
+         }
      }
 }
 

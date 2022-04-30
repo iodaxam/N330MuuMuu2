@@ -88,7 +88,6 @@ public class Kraken : MonoBehaviour
 			for (int i = 0; i < tentacles.Length; i++) {
 		    	string tentacleGameobjectName = this.gameObject.transform.GetChild(i).name;
 				FindTentacle(tentacleGameobjectName, "Attack 1");
-				Debug.Log(tentacleGameobjectName);
 			}
 			other.SendMessage("Kraken");
 		}

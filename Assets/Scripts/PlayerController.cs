@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public int laneDistance = 57;
     private int skinIndex;
     private int recoilForce;
-    private int shields;
+    private float shields;
     private int currentCoins;
 
     [Header("References")]
@@ -129,6 +129,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
 
+        if (shields > 0)
+        {
+            shields = Mathf.Clamp(shields - Time.deltaTime, 0, shields - Time.deltaTime);
+        }
+        
         anim = GetComponentInChildren<Animator>();
         if(cooldown > 0) {
             cooldown -= Time.deltaTime;
@@ -491,22 +496,7 @@ public class PlayerController : MonoBehaviour
 
      private void AddShield(int amount)
      {
-         if (shields == 0)
-         {
-             StartCoroutine(nameof(ShieldActiveTimer));
-         }
          shields = Mathf.Clamp(shields + amount, amount, 5);
-     }
-
-     private IEnumerable ShieldActiveTimer()
-     {
-         yield return new WaitForSeconds(1f);
-         shields -= 1;
-         Debug.Log(shields);
-         if (shields > 0)
-         {
-             StartCoroutine(nameof(ShieldActiveTimer));
-         }
      }
 
      private void AddCannonBall(int amount)
@@ -518,4 +508,3 @@ public class PlayerController : MonoBehaviour
          }
      }
 }
-

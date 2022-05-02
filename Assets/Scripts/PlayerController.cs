@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     private float defSpeed;
     private Rigidbody rb;
     private Animator anim;
-    public GameObject kraken;
     private float timeRemaining;
     private float xPos = 0;
     public float startSpeed;
@@ -34,7 +33,6 @@ public class PlayerController : MonoBehaviour
     private int currentCoins;
 
     [Header("References")]
-    private Kraken kr;
     private GameObject GameManager;
     private int score;
     private int highScore;
@@ -317,6 +315,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             anim.Play("Boat Wreck");
+            Handheld.Vibrate();
             StartCoroutine(deathTimer());
             rb.velocity = Vector3.zero;
             cooldown = .5f;
@@ -368,6 +367,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            Handheld.Vibrate();
             anim.Play("Boat Wreck Kraken");
             StartCoroutine(deathTimer());
             rb.velocity = Vector3.zero;

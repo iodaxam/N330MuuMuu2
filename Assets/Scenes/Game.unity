@@ -10517,9 +10517,9 @@ MonoBehaviour:
   ChangeDistance: 9
   LandSection: 0
   BeachDistance: 10
-  PirateTownDistance: 200
-  GhostYardDistance: 300
-  VolcanoDistance: 400
+  PirateTownDistance: 20
+  GhostYardDistance: 30
+  VolcanoDistance: 40
   NotificationObject: {fileID: 1156766727}
 --- !u!4 &1722922297
 Transform:

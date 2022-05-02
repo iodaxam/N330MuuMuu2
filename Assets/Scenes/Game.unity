@@ -10478,9 +10478,16 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: VolcanoExplosion
-    clip: {fileID: 8300000, guid: 350ea8e8a171ae748be1e7b452f283aa, type: 3}
+    clip: {fileID: 8300000, guid: 2a75a5fe9e830d04fbfd3f4b48d6f93f, type: 3}
     volume: 0.6
     pitch: 1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: VolcanoExplosion2
+    clip: {fileID: 8300000, guid: 350ea8e8a171ae748be1e7b452f283aa, type: 3}
+    volume: 0.5
+    pitch: 0.5
     time: 0
     loop: 0
     source: {fileID: 0}

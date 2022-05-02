@@ -11,6 +11,8 @@ public class bs : MonoBehaviour
     void Start()
     {
         spawnedThing = Instantiate(VolcanoPrefab, gameObject.transform.position, Quaternion.identity);
+
+        spawnedThing.GetComponent<VolcanoScript>().Obstacle = true;
     }
 
     void OnDestroy()

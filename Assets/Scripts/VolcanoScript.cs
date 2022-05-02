@@ -6,6 +6,7 @@ public class VolcanoScript : MonoBehaviour
 {
     public Transform ExpLocation;
     public GameObject ExplosionPS;
+    public bool Obstacle;
 
     void OnTriggerEnter(Collider other)
 	{
@@ -13,7 +14,10 @@ public class VolcanoScript : MonoBehaviour
         {
             Instantiate(ExplosionPS, ExpLocation.position, Quaternion.identity);
 
-            //GameObject.Find("GameManager").SendMessage("Play", "VolcanoExplosion");
+            if(Obstacle)
+            {
+                GameObject.Find("GameManager").SendMessage("Play", "VolcanoExplosion2");
+            }
         }
     }
 }

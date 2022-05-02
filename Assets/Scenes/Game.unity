@@ -10263,10 +10263,10 @@ MonoBehaviour:
   - {fileID: 10173376}
   ChangeDistance: 9
   LandSection: 0
-  BeachDistance: 6
-  PirateTownDistance: 7
-  GhostYardDistance: 8
-  VolcanoDistance: 9
+  BeachDistance: 100
+  PirateTownDistance: 101
+  GhostYardDistance: 102
+  VolcanoDistance: 103
   NotificationObject: {fileID: 1156766727}
 --- !u!4 &1722922297
 Transform:
@@ -10507,6 +10507,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: cantbuy
     clip: {fileID: 8300000, guid: 0ea2a654d8619a045bc2edd44a544128, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: e36fb3198236c28428d0a22022cddc99, type: 3}
     volume: 1
     pitch: 1
     time: 0

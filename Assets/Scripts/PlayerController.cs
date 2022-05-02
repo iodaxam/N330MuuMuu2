@@ -363,6 +363,8 @@ public class PlayerController : MonoBehaviour
             GameManager.SendMessage("StopFades");
             GameManager.SendMessage("FadeOut", "SailingSound");
             GameManager.SendMessage("FadeOut", CurrentMusic);
+            GameManager.SendMessage("Play", "Death");
+
             isDead = true;
             startPosition = endPosition = Vector3.zero; // This is to fix the odd issue where the play can no longer swipe one direction until the game is started again.
         }

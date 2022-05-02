@@ -49,7 +49,6 @@ public class AudioManager : MonoBehaviour
 
     public IEnumerator FadeInCor(string name, float NewVolume, float FadeTime)
     {
-        Debug.Log("THIS");
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
         s.source.volume = 0f;
@@ -62,9 +61,9 @@ public class AudioManager : MonoBehaviour
 
     public void FadeIn(string name, float NewVolume, float FadeTime)
     {
-        Debug.Log("Thing");
         StartCoroutine(FadeInCor(name, NewVolume, FadeTime));
     }
+    
 
     public IEnumerator FadeOut(string name)
     {

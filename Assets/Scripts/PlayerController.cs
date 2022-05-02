@@ -71,6 +71,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject NotificationObject;
 
+    public String CurrentMusic;
+
     public void Start()
     {
         ownedSkins = new int[9] {1,0,0,0,0,0,0,0,0};
@@ -318,7 +320,7 @@ public class PlayerController : MonoBehaviour
             GameManager.SendMessage("PlayPitched", "CrashSound");
             GameManager.SendMessage("StopFades");
             GameManager.SendMessage("FadeOut", "SailingSound");
-            GameManager.SendMessage("FadeOut", "BackgroundMusic");
+            GameManager.SendMessage("FadeOut", CurrentMusic);
             isDead = true;
             startPosition = endPosition = Vector3.zero; // This is to fix the odd issue where the play can no longer swipe one direction until the game is started again.
         }
@@ -357,8 +359,8 @@ public class PlayerController : MonoBehaviour
             cooldown = .5f;
             GameManager.SendMessage("PlayPitched", "CrashSound");
             GameManager.SendMessage("StopFades");
-            GameManager.SendMessage("FadeOut", "SailingSound");
-            GameManager.SendMessage("FadeOut", "BackgroundMusic");
+            //GameManager.SendMessage("FadeOut", "SailingSound");
+            //GameManager.SendMessage("FadeOut", "BackgroundMusic");
             isDead = true;
             startPosition = endPosition = Vector3.zero; // This is to fix the odd issue where the play can no longer swipe one direction until the game is started again.
         }
@@ -429,6 +431,9 @@ public class PlayerController : MonoBehaviour
             GameManager.SendMessage("Play", "BellSound");
             GameManager.SendMessage("FadeOut", "MenuSound");
             AudioManagerScript.FadeIn("BackgroundMusic", .5f, 1f);
+
+            CurrentMusic = "BackgroundMusic";
+
             AudioManagerScript.FadeIn("SailingSound", .5f, 8f);
             skins[skindex].transform.localRotation = Quaternion.identity;
 

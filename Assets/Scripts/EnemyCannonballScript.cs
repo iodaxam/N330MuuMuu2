@@ -9,6 +9,7 @@ public class EnemyCannonballScript : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, 5);
+        GameObject.Find("GameManager").SendMessage("Play", "EnemyCannon");
     }
 
     void Update()

@@ -10433,7 +10433,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     time: 0
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: SpookyMusic
     clip: {fileID: 8300000, guid: 25ef6658d85e2634d85f16b0775c4620, type: 3}
@@ -10467,6 +10467,20 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 2453e7280e6b1634986eabea48fdf0c6, type: 3}
     volume: 0.8
     pitch: 1.1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyCannon
+    clip: {fileID: 8300000, guid: aebd0b1c6a4cf624b8d9a8bef0f19a68, type: 3}
+    volume: 0.3
+    pitch: 0.8
+    time: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: VolcanoExplosion
+    clip: {fileID: 8300000, guid: 350ea8e8a171ae748be1e7b452f283aa, type: 3}
+    volume: 0.6
+    pitch: 1
     time: 0
     loop: 0
     source: {fileID: 0}

@@ -41,6 +41,11 @@ public class LavaBombScript : MonoBehaviour
                 GameObject PE = Instantiate(SplashPE, Target.transform.position, Quaternion.identity);
 
                 PE.transform.localScale = new Vector3(2,2,2);
+
+                GameObject GameManager = GameObject.Find("GameManager");
+                GameManager.SendMessage("Play", "VolcanoExplosion");
+                GameManager.SendMessage("Play", "Splash");
+                
             }
         }
     }

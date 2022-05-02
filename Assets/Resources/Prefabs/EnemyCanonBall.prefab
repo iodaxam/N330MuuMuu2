@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8263080684486329572}
   - component: {fileID: 8263080684486329575}
   - component: {fileID: 8263080684486329574}
-  - component: {fileID: 8263080684486329569}
   - component: {fileID: 829721569820936027}
+  - component: {fileID: 370012155652589626}
   m_Layer: 0
   m_Name: EnemyCanonBall
   m_TagString: Obstacle
@@ -84,19 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8263080684486329569
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8263080684486329568}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &829721569820936027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +97,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rock_ParticleEffect: {fileID: 7571952667574766415, guid: 2a7ab0bb109add649b3f32e4e758743c, type: 3}
+--- !u!65 &370012155652589626
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263080684486329568}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8924716863725820483
 PrefabInstance:
   m_ObjectHideFlags: 0

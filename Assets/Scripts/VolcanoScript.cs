@@ -9,6 +9,11 @@ public class VolcanoScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
 	{
-       Instantiate(ExplosionPS, ExpLocation.position, Quaternion.identity);
+        if(other.tag == "Player")
+        {
+            Instantiate(ExplosionPS, ExpLocation.position, Quaternion.identity);
+
+            //GameObject.Find("GameManager").SendMessage("Play", "VolcanoExplosion");
+        }
     }
 }

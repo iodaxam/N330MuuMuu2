@@ -10590,7 +10590,7 @@ MonoBehaviour:
     time: 0
     loop: 0
     source: {fileID: 0}
-  - name: MenuSound
+  - name: MenuSoundOld
     clip: {fileID: 8300000, guid: 7c1bf97bace138a4c8d8348d13a23734, type: 3}
     volume: 0.028
     pitch: 1
@@ -10618,9 +10618,9 @@ MonoBehaviour:
     time: 0
     loop: 0
     source: {fileID: 0}
-  - name: Music1
+  - name: MenuSound
     clip: {fileID: 8300000, guid: e0ed440a6dbda3b499d60671ace41446, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     time: 0
     loop: 1

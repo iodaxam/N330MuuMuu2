@@ -361,8 +361,8 @@ public class PlayerController : MonoBehaviour
             cooldown = .5f;
             GameManager.SendMessage("PlayPitched", "CrashSound");
             GameManager.SendMessage("StopFades");
-            //GameManager.SendMessage("FadeOut", "SailingSound");
-            //GameManager.SendMessage("FadeOut", "BackgroundMusic");
+            GameManager.SendMessage("FadeOut", "SailingSound");
+            GameManager.SendMessage("FadeOut", CurrentMusic);
             isDead = true;
             startPosition = endPosition = Vector3.zero; // This is to fix the odd issue where the play can no longer swipe one direction until the game is started again.
         }
@@ -380,7 +380,7 @@ public class PlayerController : MonoBehaviour
             highScore = score;
             highScoreText.text = "HighScore: " + highScore;
         }
-        AudioManagerScript.FadeIn("MenuSound", .05f, 1f);
+        AudioManagerScript.FadeIn("MenuSound", .3f, 1f);
         TitleScreen.SetActive(true);
         inGameMenu.SetActive(false);
         CurrentBalls = 3;

@@ -5471,6 +5471,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1480129879}
     - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
+      propertyPath: speed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
       propertyPath: shipCost
       value: 
       objectReference: {fileID: 596669839}
@@ -10263,10 +10267,10 @@ MonoBehaviour:
   - {fileID: 10173376}
   ChangeDistance: 9
   LandSection: 0
-  BeachDistance: 100
-  PirateTownDistance: 101
-  GhostYardDistance: 102
-  VolcanoDistance: 103
+  BeachDistance: 6
+  PirateTownDistance: 7
+  GhostYardDistance: 8
+  VolcanoDistance: 9
   NotificationObject: {fileID: 1156766727}
 --- !u!4 &1722922297
 Transform:

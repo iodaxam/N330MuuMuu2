@@ -101,15 +101,15 @@ public class PlayerController : MonoBehaviour
     private void SpeedUp()
     {
             if (rb.velocity.magnitude < 200) {
-                rb.AddRelativeForce(0, 0, speed*(Mathf.Log(speed)*3));
+                rb.AddRelativeForce(0, 0, (speed*(Mathf.Log(speed)*3)) * Time.deltaTime);
             }
             else if (rb.velocity.magnitude < 400) {
-                rb.AddRelativeForce(0, 0, speed*(Mathf.Log(speed)*0.5f));
+                rb.AddRelativeForce(0, 0, (speed*(Mathf.Log(speed)*0.5f)) * Time.deltaTime);
             } else if (rb.velocity.magnitude < 600) {
                 // StartCoroutine(speedTimer());
-                rb.AddRelativeForce(0, 0, speed/(Mathf.Log(speed, 2)*2));
+                rb.AddRelativeForce(0, 0, (speed/(Mathf.Log(speed, 2)*2)) * Time.deltaTime);
             } else if (rb.velocity.magnitude < 1000) {
-                rb.AddRelativeForce(0, 0, speed/Mathf.Exp(speed)*1.5f);
+                rb.AddRelativeForce(0, 0, (speed/Mathf.Exp(speed)*1.5f) * Time.deltaTime);
             }
     }
 
@@ -121,15 +121,22 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!gameStarted) return;
-        transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
-        if (!isDead){
-            SpeedUp();
-        }
+        // if (!gameStarted) return;
+        // transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
+        // if (!isDead){
+        //     SpeedUp();
+        // }
     }
 
     private void Update()
     {
+        if (gameStarted)
+        {
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 0.5f), 0, transform.position.z);
+            if (!isDead){
+                SpeedUp();
+            }
+        }
 
         ShieldRend.material.SetFloat("Malpha", Mathf.Clamp(shields, 0, 1));
         if (shields > 0)

@@ -94,6 +94,14 @@ public class GameManager : MonoBehaviour
             if(CurrentBiome != Biome.PirateTown)
             {
                 StartCoroutine(NotificationObject.GetComponent<NotifScript>().NotifFade(Biome.PirateTown));
+
+                AudioScript.FadeOutFunc(Player.GetComponent<PlayerController>().CurrentMusic); 
+
+                String Music = "Music5";
+                
+                Player.GetComponent<PlayerController>().CurrentMusic = Music;
+
+                AudioScript.FadeIn(Music, .3f, 1f);
             }
 
             SelectedBoundary = PirateTownBoundaryPrefab;
@@ -104,6 +112,14 @@ public class GameManager : MonoBehaviour
             if(CurrentBiome != Biome.GhostYard)
             {
                 StartCoroutine(NotificationObject.GetComponent<NotifScript>().NotifFade(Biome.GhostYard));
+
+                AudioScript.FadeOutFunc(Player.GetComponent<PlayerController>().CurrentMusic); 
+
+                String Music = "Music4";
+                
+                Player.GetComponent<PlayerController>().CurrentMusic = Music;
+
+                AudioScript.FadeIn(Music, .3f, 1f);
             }
 
             SelectedBoundary = GhostYardBoundaryPrefab;
@@ -113,6 +129,14 @@ public class GameManager : MonoBehaviour
             if(CurrentBiome != Biome.VolcanoZone)
             {
                 StartCoroutine(NotificationObject.GetComponent<NotifScript>().NotifFade(Biome.VolcanoZone));
+
+                AudioScript.FadeOutFunc(Player.GetComponent<PlayerController>().CurrentMusic); 
+
+                String Music = "Music2";
+                
+                Player.GetComponent<PlayerController>().CurrentMusic = Music;
+
+                AudioScript.FadeIn(Music, .6f, 1f);
             }
 
             SelectedBoundary = VolcanoBoundaryPrefab;

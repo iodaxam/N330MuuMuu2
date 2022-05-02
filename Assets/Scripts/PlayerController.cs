@@ -353,6 +353,8 @@ public class PlayerController : MonoBehaviour
 
         CurrentBalls--;
         UICannonBalls[CurrentBalls].SetActive(false);
+
+        GameManager.SendMessage("PlayPitched", "Cannon");
     }
     
     public void Kraken()

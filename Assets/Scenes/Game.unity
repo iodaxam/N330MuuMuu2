@@ -10599,14 +10599,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Cannon
     clip: {fileID: 8300000, guid: aebd0b1c6a4cf624b8d9a8bef0f19a68, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     time: 0
     loop: 0
     source: {fileID: 0}
   - name: CannonExplosion
     clip: {fileID: 8300000, guid: 350ea8e8a171ae748be1e7b452f283aa, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     time: 0
     loop: 0
@@ -10708,6 +10708,13 @@ MonoBehaviour:
     pitch: 1
     time: 0
     loop: 1
+    source: {fileID: 0}
+  - name: ExplosionSplash
+    clip: {fileID: 8300000, guid: e6600cedd0fd5854685a693a2725b084, type: 3}
+    volume: 0.3
+    pitch: 1
+    time: 0
+    loop: 0
     source: {fileID: 0}
 --- !u!1001 &1727486130
 PrefabInstance:

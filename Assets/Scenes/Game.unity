@@ -10597,6 +10597,118 @@ MonoBehaviour:
     time: 0
     loop: 1
     source: {fileID: 0}
+  - name: Cannon
+    clip: {fileID: 8300000, guid: aebd0b1c6a4cf624b8d9a8bef0f19a68, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: CannonExplosion
+    clip: {fileID: 8300000, guid: 350ea8e8a171ae748be1e7b452f283aa, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: Fruit
+    clip: {fileID: 8300000, guid: ca26cc1cf5d08034f9701d96976159bb, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: Music1
+    clip: {fileID: 8300000, guid: e0ed440a6dbda3b499d60671ace41446, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Music2
+    clip: {fileID: 8300000, guid: fc968c088edf1cc4680123a7f11be149, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Music3
+    clip: {fileID: 8300000, guid: 3069b275faba66e408b3b2045b8c16b2, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Music4
+    clip: {fileID: 8300000, guid: d352cc9e726b3614e8960f72dc94e437, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Music5
+    clip: {fileID: 8300000, guid: d94249af9baecff4bacf1763dcdf70f8, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Music6
+    clip: {fileID: 8300000, guid: 56cd52fcf88a0cd40813f1354b4f426b, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Music7
+    clip: {fileID: 8300000, guid: a4dfbe23b532f8343897d3f2af0b3dfd, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Music8
+    clip: {fileID: 8300000, guid: b349dabd376acaf41b9f964391638564, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: RushingWater
+    clip: {fileID: 8300000, guid: f70c2534f2b6f5643874beaf8f077709, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Splash
+    clip: {fileID: 8300000, guid: c3288592ef8357d4ca46a1de29fd0d71, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: SpookyMusic
+    clip: {fileID: 8300000, guid: 25ef6658d85e2634d85f16b0775c4620, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: VolcanoExplode
+    clip: {fileID: 8300000, guid: 2a75a5fe9e830d04fbfd3f4b48d6f93f, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: Waves
+    clip: {fileID: 8300000, guid: 4f7d7b16592fb8947bb22b189446a110, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 1
+    source: {fileID: 0}
 --- !u!1001 &1727486130
 PrefabInstance:
   m_ObjectHideFlags: 0

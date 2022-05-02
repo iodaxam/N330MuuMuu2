@@ -484,6 +484,9 @@ public class PlayerController : MonoBehaviour
              skindex = 0;
          }
         skins[skindex].SetActive(true);
+
+        GameManager.SendMessage("Play", "ShipSwitch");
+
         skins[skindex].transform.localRotation = Quaternion.identity;
         if (ownedSkins[skindex] == 1 || skindex == 0)
         {
@@ -500,12 +503,17 @@ public class PlayerController : MonoBehaviour
      public void PurchaseSkin(int index)
      {
          int cost = 50 * index * index;
-         if (coins < cost) return;
+         if (coins < cost) {
+             GameManager.SendMessage("Play", "cantbuy");
+
+            return;
+         } 
          coins -= cost; 
          ownedSkins[index] = 1;
          money.text = coins.ToString();
          ShopScreen.SetActive(false);
          SaveGame();
+         GameManager.SendMessage("Play", "Buy");
 
      }
 

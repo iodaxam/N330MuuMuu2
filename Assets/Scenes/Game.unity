@@ -10491,6 +10491,27 @@ MonoBehaviour:
     time: 0
     loop: 0
     source: {fileID: 0}
+  - name: ShipSwitch
+    clip: {fileID: 8300000, guid: 02020709103772e4cb7f6af1821fd9a0, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: Buy
+    clip: {fileID: 8300000, guid: e4ecdea060390d74c94df8fff8cd920a, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: cantbuy
+    clip: {fileID: 8300000, guid: 0ea2a654d8619a045bc2edd44a544128, type: 3}
+    volume: 1
+    pitch: 1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!1001 &1727486130
 PrefabInstance:
   m_ObjectHideFlags: 0

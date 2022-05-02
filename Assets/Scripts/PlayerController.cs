@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
     {
         if (gameStarted)
         {
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, (Time.deltaTime * 20f)), 0, transform.position.z);
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, xPos, 1f), 0, transform.position.z);
             if (!isDead){
                 SpeedUp();
             }

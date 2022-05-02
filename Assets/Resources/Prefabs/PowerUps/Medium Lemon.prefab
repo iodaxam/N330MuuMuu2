@@ -46,9 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   functionName: MoneyUp
-  amount: 15
+  amount: 40
   ParticleSystem: {fileID: 1436358295575739190, guid: 7415541e4c2a5a94daef1b32a33d8e84, type: 3}
-  GameManager: {fileID: 0}
 --- !u!135 &1182888181738251642
 SphereCollider:
   m_ObjectHideFlags: 0

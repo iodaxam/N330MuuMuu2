@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
         }
         
         coins = PlayerPrefs.GetInt("Money");
-        // coins = 9999; // uncomment for free money
+        // coins = 0; // uncomment for free money
         highScore = PlayerPrefs.GetInt("HighScore");
         gameStarted = false;
         score = 0;

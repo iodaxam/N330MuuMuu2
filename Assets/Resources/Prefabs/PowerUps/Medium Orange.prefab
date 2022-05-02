@@ -48,6 +48,7 @@ MonoBehaviour:
   functionName: AddShield
   amount: 2
   ParticleSystem: {fileID: 1436358295575739190, guid: c6de5f92b50648d4ab8fac2b1f82e7dd, type: 3}
+  GameManager: {fileID: 0}
 --- !u!135 &943742631333424037
 SphereCollider:
   m_ObjectHideFlags: 0

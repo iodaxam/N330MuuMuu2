@@ -48,6 +48,7 @@ MonoBehaviour:
   functionName: AddCannonBall
   amount: 1
   ParticleSystem: {fileID: 1436358295575739190, guid: 5ea5f5c4e22737949a5370c1ffc13ce9, type: 3}
+  GameManager: {fileID: 0}
 --- !u!135 &2920423151498478747
 SphereCollider:
   m_ObjectHideFlags: 0

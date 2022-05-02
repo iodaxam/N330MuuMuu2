@@ -48,6 +48,7 @@ MonoBehaviour:
   functionName: MoneyUp
   amount: 5
   ParticleSystem: {fileID: 1436358295575739190, guid: 0b39a446cbed84a41833264d02a22484, type: 3}
+  GameManager: {fileID: 0}
 --- !u!135 &1182888181738251642
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -11,6 +11,12 @@ public class PowerUp : MonoBehaviour
     private BoxCollider collider;
 
     public GameObject ParticleSystem;
+
+    private GameObject GameManager;
+
+    void Start() {
+        GameManager = GameObject.Find("GameManager");
+    }
     
     // Update is called once per frame
     void Update()
@@ -28,6 +34,7 @@ public class PowerUp : MonoBehaviour
 
         GameObject SpawnedThing = Instantiate(ParticleSystem, gameObject.transform.position, Quaternion.identity);
         other.SendMessage(functionName, amount);
+        GameManager.SendMessage("PlayPitched", "Fruit");
         Destroy(gameObject);
     }
     

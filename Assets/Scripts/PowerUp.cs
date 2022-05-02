@@ -24,7 +24,7 @@ public class PowerUp : MonoBehaviour
         transform.Rotate (new Vector3 (0, 0, 70) * Time.deltaTime);
 
         Vector3 currentPos = transform.position;
-        float yPos = Mathf.Sin(Time.time) / 30;
+        float yPos = Mathf.Sin(Time.time) / 75;
         transform.position = new Vector3(currentPos.x, currentPos.y + yPos, currentPos.z);
     }
     

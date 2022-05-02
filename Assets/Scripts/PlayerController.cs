@@ -310,6 +310,9 @@ public class PlayerController : MonoBehaviour
             // animation / particles here?
             CurrentAlpha = 1f;
             ShieldRend.material.SetFloat("Malpha", CurrentAlpha);
+
+            GameManager.SendMessage("Play", "GlassBreak");
+
             StartCoroutine(ShieldTimer());
         }
         else

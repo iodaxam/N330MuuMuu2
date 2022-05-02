@@ -10716,6 +10716,13 @@ MonoBehaviour:
     time: 0
     loop: 0
     source: {fileID: 0}
+  - name: GlassBreak
+    clip: {fileID: 8300000, guid: 2453e7280e6b1634986eabea48fdf0c6, type: 3}
+    volume: 0.8
+    pitch: 1.1
+    time: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!1001 &1727486130
 PrefabInstance:
   m_ObjectHideFlags: 0

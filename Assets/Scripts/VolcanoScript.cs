@@ -9,6 +9,6 @@ public class VolcanoScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
 	{
-        Instantiate(ExplosionPS, ExpLocation.position, Quaternion.identity);
+       Instantiate(ExplosionPS, ExpLocation.position, Quaternion.identity);
     }
 }

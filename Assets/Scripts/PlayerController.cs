@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public int laneDistance = 57;
     private int skinIndex;
     private int recoilForce;
-    private float shields;
+    private float shields = 0.1f;
     private int currentCoins;
 
     [Header("References")]
@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
     private int CurrentBalls = 3;
 
     public GameObject ShieldObject;
-    private float CurrentAlpha;
     private Renderer ShieldRend;
 
     public GameObject NotificationObject;
@@ -130,6 +129,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
 
+        ShieldRend.material.SetFloat("Malpha", Mathf.Clamp(shields, 0, 1));
         if (shields > 0)
         {
             shields = Mathf.Clamp(shields - Time.deltaTime, 0, shields - Time.deltaTime);
@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("Blend", 0.3f, 0.1f, Time.deltaTime);
         }
         
-        score = Mathf.RoundToInt(transform.position.z - 100) / 10 * (skindex + 1);
+        score = Mathf.RoundToInt(transform.position.z - 100) / 10 * (skindex/2 + 1);
         scoreText.text = score.ToString();
 
         if (!isDead)
@@ -306,14 +306,7 @@ public class PlayerController : MonoBehaviour
     {
         if (shields > 0)
         {
-            shields -= 1;
-            // animation / particles here?
-            CurrentAlpha = 1f;
-            ShieldRend.material.SetFloat("Malpha", CurrentAlpha);
-
-            GameManager.SendMessage("Play", "GlassBreak");
-
-            StartCoroutine(ShieldTimer());
+            shields = 0;
         }
         else
         {
@@ -331,17 +324,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator ShieldTimer()
-    {
-        while(CurrentAlpha > 0)
-        {
-            CurrentAlpha -= Time.deltaTime * 1f;
-
-            ShieldRend.material.SetFloat("Malpha", CurrentAlpha);
-
-            yield return null;
-        }
-    }
 
     private void FireCannon()
     {
@@ -362,13 +344,9 @@ public class PlayerController : MonoBehaviour
     
     public void Kraken()
     {
-         if (shields > 0)
+        if (shields > 0)
         {
-            shields -= 1;
-            // animation / particles here?
-            CurrentAlpha = 1f;
-            ShieldRend.material.SetFloat("Malpha", CurrentAlpha);
-            StartCoroutine(ShieldTimer());
+            shields = 0;
         }
         else
         {

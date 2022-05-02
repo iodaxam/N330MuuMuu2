@@ -101,13 +101,16 @@ public class PlayerController : MonoBehaviour
 
     private void SpeedUp()
     {
-            if (rb.velocity.magnitude < 400) {
-                rb.AddRelativeForce(0, 0, speed*(Mathf.Log(speed)*2));
+            if (rb.velocity.magnitude < 200) {
+                rb.AddRelativeForce(0, 0, speed*(Mathf.Log(speed)*3));
+            }
+            else if (rb.velocity.magnitude < 400) {
+                rb.AddRelativeForce(0, 0, speed*(Mathf.Log(speed)*0.5f));
             } else if (rb.velocity.magnitude < 600) {
                 // StartCoroutine(speedTimer());
                 rb.AddRelativeForce(0, 0, speed/(Mathf.Log(speed, 2)*2));
             } else if (rb.velocity.magnitude < 1000) {
-                rb.AddRelativeForce(0, 0, speed/Mathf.Exp(speed));
+                rb.AddRelativeForce(0, 0, speed/Mathf.Exp(speed)*1.5f);
             }
     }
 
@@ -313,6 +316,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            anim.Play("Boat Wreck");
             StartCoroutine(deathTimer());
             rb.velocity = Vector3.zero;
             cooldown = .5f;
@@ -339,6 +343,7 @@ public class PlayerController : MonoBehaviour
 
     private void FireCannon()
     {
+        anim.Play("Boat Shoot");
         GameObject cannonBall = Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
         cannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);
         
@@ -353,7 +358,27 @@ public class PlayerController : MonoBehaviour
     
     public void Kraken()
     {
-        Lose();
+         if (shields > 0)
+        {
+            shields -= 1;
+            // animation / particles here?
+            CurrentAlpha = 1f;
+            ShieldRend.material.SetFloat("Malpha", CurrentAlpha);
+            StartCoroutine(ShieldTimer());
+        }
+        else
+        {
+            anim.Play("Boat Wreck Kraken");
+            StartCoroutine(deathTimer());
+            rb.velocity = Vector3.zero;
+            cooldown = .5f;
+            GameManager.SendMessage("PlayPitched", "CrashSound");
+            GameManager.SendMessage("StopFades");
+            GameManager.SendMessage("FadeOut", "SailingSound");
+            GameManager.SendMessage("FadeOut", "BackgroundMusic");
+            isDead = true;
+            startPosition = endPosition = Vector3.zero; // This is to fix the odd issue where the play can no longer swipe one direction until the game is started again.
+        }
     }
 
     IEnumerator deathTimer()

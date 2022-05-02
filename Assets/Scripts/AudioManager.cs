@@ -64,6 +64,9 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(FadeInCor(name, NewVolume, FadeTime));
     }
     
+    public void FadeOutFunc(string name) {
+        StartCoroutine(FadeOut(name));
+    }
 
     public IEnumerator FadeOut(string name)
     {

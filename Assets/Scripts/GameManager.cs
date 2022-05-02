@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
         MaxDistanceAhead = GeneratedTerrain.Count;
 
         Player = GameObject.Find("Player");
+
+        AudioScript = gameObject.GetComponent<AudioManager>();
     }
 
     public void GenerateNextSection(Vector3 StartTransform)
@@ -73,15 +75,15 @@ public class GameManager : MonoBehaviour
             {
                 StartCoroutine(NotificationObject.GetComponent<NotifScript>().NotifFade(Biome.Beach));
 
-                // AudioScript.FadeOut(Player.GetComponent<PlayerController>().CurrentMusic); 
+                AudioScript.FadeOutFunc(Player.GetComponent<PlayerController>().CurrentMusic); 
 
-                // String Music = "Music3";
+                String Music = "Music3";
                 
-                // Player.GetComponent<PlayerController>().CurrentMusic = Music;
+                Player.GetComponent<PlayerController>().CurrentMusic = Music;
 
-                // AudioScript.FadeIn(Music, .5f, 1f);
+                AudioScript.FadeIn(Music, .3f, 1f);
 
-                // AudioScript.FadeIn("Waves", .5f, 1f);
+                //AudioScript.FadeIn("Waves", .5f, 1f);
             }
 
             SelectedBoundary = BeachBoundaryPrefab;

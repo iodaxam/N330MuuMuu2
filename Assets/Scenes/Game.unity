@@ -10516,7 +10516,7 @@ MonoBehaviour:
   - {fileID: 10173376}
   ChangeDistance: 9
   LandSection: 0
-  BeachDistance: 100
+  BeachDistance: 10
   PirateTownDistance: 200
   GhostYardDistance: 300
   VolcanoDistance: 400
@@ -10634,7 +10634,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Music3
     clip: {fileID: 8300000, guid: 3069b275faba66e408b3b2045b8c16b2, type: 3}
-    volume: 1
+    volume: 0.1
     pitch: 1
     time: 0
     loop: 1

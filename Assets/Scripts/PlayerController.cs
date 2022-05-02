@@ -308,6 +308,7 @@ public class PlayerController : MonoBehaviour
     {
         if (shields > 0)
         {
+            GameManager.SendMessage("Play", "GlassBreak");
             shields = 0;
         }
         else
@@ -348,6 +349,7 @@ public class PlayerController : MonoBehaviour
     {
         if (shields > 0)
         {
+            GameManager.SendMessage("Play", "GlassBreak");
             shields = 0;
         }
         else

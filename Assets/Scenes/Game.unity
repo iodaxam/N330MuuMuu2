@@ -5562,6 +5562,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1792722652711881916, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792722652711881916, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1941653096819549109, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
       propertyPath: m_Enabled
       value: 0

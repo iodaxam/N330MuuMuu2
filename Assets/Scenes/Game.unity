@@ -5479,6 +5479,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 596669839}
     - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
+      propertyPath: SpeedGoal
+      value: 160000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073917474995604321, guid: 1833213556272ed4cb4cd51b86fd5fd5, type: 3}
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 586852734}
@@ -10273,13 +10277,10 @@ MonoBehaviour:
   - {fileID: 79025958}
   - {fileID: 1147448605}
   - {fileID: 10173376}
-  ChangeDistance: 9
+  ChangeDistance: 2
   LandSection: 0
-  BeachDistance: 6
-  PirateTownDistance: 7
-  GhostYardDistance: 8
-  VolcanoDistance: 9
   NotificationObject: {fileID: 1156766727}
+  SpeedIncrease: 15000
 --- !u!4 &1722922297
 Transform:
   m_ObjectHideFlags: 0

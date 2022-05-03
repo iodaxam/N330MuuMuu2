@@ -73,8 +73,13 @@ public class PlayerController : MonoBehaviour
 
     public String CurrentMusic;
 
+    public float SpeedGoal;
+    private float OriginalSpeedGoal;
+
     public void Start()
     {
+        OriginalSpeedGoal = SpeedGoal;
+
         ownedSkins = new int[9] {1,0,0,0,0,0,0,0,0};
         for (int i = 0; i < ownedSkins.Length; i++)
         {
@@ -100,17 +105,19 @@ public class PlayerController : MonoBehaviour
 
     private void SpeedUp()
     {
-            if (rb.velocity.magnitude < 200) {
+            if (rb.velocity.sqrMagnitude < SpeedGoal) {
                 rb.AddRelativeForce(0, 0, (speed*(Mathf.Log(speed)*3)) * Time.deltaTime);
             }
-            else if (rb.velocity.magnitude < 400) {
-                rb.AddRelativeForce(0, 0, (speed*(Mathf.Log(speed)*0.5f)) * Time.deltaTime);
-            } else if (rb.velocity.magnitude < 600) {
-                // StartCoroutine(speedTimer());
-                rb.AddRelativeForce(0, 0, (speed/(Mathf.Log(speed, 2)*2)) * Time.deltaTime);
-            } else if (rb.velocity.magnitude < 1000) {
-                rb.AddRelativeForce(0, 0, (speed/Mathf.Exp(speed)*1.5f) * Time.deltaTime);
-            }
+
+            Debug.Log(rb.velocity.sqrMagnitude);
+            // else if (rb.velocity.magnitude < 400) {
+            //     rb.AddRelativeForce(0, 0, (speed*(Mathf.Log(speed)*0.5f)) * Time.deltaTime);
+            // } else if (rb.velocity.magnitude < 600) {
+            //     // StartCoroutine(speedTimer());
+            //     rb.AddRelativeForce(0, 0, (speed/(Mathf.Log(speed, 2)*2)) * Time.deltaTime);
+            // } else if (rb.velocity.magnitude < 1000) {
+            //     rb.AddRelativeForce(0, 0, (speed/Mathf.Exp(speed)*1.5f) * Time.deltaTime);
+            // }
     }
 
     // IEnumerator speedTimer()
@@ -431,6 +438,8 @@ public class PlayerController : MonoBehaviour
     
     public void StartGame()
     {
+        SpeedGoal = OriginalSpeedGoal;
+
         if(cooldown <= 0) {
             rb.velocity = new Vector3(0, 0, startSpeed);
             gameStarted = true;

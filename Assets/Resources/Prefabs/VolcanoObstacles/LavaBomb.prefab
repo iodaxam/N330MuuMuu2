@@ -92,7 +92,7 @@ MonoBehaviour:
   BombObject: {fileID: 5652052615540678202}
   Target: {fileID: 7569356110537548041}
   SplashPE: {fileID: 3190212820381677263, guid: a0db0e1e8d5e42347815932c8c53bb8f, type: 3}
-  speed: 1000
+  speed: 1500
 --- !u!1001 &4805752267067335531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8a00907fca42851458c08df0f3860a45, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 509
+      value: 283
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8a00907fca42851458c08df0f3860a45, type: 3}
       propertyPath: m_LocalPosition.z

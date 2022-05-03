@@ -30,12 +30,12 @@ public class GameManager : MonoBehaviour
     public List<Transform> StartingPositions;
 
     private int Distance = 1;
-    public int ChangeDistance = 3;
+    public int ChangeDistance;
     public bool LandSection;
-    public int BeachDistance = 5;
-    public int PirateTownDistance = 6;
-    public int GhostYardDistance = 7;
-    public int VolcanoDistance = 8;
+    private int BeachDistance;
+    private int PirateTownDistance;
+    private int GhostYardDistance;
+    private int VolcanoDistance;
 
     private Biome CurrentBiome;
 
@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
 
     private GameObject Player;
     private AudioManager AudioScript;
+
+    public float SpeedIncrease = 50f;
     
     void Start()
     {
@@ -51,6 +53,11 @@ public class GameManager : MonoBehaviour
         Player = GameObject.Find("Player");
 
         AudioScript = gameObject.GetComponent<AudioManager>();
+
+        BeachDistance = ChangeDistance;
+        PirateTownDistance = BeachDistance + ChangeDistance;
+        GhostYardDistance = PirateTownDistance + ChangeDistance;
+        VolcanoDistance = GhostYardDistance + ChangeDistance;
     }
 
     public void GenerateNextSection(Vector3 StartTransform)
@@ -79,7 +86,11 @@ public class GameManager : MonoBehaviour
 
                 String Music = "Music3";
                 
-                Player.GetComponent<PlayerController>().CurrentMusic = Music;
+                PlayerController PlayerScript = Player.GetComponent<PlayerController>();
+
+                PlayerScript.CurrentMusic = Music;
+
+                PlayerScript.SpeedGoal += SpeedIncrease;
 
                 AudioScript.FadeIn(Music, .3f, 1f);
 
@@ -99,7 +110,11 @@ public class GameManager : MonoBehaviour
 
                 String Music = "Music5";
                 
-                Player.GetComponent<PlayerController>().CurrentMusic = Music;
+                PlayerController PlayerScript = Player.GetComponent<PlayerController>();
+
+                PlayerScript.CurrentMusic = Music;
+
+                PlayerScript.SpeedGoal += SpeedIncrease;
 
                 AudioScript.FadeIn(Music, .3f, 1f);
             }
@@ -117,7 +132,11 @@ public class GameManager : MonoBehaviour
 
                 String Music = "Music4";
                 
-                Player.GetComponent<PlayerController>().CurrentMusic = Music;
+                PlayerController PlayerScript = Player.GetComponent<PlayerController>();
+
+                PlayerScript.CurrentMusic = Music;
+
+                PlayerScript.SpeedGoal += SpeedIncrease;
 
                 AudioScript.FadeIn(Music, .3f, 1f);
             }
@@ -134,7 +153,11 @@ public class GameManager : MonoBehaviour
 
                 String Music = "Music2";
                 
-                Player.GetComponent<PlayerController>().CurrentMusic = Music;
+                PlayerController PlayerScript = Player.GetComponent<PlayerController>();
+
+                PlayerScript.CurrentMusic = Music;
+
+                PlayerScript.SpeedGoal += SpeedIncrease;
 
                 AudioScript.FadeIn(Music, .6f, 1f);
             }

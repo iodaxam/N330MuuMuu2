@@ -14,7 +14,7 @@ public class EnemyCannonballScript : MonoBehaviour
 
     void Update()
     {
-        gameObject.transform.position += new Vector3(0, 0, -(300 * Time.deltaTime));
+        gameObject.transform.position += new Vector3(0, 0, -(240 * Time.deltaTime));
     }
     
     void OnTriggerEnter(Collider other)

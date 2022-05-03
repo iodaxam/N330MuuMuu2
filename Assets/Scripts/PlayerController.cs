@@ -541,7 +541,7 @@ public class PlayerController : MonoBehaviour
 
      private void AddShield(int amount)
      {
-         shields = Mathf.Clamp(shields + amount, amount, 5);
+         shields = Mathf.Clamp(shields + amount, amount, 6);
      }
 
      private void AddCannonBall(int amount)

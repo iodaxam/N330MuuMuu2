@@ -155,7 +155,14 @@ public class TerrainScript : MonoBehaviour
 						Obstacle1.transform.rotation = Quaternion.Euler(0, 180, 0);
 					}
 					break;
-			} 
+			}
+
+			Vector3 NewSpot = AvailableSpots[Random.Range(0, AvailableSpots.Count)].position;
+			
+			if(Random.Range(0, 4) == 0) {
+				Obstacle2 = Instantiate(obstacles[0], NewSpot, Quaternion.identity);
+			}
+
 		} else if(WorldBiome == Biome.VolcanoZone) {
 			
 			List<Transform> AvailableSpots = new List<Transform>();

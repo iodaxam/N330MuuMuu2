@@ -344,6 +344,10 @@ public class PlayerController : MonoBehaviour
 
     private void FireCannon()
     {
+        if(!gameStarted)
+        {
+            return;
+        }
         anim.Play("Boat Shoot");
         GameObject cannonBall = Instantiate(CannonPrefab, LaunchPosition.position, Quaternion.identity);
         cannonBall.GetComponent<Rigidbody>().AddForce(LaunchPosition.forward * 60000f);

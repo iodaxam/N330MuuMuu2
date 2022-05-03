@@ -66,6 +66,7 @@ MonoBehaviour:
   MovingObject: 0
   FirePrefab: {fileID: 0}
   ShootLocation: {fileID: 0}
+  PE: {fileID: 1030357214610109261, guid: 229f7a5d9d1d1f44b8303d5dd850d801, type: 3}
 --- !u!54 &-1685464297232687021
 Rigidbody:
   m_ObjectHideFlags: 0

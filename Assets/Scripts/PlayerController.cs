@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public int laneDistance = 57;
     private int skinIndex;
     private int recoilForce;
-    private float shields = 0.1f;
+    public float shields = 0.1f;
     private int currentCoins;
 
     [Header("References")]

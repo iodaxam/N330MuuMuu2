@@ -10277,7 +10277,7 @@ MonoBehaviour:
   - {fileID: 79025958}
   - {fileID: 1147448605}
   - {fileID: 10173376}
-  ChangeDistance: 2
+  ChangeDistance: 15
   LandSection: 0
   NotificationObject: {fileID: 1156766727}
   SpeedIncrease: 15000

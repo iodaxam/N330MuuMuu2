@@ -8,6 +8,7 @@ public class ObstacleScript : MonoBehaviour
 	public bool MovingObject;
 	public GameObject FirePrefab;
 	public Transform ShootLocation;
+	public GameObject PE;
 
 	void Start()
 	{
@@ -33,6 +34,13 @@ public class ObstacleScript : MonoBehaviour
 	{
 		if(other.CompareTag("Player"))
 		{
+			if(other.GetComponent<PlayerController>().shields > 0)
+			{
+				Destroy(gameObject, 0.1f);
+
+				Instantiate(PE, gameObject.transform.position, Quaternion.identity);
+			}
+
 		    other.SendMessage("Lose");
 		}
 	}
